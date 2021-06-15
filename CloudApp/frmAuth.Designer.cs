@@ -120,7 +120,7 @@ namespace CloudApp
             this.txtpassword.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtpassword.Icon = global::CloudApp.Properties.Resources.icons8_lock_16;
             this.txtpassword.Lines = new string[] {
-        "ADSads123"};
+        "1q2w3e4r5t6y"};
             this.txtpassword.Location = new System.Drawing.Point(280, 228);
             this.txtpassword.MaxLength = 32767;
             this.txtpassword.Name = "txtpassword";
@@ -135,7 +135,7 @@ namespace CloudApp
             this.txtpassword.ShowClearButton = true;
             this.txtpassword.Size = new System.Drawing.Size(270, 28);
             this.txtpassword.TabIndex = 3;
-            this.txtpassword.Text = "ADSads123";
+            this.txtpassword.Text = "1q2w3e4r5t6y";
             this.txtpassword.UseSelectable = true;
             this.txtpassword.UseStyleColors = true;
             this.txtpassword.UseSystemPasswordChar = true;
