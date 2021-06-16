@@ -1,4 +1,5 @@
 ﻿using ParzivalLibrary;
+using ParzivalLibrary.Data;
 using System;
 using System.Windows.Forms;
 
@@ -42,23 +43,25 @@ namespace CloudApp
                 MetroFramework.MetroMessageBox.Show(this, "กรุณาระบุรหัสผ่านด้วย\nPlease enter your password.", "ข้อความผิดพลาด", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else {
+                splashScreenManager1.ShowWaitForm();
                 AuthData __login = new ApiService().GetToken(__txt_email, __txt_password);
                 if (__login.success)
                 {
-                    MetroFramework.MetroMessageBox.Show(this, "ยินดีต้อนรับเข้าสู่ 'โปรแกรมระบบจัดการคลังสินค้า'", "ข้อความแจ้งเตือน", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     // hide auth form
                     this.Hide();
                     this.ShowIcon = false;
-
+                    splashScreenManager1.CloseWaitForm();
+                    MetroFramework.MetroMessageBox.Show(this, "ยินดีต้อนรับเข้าสู่ 'โปรแกรมระบบจัดการคลังสินค้า'", "ข้อความแจ้งเตือน", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     // call main form
                     frmMain frm = new frmMain();
                     frm.ShowDialog();
 
-                    //  after close main form.
+                    ////  after close main form.
                     this.Show();
                     this.ShowIcon = true;
                 }
                 else {
+                    splashScreenManager1.CloseWaitForm();
                     MetroFramework.MetroMessageBox.Show(this, "ไม่พบข้อมูลผู้ใช้งาน\nNot found data.", "ข้อความผิดพลาด", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

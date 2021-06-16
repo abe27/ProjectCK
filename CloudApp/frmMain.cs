@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
+using InvoiceApp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -68,7 +69,28 @@ namespace CloudApp
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Console.WriteLine("");
+            //DialogResult r = MetroFramework.MetroMessageBox.Show(this, "คุณต้องการที่จะปิดโปรแกรมนี้ใช่หรือไม่?\nDo you want to close this program?", "ข้อความแจ้งเตือน", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            //if (r == DialogResult.Yes)
+            //{
+            //    this.Close();
+            //}
+        }
+
+        private void bbiInvoice_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            // get invoice form
+            frmInvoice frm = new frmInvoice();
+            frm.Show();
+
+        }
+
+        private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            DialogResult r = MetroFramework.MetroMessageBox.Show(this, "คุณต้องการที่จะปิดโปรแกรมนี้ใช่หรือไม่?\nDo you want to close this program?", "ข้อความแจ้งเตือน", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (r == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
     }
 }

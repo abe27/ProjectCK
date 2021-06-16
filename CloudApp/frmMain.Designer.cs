@@ -67,27 +67,31 @@ namespace CloudApp
             this.bbiMasterData = new DevExpress.XtraBars.BarButtonItem();
             this.ppMaster = new DevExpress.XtraBars.PopupMenu(this.components);
             this.bbiDepartment = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiPartList = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiUnit = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiShipment = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiReviseType = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiPartVendor = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiLedger = new DevExpress.XtraBars.BarButtonItem();
             this.bbiZone = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiPartType = new DevExpress.XtraBars.BarButtonItem();
             this.bbiShelve = new DevExpress.XtraBars.BarButtonItem();
             this.bbiPallet = new DevExpress.XtraBars.BarButtonItem();
             this.bbiContainerType = new DevExpress.XtraBars.BarButtonItem();
             this.bbiOrderGroup = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiCustomer = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiAddressCustomer = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiShipment = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiReviseType = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.ppBatch = new DevExpress.XtraBars.PopupMenu(this.components);
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.ppMember = new DevExpress.XtraBars.PopupMenu(this.components);
             this.bbiUser = new DevExpress.XtraBars.BarButtonItem();
             this.bbiTerritory = new DevExpress.XtraBars.BarButtonItem();
             this.bbiQa = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiPartList = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiUnit = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiPartVendor = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiLedger = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiPartType = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiCustomer = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiAddressCustomer = new DevExpress.XtraBars.BarButtonItem();
             this.bbiPart = new DevExpress.XtraBars.BarButtonItem();
+            this.ppPart = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.bbiCustomerList = new DevExpress.XtraBars.BarButtonItem();
+            this.ppCustomer = new DevExpress.XtraBars.PopupMenu(this.components);
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -105,14 +109,11 @@ namespace CloudApp
             this.ribbonPage5 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup12 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup16 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup13 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup15 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.ppBatch = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.ppPart = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.ribbonPageGroup16 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.bbiCustomerList = new DevExpress.XtraBars.BarButtonItem();
-            this.ppCustomer = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::CloudApp.WaitForm1), true, true);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
@@ -120,8 +121,8 @@ namespace CloudApp
             ((System.ComponentModel.ISupportInitialize)(this.ppReceive)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ppOrder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ppMaster)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ppMember)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ppBatch)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ppMember)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ppPart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ppCustomer)).BeginInit();
             this.SuspendLayout();
@@ -360,6 +361,7 @@ namespace CloudApp
             this.bbiInvoice.Id = 29;
             this.bbiInvoice.ImageOptions.Image = global::CloudApp.Properties.Resources.icons8_invoice_16;
             this.bbiInvoice.Name = "bbiInvoice";
+            this.bbiInvoice.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiInvoice_ItemClick);
             // 
             // bbiWhs
             // 
@@ -479,61 +481,12 @@ namespace CloudApp
             this.bbiDepartment.ImageOptions.Image = global::CloudApp.Properties.Resources.icons8_user_tag_16;
             this.bbiDepartment.Name = "bbiDepartment";
             // 
-            // bbiPartList
-            // 
-            this.bbiPartList.Caption = "ข้อมูลรายการสินค้า";
-            this.bbiPartList.Id = 50;
-            this.bbiPartList.ImageOptions.Image = global::CloudApp.Properties.Resources.icons8_database_administrator_16;
-            this.bbiPartList.Name = "bbiPartList";
-            // 
-            // bbiUnit
-            // 
-            this.bbiUnit.Caption = "ข้อมูลหน่วยของสินค้า";
-            this.bbiUnit.Id = 51;
-            this.bbiUnit.ImageOptions.Image = global::CloudApp.Properties.Resources.icons8_tag_window_16;
-            this.bbiUnit.Name = "bbiUnit";
-            // 
-            // bbiShipment
-            // 
-            this.bbiShipment.Caption = "ข้อมูลประเภทขนส่ง";
-            this.bbiShipment.Id = 52;
-            this.bbiShipment.ImageOptions.Image = global::CloudApp.Properties.Resources.icons8_container_truck_16;
-            this.bbiShipment.Name = "bbiShipment";
-            // 
-            // bbiReviseType
-            // 
-            this.bbiReviseType.Caption = "ข้อมูลรูปแบบการแก้ไข";
-            this.bbiReviseType.Id = 53;
-            this.bbiReviseType.ImageOptions.Image = global::CloudApp.Properties.Resources.icons8_edit_chat_history_16;
-            this.bbiReviseType.Name = "bbiReviseType";
-            // 
-            // bbiPartVendor
-            // 
-            this.bbiPartVendor.Caption = "ข้อมูล Part Vendor";
-            this.bbiPartVendor.Id = 55;
-            this.bbiPartVendor.ImageOptions.Image = global::CloudApp.Properties.Resources.icons8_package_16;
-            this.bbiPartVendor.Name = "bbiPartVendor";
-            // 
-            // bbiLedger
-            // 
-            this.bbiLedger.Caption = "ข้อมูลประเภทแยกสินค้า";
-            this.bbiLedger.Id = 56;
-            this.bbiLedger.ImageOptions.Image = global::CloudApp.Properties.Resources.icons8_add_tag_16;
-            this.bbiLedger.Name = "bbiLedger";
-            // 
             // bbiZone
             // 
             this.bbiZone.Caption = "ข้อมูลพื้นที่การทำงาน";
             this.bbiZone.Id = 54;
             this.bbiZone.ImageOptions.Image = global::CloudApp.Properties.Resources.icons8_tracking_16;
             this.bbiZone.Name = "bbiZone";
-            // 
-            // bbiPartType
-            // 
-            this.bbiPartType.Caption = "ข้อมูลชนิดของ Part";
-            this.bbiPartType.Id = 57;
-            this.bbiPartType.ImageOptions.Image = global::CloudApp.Properties.Resources.icons8_price_tag_16;
-            this.bbiPartType.Name = "bbiPartType";
             // 
             // bbiShelve
             // 
@@ -563,19 +516,19 @@ namespace CloudApp
             this.bbiOrderGroup.ImageOptions.Image = global::CloudApp.Properties.Resources.icons8_name_tag_woman_horizontal_16;
             this.bbiOrderGroup.Name = "bbiOrderGroup";
             // 
-            // bbiCustomer
+            // bbiShipment
             // 
-            this.bbiCustomer.Caption = "ข้อมูลรายการลูกค้า";
-            this.bbiCustomer.Id = 62;
-            this.bbiCustomer.ImageOptions.Image = global::CloudApp.Properties.Resources.icons8_users_16;
-            this.bbiCustomer.Name = "bbiCustomer";
+            this.bbiShipment.Caption = "ข้อมูลประเภทขนส่ง";
+            this.bbiShipment.Id = 52;
+            this.bbiShipment.ImageOptions.Image = global::CloudApp.Properties.Resources.icons8_container_truck_16;
+            this.bbiShipment.Name = "bbiShipment";
             // 
-            // bbiAddressCustomer
+            // bbiReviseType
             // 
-            this.bbiAddressCustomer.Caption = "ข้อมูลที่อยู่ลูกค้า";
-            this.bbiAddressCustomer.Id = 63;
-            this.bbiAddressCustomer.ImageOptions.Image = global::CloudApp.Properties.Resources.icons8_address_16;
-            this.bbiAddressCustomer.Name = "bbiAddressCustomer";
+            this.bbiReviseType.Caption = "ข้อมูลรูปแบบการแก้ไข";
+            this.bbiReviseType.Id = 53;
+            this.bbiReviseType.ImageOptions.Image = global::CloudApp.Properties.Resources.icons8_edit_chat_history_16;
+            this.bbiReviseType.Name = "bbiReviseType";
             // 
             // barButtonItem3
             // 
@@ -586,6 +539,12 @@ namespace CloudApp
             this.barButtonItem3.Id = 44;
             this.barButtonItem3.ImageOptions.Image = global::CloudApp.Properties.Resources.icons8_server_16;
             this.barButtonItem3.Name = "barButtonItem3";
+            // 
+            // ppBatch
+            // 
+            this.ppBatch.ItemLinks.Add(this.bbiGediGroup);
+            this.ppBatch.Name = "ppBatch";
+            this.ppBatch.Ribbon = this.ribbonControl;
             // 
             // barButtonItem5
             // 
@@ -625,6 +584,55 @@ namespace CloudApp
             this.bbiQa.ImageOptions.Image = global::CloudApp.Properties.Resources.icons8_grammar_16;
             this.bbiQa.Name = "bbiQa";
             // 
+            // bbiPartList
+            // 
+            this.bbiPartList.Caption = "ข้อมูลรายการสินค้า";
+            this.bbiPartList.Id = 50;
+            this.bbiPartList.ImageOptions.Image = global::CloudApp.Properties.Resources.icons8_database_administrator_16;
+            this.bbiPartList.Name = "bbiPartList";
+            // 
+            // bbiUnit
+            // 
+            this.bbiUnit.Caption = "ข้อมูลหน่วยของสินค้า";
+            this.bbiUnit.Id = 51;
+            this.bbiUnit.ImageOptions.Image = global::CloudApp.Properties.Resources.icons8_tag_window_16;
+            this.bbiUnit.Name = "bbiUnit";
+            // 
+            // bbiPartVendor
+            // 
+            this.bbiPartVendor.Caption = "ข้อมูล Part Vendor";
+            this.bbiPartVendor.Id = 55;
+            this.bbiPartVendor.ImageOptions.Image = global::CloudApp.Properties.Resources.icons8_package_16;
+            this.bbiPartVendor.Name = "bbiPartVendor";
+            // 
+            // bbiLedger
+            // 
+            this.bbiLedger.Caption = "ข้อมูลประเภทแยกสินค้า";
+            this.bbiLedger.Id = 56;
+            this.bbiLedger.ImageOptions.Image = global::CloudApp.Properties.Resources.icons8_add_tag_16;
+            this.bbiLedger.Name = "bbiLedger";
+            // 
+            // bbiPartType
+            // 
+            this.bbiPartType.Caption = "ข้อมูลชนิดของ Part";
+            this.bbiPartType.Id = 57;
+            this.bbiPartType.ImageOptions.Image = global::CloudApp.Properties.Resources.icons8_price_tag_16;
+            this.bbiPartType.Name = "bbiPartType";
+            // 
+            // bbiCustomer
+            // 
+            this.bbiCustomer.Caption = "ข้อมูลรายการลูกค้า";
+            this.bbiCustomer.Id = 62;
+            this.bbiCustomer.ImageOptions.Image = global::CloudApp.Properties.Resources.icons8_users_16;
+            this.bbiCustomer.Name = "bbiCustomer";
+            // 
+            // bbiAddressCustomer
+            // 
+            this.bbiAddressCustomer.Caption = "ข้อมูลที่อยู่ลูกค้า";
+            this.bbiAddressCustomer.Id = 63;
+            this.bbiAddressCustomer.ImageOptions.Image = global::CloudApp.Properties.Resources.icons8_address_16;
+            this.bbiAddressCustomer.Name = "bbiAddressCustomer";
+            // 
             // bbiPart
             // 
             this.bbiPart.ActAsDropDown = true;
@@ -634,6 +642,32 @@ namespace CloudApp
             this.bbiPart.Id = 64;
             this.bbiPart.ImageOptions.Image = global::CloudApp.Properties.Resources.icons8_list_16__1_;
             this.bbiPart.Name = "bbiPart";
+            // 
+            // ppPart
+            // 
+            this.ppPart.ItemLinks.Add(this.bbiPartList);
+            this.ppPart.ItemLinks.Add(this.bbiPartVendor);
+            this.ppPart.ItemLinks.Add(this.bbiPartType);
+            this.ppPart.ItemLinks.Add(this.bbiLedger);
+            this.ppPart.Name = "ppPart";
+            this.ppPart.Ribbon = this.ribbonControl;
+            // 
+            // bbiCustomerList
+            // 
+            this.bbiCustomerList.ActAsDropDown = true;
+            this.bbiCustomerList.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
+            this.bbiCustomerList.Caption = "ข้อมูลลูกค้า";
+            this.bbiCustomerList.DropDownControl = this.ppCustomer;
+            this.bbiCustomerList.Id = 65;
+            this.bbiCustomerList.ImageOptions.Image = global::CloudApp.Properties.Resources.icons8_users_16;
+            this.bbiCustomerList.Name = "bbiCustomerList";
+            // 
+            // ppCustomer
+            // 
+            this.ppCustomer.ItemLinks.Add(this.bbiUser);
+            this.ppCustomer.ItemLinks.Add(this.bbiAddressCustomer);
+            this.ppCustomer.Name = "ppCustomer";
+            this.ppCustomer.Ribbon = this.ribbonControl;
             // 
             // ribbonPage1
             // 
@@ -762,6 +796,12 @@ namespace CloudApp
             this.ribbonPageGroup12.Name = "ribbonPageGroup12";
             this.ribbonPageGroup12.Text = "ribbonPageGroup12";
             // 
+            // ribbonPageGroup16
+            // 
+            this.ribbonPageGroup16.ItemLinks.Add(this.bbiCustomerList);
+            this.ribbonPageGroup16.Name = "ribbonPageGroup16";
+            this.ribbonPageGroup16.Text = "ribbonPageGroup16";
+            // 
             // ribbonPageGroup13
             // 
             this.ribbonPageGroup13.ItemLinks.Add(this.barButtonItem5);
@@ -782,43 +822,9 @@ namespace CloudApp
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
             this.ribbonStatusBar.Size = new System.Drawing.Size(1022, 24);
             // 
-            // ppBatch
+            // splashScreenManager1
             // 
-            this.ppBatch.ItemLinks.Add(this.bbiGediGroup);
-            this.ppBatch.Name = "ppBatch";
-            this.ppBatch.Ribbon = this.ribbonControl;
-            // 
-            // ppPart
-            // 
-            this.ppPart.ItemLinks.Add(this.bbiPartList);
-            this.ppPart.ItemLinks.Add(this.bbiPartVendor);
-            this.ppPart.ItemLinks.Add(this.bbiPartType);
-            this.ppPart.ItemLinks.Add(this.bbiLedger);
-            this.ppPart.Name = "ppPart";
-            this.ppPart.Ribbon = this.ribbonControl;
-            // 
-            // ribbonPageGroup16
-            // 
-            this.ribbonPageGroup16.ItemLinks.Add(this.bbiCustomerList);
-            this.ribbonPageGroup16.Name = "ribbonPageGroup16";
-            this.ribbonPageGroup16.Text = "ribbonPageGroup16";
-            // 
-            // bbiCustomerList
-            // 
-            this.bbiCustomerList.ActAsDropDown = true;
-            this.bbiCustomerList.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
-            this.bbiCustomerList.Caption = "ข้อมูลลูกค้า";
-            this.bbiCustomerList.DropDownControl = this.ppCustomer;
-            this.bbiCustomerList.Id = 65;
-            this.bbiCustomerList.ImageOptions.Image = global::CloudApp.Properties.Resources.icons8_users_16;
-            this.bbiCustomerList.Name = "bbiCustomerList";
-            // 
-            // ppCustomer
-            // 
-            this.ppCustomer.ItemLinks.Add(this.bbiUser);
-            this.ppCustomer.ItemLinks.Add(this.bbiAddressCustomer);
-            this.ppCustomer.Name = "ppCustomer";
-            this.ppCustomer.Ribbon = this.ribbonControl;
+            this.splashScreenManager1.ClosingDelay = 500;
             // 
             // frmMain
             // 
@@ -835,6 +841,7 @@ namespace CloudApp
             this.StatusBar = this.ribbonStatusBar;
             this.Text = " Warehouse Management System ";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMain_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
@@ -842,8 +849,8 @@ namespace CloudApp
             ((System.ComponentModel.ISupportInitialize)(this.ppReceive)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ppOrder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ppMaster)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ppMember)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ppBatch)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ppMember)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ppPart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ppCustomer)).EndInit();
             this.ResumeLayout(false);
@@ -935,5 +942,6 @@ namespace CloudApp
         private DevExpress.XtraBars.BarButtonItem bbiCustomerList;
         private DevExpress.XtraBars.PopupMenu ppCustomer;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup16;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
     }
 }

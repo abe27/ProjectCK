@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using ParzivalLibrary.Data;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -10,11 +11,9 @@ namespace ParzivalLibrary
 {
     public class ApiService
     {
-        private readonly object __rest_api = "http://127.0.0.1:8000";
-
         public AuthData GetToken(string __username, string __passwd)
         {
-            var client = new RestClient($"{__rest_api}/api/v1/login");
+            var client = new RestClient($"{StaticVar.__rest_api}/api/v1/login");
             client.Timeout = -1;
             var request = new RestRequest(Method.POST);
             request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -25,7 +24,21 @@ namespace ParzivalLibrary
             if (response.StatusCode.ToString() == "OK")
             {
                 obj = JsonConvert.DeserializeObject<AuthData>(response.Content);
+                // adsign variable
+                StaticVar.__authen = obj;
             }
+            return obj;
+        }
+
+        public ProfileData Profile()
+        {
+            var client = new RestClient($"{StaticVar.__rest_api}/api/v1/profile");
+            client.Timeout = -1;
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("Authorization", $"Bearer {StaticVar.__authen.token}");
+            IRestResponse response = client.Execute(request);
+            Console.WriteLine(response.Content);
+            ProfileData obj = new ProfileData();
             return obj;
         }
     }
