@@ -11,9 +11,20 @@ namespace ParzivalLibrary
 {
     public class InvoiceService
     {
-        public static InvoiceRespone Get()
+        public static InvoiceRespone Get(DateTime? etd, bool? check_on_week)
         {
-            var client = new RestClient($"{StaticVar.__rest_api}/api/v1/invoice/get");
+            string __link = $"{StaticVar.__rest_api}/api/v1/invoice/"+ etd?.ToString("yyyyMMdd") + "/get";
+            if (check_on_week is null)
+            {
+                __link = $"{StaticVar.__rest_api}/api/v1/invoice/get";
+            }
+            else {
+                if ((bool)check_on_week)
+                {
+                    __link = $"{StaticVar.__rest_api}/api/v1/invoice/between/" + etd?.ToString("yyyyMMdd") + "/";
+                }
+            }
+            var client = new RestClient(__link);
             client.Timeout = -1;
             var request = new RestRequest(Method.GET);
             request.AddHeader("Authorization", "Bearer "+ StaticVar.__authen.token);

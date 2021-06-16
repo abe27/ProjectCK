@@ -15,16 +15,16 @@ namespace ParzivalLibrary.Data
     {
         public int current_page { get; set; }
         public string first_page_url { get; set; } //"first_page_url": "http://127.0.0.1:8000/api/v1/invoice/get?page=1",
-        public int from { get; set; } //"from": 1,
-        public int last_page { get; set; } //"last_page": 2,
+        public int? from { get; set; } //"from": 1,
+        public int? last_page { get; set; } //"last_page": 2,
         public string last_page_url { get; set; } //"last_page_url": "http://127.0.0.1:8000/api/v1/invoice/get?page=2",
         public List<LinkData> links { get; set; } //"links": [],
         public string next_page_url { get; set; } //"next_page_url": "http://127.0.0.1:8000/api/v1/invoice/get?page=2",
         public string path { get; set; } //"path": "http://127.0.0.1:8000/api/v1/invoice/get",
-        public int per_page { get; set; } //"per_page": 15,
+        public int? per_page { get; set; } //"per_page": 15,
         public string prev_page_url { get; set; } //"prev_page_url": null,
-        public int to { get; set; } //"to": 15,
-        public int total { get; set; } //"total": 24
+        public int? to { get; set; } //"to": 15,
+        public int? total { get; set; } //"total": 24
     }
 
     public class LinkData

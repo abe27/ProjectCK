@@ -29,6 +29,7 @@ namespace InvoiceApp
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInvoice));
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiPrintPreview = new DevExpress.XtraBars.BarButtonItem();
             this.bsiRecordsCount = new DevExpress.XtraBars.BarStaticItem();
@@ -39,6 +40,7 @@ namespace InvoiceApp
             this.bbiEtdDate = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.bbiOnWeek = new DevExpress.XtraBars.BarCheckItem();
+            this.bbiSearch = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -56,6 +58,8 @@ namespace InvoiceApp
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::InvoiceApp.WaitForm1), true, true, true);
@@ -83,9 +87,10 @@ namespace InvoiceApp
             this.bbiDelete,
             this.bbiRefresh,
             this.bbiEtdDate,
-            this.bbiOnWeek});
+            this.bbiOnWeek,
+            this.bbiSearch});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 22;
+            this.ribbonControl.MaxItemId = 23;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -102,6 +107,7 @@ namespace InvoiceApp
             this.bbiPrintPreview.Caption = "Print Preview";
             this.bbiPrintPreview.Id = 14;
             this.bbiPrintPreview.ImageOptions.ImageUri.Uri = "Preview";
+            this.bbiPrintPreview.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F3);
             this.bbiPrintPreview.Name = "bbiPrintPreview";
             this.bbiPrintPreview.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiPrintPreview_ItemClick);
             // 
@@ -137,6 +143,7 @@ namespace InvoiceApp
             this.bbiRefresh.Caption = "Refresh";
             this.bbiRefresh.Id = 19;
             this.bbiRefresh.ImageOptions.ImageUri.Uri = "Refresh";
+            this.bbiRefresh.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F5);
             this.bbiRefresh.Name = "bbiRefresh";
             this.bbiRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiRefresh_ItemClick);
             // 
@@ -146,6 +153,7 @@ namespace InvoiceApp
             this.bbiEtdDate.Edit = this.repositoryItemDateEdit1;
             this.bbiEtdDate.EditWidth = 100;
             this.bbiEtdDate.Id = 20;
+            this.bbiEtdDate.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D));
             this.bbiEtdDate.Name = "bbiEtdDate";
             this.bbiEtdDate.EditValueChanged += new System.EventHandler(this.bbiEtdDate_EditValueChanged);
             // 
@@ -165,8 +173,18 @@ namespace InvoiceApp
             this.bbiOnWeek.CheckBoxVisibility = DevExpress.XtraBars.CheckBoxVisibility.BeforeText;
             this.bbiOnWeek.Checked = true;
             this.bbiOnWeek.Id = 21;
+            this.bbiOnWeek.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.W));
             this.bbiOnWeek.Name = "bbiOnWeek";
             this.bbiOnWeek.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiOnWeek_CheckedChanged);
+            // 
+            // bbiSearch
+            // 
+            this.bbiSearch.Caption = "Get It!";
+            this.bbiSearch.Id = 22;
+            this.bbiSearch.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiSearch.ImageOptions.SvgImage")));
+            this.bbiSearch.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F2);
+            this.bbiSearch.Name = "bbiSearch";
+            this.bbiSearch.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSearch_ItemClick);
             // 
             // ribbonPage1
             // 
@@ -182,6 +200,7 @@ namespace InvoiceApp
             // 
             this.ribbonPageGroup3.ItemLinks.Add(this.bbiEtdDate);
             this.ribbonPageGroup3.ItemLinks.Add(this.bbiOnWeek);
+            this.ribbonPageGroup3.ItemLinks.Add(this.bbiSearch);
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
             this.ribbonPageGroup3.Text = "ribbonPageGroup3";
             // 
@@ -244,7 +263,9 @@ namespace InvoiceApp
             this.gridColumn6,
             this.gridColumn7,
             this.gridColumn8,
-            this.gridColumn9});
+            this.gridColumn9,
+            this.gridColumn10,
+            this.gridColumn11});
             this.gridView.GridControl = this.gridControl;
             this.gridView.Name = "gridView";
             this.gridView.OptionsBehavior.Editable = false;
@@ -282,7 +303,7 @@ namespace InvoiceApp
             this.gridColumn3.FieldName = "get_order_id.etd_date";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 1;
+            this.gridColumn3.VisibleIndex = 2;
             this.gridColumn3.Width = 121;
             // 
             // gridColumn4
@@ -291,7 +312,7 @@ namespace InvoiceApp
             this.gridColumn4.FieldName = "get_order_id.get_customer_id.get_customer_id.cust_code";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 2;
+            this.gridColumn4.VisibleIndex = 3;
             this.gridColumn4.Width = 121;
             // 
             // gridColumn5
@@ -304,7 +325,7 @@ namespace InvoiceApp
             this.gridColumn5.FieldName = "get_order_id.get_customer_id.get_customer_id.cust_name";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 3;
+            this.gridColumn5.VisibleIndex = 4;
             this.gridColumn5.Width = 121;
             // 
             // gridColumn6
@@ -313,7 +334,7 @@ namespace InvoiceApp
             this.gridColumn6.FieldName = "invoice_no";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 4;
+            this.gridColumn6.VisibleIndex = 5;
             this.gridColumn6.Width = 121;
             // 
             // gridColumn7
@@ -326,7 +347,7 @@ namespace InvoiceApp
             this.gridColumn7.FieldName = "get_order_id.group_no";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 5;
+            this.gridColumn7.VisibleIndex = 6;
             this.gridColumn7.Width = 121;
             // 
             // gridColumn8
@@ -337,7 +358,7 @@ namespace InvoiceApp
             this.gridColumn8.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "ctn_total", "{0:0.##}")});
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 6;
+            this.gridColumn8.VisibleIndex = 7;
             this.gridColumn8.Width = 121;
             // 
             // gridColumn9
@@ -346,8 +367,35 @@ namespace InvoiceApp
             this.gridColumn9.FieldName = "inv_status";
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 7;
+            this.gridColumn9.VisibleIndex = 8;
             this.gridColumn9.Width = 127;
+            // 
+            // gridColumn10
+            // 
+            this.gridColumn10.AppearanceCell.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.gridColumn10.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.gridColumn10.AppearanceCell.Options.UseFont = true;
+            this.gridColumn10.AppearanceCell.Options.UseForeColor = true;
+            this.gridColumn10.Caption = "SHIPMENT";
+            this.gridColumn10.FieldName = "get_order_id.get_ship_id.title";
+            this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.Visible = true;
+            this.gridColumn10.VisibleIndex = 1;
+            // 
+            // gridColumn11
+            // 
+            this.gridColumn11.AppearanceCell.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.gridColumn11.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.gridColumn11.AppearanceCell.Options.UseFont = true;
+            this.gridColumn11.AppearanceCell.Options.UseForeColor = true;
+            this.gridColumn11.Caption = "LASTUPDATE";
+            this.gridColumn11.DisplayFormat.FormatString = "dd/MM/yyyy HH:mm:ss";
+            this.gridColumn11.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.gridColumn11.FieldName = "updated_at";
+            this.gridColumn11.Name = "gridColumn11";
+            this.gridColumn11.Visible = true;
+            this.gridColumn11.VisibleIndex = 9;
+            this.gridColumn11.Width = 123;
             // 
             // Root
             // 
@@ -430,5 +478,8 @@ namespace InvoiceApp
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraBars.BarCheckItem bbiOnWeek;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
+        private DevExpress.XtraBars.BarButtonItem bbiSearch;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
     }
 }

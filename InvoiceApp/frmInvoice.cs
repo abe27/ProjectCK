@@ -26,7 +26,7 @@ namespace InvoiceApp
         {
             gridControl.ShowRibbonPrintPreview();
         }
-        public InvoiceRespone GetDataSource() => InvoiceService.Get();
+        public InvoiceRespone GetDataSource() => InvoiceService.Get(DateTime.Parse(bbiEtdDate.EditValue.ToString()), bbiOnWeek.Checked);
 
         void Reload()
         {
@@ -39,13 +39,18 @@ namespace InvoiceApp
 
         private void bbiRefresh_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Reload();
+            splashScreenManager1.ShowWaitForm();
+            InvoiceRespone dataSource = InvoiceService.Get(null, null);
+            gridControl.DataSource = dataSource.data.data;
+            bsiRecordsCount.Caption = "RECORDS : " + dataSource.data.data.Count;
+            splashScreenManager1.CloseWaitForm();
         }
 
         private void gridView_DoubleClick(object sender, EventArgs e)
         {
             InvoiceData obj = gridView.GetFocusedRow() as InvoiceData;
-            Console.WriteLine(obj);
+            frmInvoiceDetail frm = new frmInvoiceDetail(obj);
+            frm.ShowDialog();
         }
 
         private void bbiEtdDate_EditValueChanged(object sender, EventArgs e)
@@ -54,6 +59,11 @@ namespace InvoiceApp
         }
 
         private void bbiOnWeek_CheckedChanged(object sender, ItemClickEventArgs e)
+        {
+            Reload();
+        }
+
+        private void bbiSearch_ItemClick(object sender, ItemClickEventArgs e)
         {
             Reload();
         }
