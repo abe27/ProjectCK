@@ -37,5 +37,39 @@ namespace ParzivalLibrary
             }
             return obj;
         }
+
+        public static InvoiceDetailRespone GetDetail(string inv_id)
+        {
+            InvoiceDetailRespone obj = new InvoiceDetailRespone();
+            var client = new RestClient($"{StaticVar.__rest_api}/api/v1/invoice/{inv_id}/detail");
+            client.Timeout = -1;
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("Authorization", $"Bearer {StaticVar.__authen.token}");
+            IRestResponse response = client.Execute(request);
+            if (response.StatusCode.ToString() == "OK")
+            {
+                obj = JsonConvert.DeserializeObject<InvoiceDetailRespone>(response.Content);
+            }
+            Console.WriteLine(response.Content);
+            return obj;
+        }
+
+        public static InvoiceRespone ChangeInvoiceNo(string inv_no, string new_inv)
+        {
+            InvoiceRespone obj = new InvoiceRespone();
+            var client = new RestClient($"{StaticVar.__rest_api}/api/v1/invoice/{inv_no}/no");
+            client.Timeout = -1;
+            var request = new RestRequest(Method.PUT);
+            request.AddHeader("Authorization", $"Bearer {StaticVar.__authen.token}");
+            request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+            request.AddParameter("invoice_no", (new_inv).ToUpper());
+            IRestResponse response = client.Execute(request);
+            Console.WriteLine(response.Content);
+            if (response.StatusCode.ToString() == "OK")
+            {
+                obj = JsonConvert.DeserializeObject<InvoiceRespone>(response.Content);
+            }
+            return obj;
+        }
     }
 }

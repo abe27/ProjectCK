@@ -55,6 +55,8 @@
     <Compile Include="Data\InvoiceData.cs" />
     <Compile Include="Data\MasterData.cs" />
     <Compile Include="Data\OrderData.cs" />
+    <Compile Include="Data\PartData.cs" />
+    <Compile Include="Data\ReportData.cs" />
     <Compile Include="InvoiceService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

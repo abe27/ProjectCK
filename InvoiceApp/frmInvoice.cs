@@ -51,6 +51,7 @@ namespace InvoiceApp
             InvoiceData obj = gridView.GetFocusedRow() as InvoiceData;
             frmInvoiceDetail frm = new frmInvoiceDetail(obj);
             frm.ShowDialog();
+            Reload();
         }
 
         private void bbiEtdDate_EditValueChanged(object sender, EventArgs e)

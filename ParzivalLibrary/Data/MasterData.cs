@@ -49,11 +49,30 @@ namespace ParzivalLibrary.Data
     public class ContainerType : MasterData { }
 
     public class User : AuthData { }
+
     public class ShipData : MasterData { }
+
     public class WhsData : MasterData { }
+
     public class TagData : MasterData { }
+
     public class AgencyData : MasterData { }
+
     public class DepartmentData : MasterData { }
+
+    public class ReviseData : MasterData
+    { 
+        public bool is_editor { get; set; } //"is_editor": false,
+    }
+
+    public class UnitData : MasterData { }
+
+    public class PartVendorData : MasterData
+    {
+        public string values { get; set; }
+    }
+
+    public class PartTypeData : MasterData { }
 
     public class ZoneData
     { 
