@@ -39,6 +39,7 @@ namespace CloudApp
             this.txtusername = new MetroFramework.Controls.MetroTextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::CloudApp.WaitForm1), true, true);
+            this.bbiSwitchTest = new MetroFramework.Controls.MetroToggle();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -205,11 +206,23 @@ namespace CloudApp
             // 
             this.splashScreenManager1.ClosingDelay = 500;
             // 
+            // bbiSwitchTest
+            // 
+            this.bbiSwitchTest.AutoSize = true;
+            this.bbiSwitchTest.Location = new System.Drawing.Point(470, 268);
+            this.bbiSwitchTest.Name = "bbiSwitchTest";
+            this.bbiSwitchTest.Size = new System.Drawing.Size(80, 17);
+            this.bbiSwitchTest.TabIndex = 7;
+            this.bbiSwitchTest.Text = "Off";
+            this.bbiSwitchTest.UseSelectable = true;
+            this.bbiSwitchTest.CheckedChanged += new System.EventHandler(this.bbiSwitchTest_CheckedChanged);
+            // 
             // frmAuth
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(563, 351);
+            this.Controls.Add(this.bbiSwitchTest);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.bbiLogin);
             this.Controls.Add(this.txtremember);
@@ -241,5 +254,6 @@ namespace CloudApp
         private MetroFramework.Controls.MetroButton bbiLogin;
         private System.Windows.Forms.PictureBox pictureBox2;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
+        private MetroFramework.Controls.MetroToggle bbiSwitchTest;
     }
 }

@@ -31,6 +31,7 @@ namespace ParzivalLibrary.Data
         public double length { get; set; }
         public double height { get; set; }
         public double weight { get; set; }
+        public string dimension { get; set; }
         public bool is_status { get; set; }
         public bool sync { get; set; }
         public DateTime created_at { get; set; }

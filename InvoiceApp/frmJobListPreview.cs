@@ -23,7 +23,7 @@ namespace InvoiceApp
             splashScreenManager1.ShowWaitForm();
             this.Text = $"Print Job List {inv_id}";
             this.__inv_id = inv_id;
-            InvoiceDetailRespone list = InvoiceService.GetDetail(inv_id);
+            InvoiceDetailResponse list = InvoiceService.GetDetail(inv_id);
             rpJobList rp = new rpJobList();
             foreach (DevExpress.XtraReports.Parameters.Parameter i in rp.Parameters)
             {

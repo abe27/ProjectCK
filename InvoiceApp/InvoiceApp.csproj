@@ -79,6 +79,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmAddNewPallet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="frmAddNewPallet.Designer.cs">
+      <DependentUpon>frmAddNewPallet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmChangePalletSize.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="frmChangePalletSize.Designer.cs">
+      <DependentUpon>frmChangePalletSize.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmJobListPreview.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,14 +123,35 @@
     <Compile Include="frmInvoiceDetail.Designer.cs">
       <DependentUpon>frmInvoiceDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmInvoiceCarton.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInvoiceCarton.Designer.cs">
+      <DependentUpon>frmInvoiceCarton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSetPallet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSetPallet.Designer.cs">
+      <DependentUpon>frmSetPallet.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="frmAddNewPallet.resx">
+      <DependentUpon>frmAddNewPallet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmInvoice.resx">
       <DependentUpon>frmInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInvoiceCarton.resx">
+      <DependentUpon>frmInvoiceCarton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmInvoiceDetail.resx">
       <DependentUpon>frmInvoiceDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmJobListPreview.resx">
       <DependentUpon>frmJobListPreview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSetPallet.resx">
+      <DependentUpon>frmSetPallet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -159,6 +192,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-pallet-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\changefontstyle_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\changefontstyle_32x32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

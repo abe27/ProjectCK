@@ -11,7 +11,7 @@ namespace ParzivalLibrary
 {
     public class InvoiceService
     {
-        public static InvoiceRespone Get(DateTime? etd, bool? check_on_week)
+        public static InvoiceResponse Get(DateTime? etd, bool? check_on_week)
         {
             string __link = $"{StaticVar.__rest_api}/api/v1/invoice/"+ etd?.ToString("yyyyMMdd") + "/get";
             if (check_on_week is null)
@@ -29,18 +29,18 @@ namespace ParzivalLibrary
             var request = new RestRequest(Method.GET);
             request.AddHeader("Authorization", "Bearer "+ StaticVar.__authen.token);
             IRestResponse response = client.Execute(request);
-            InvoiceRespone obj = new InvoiceRespone();
+            InvoiceResponse obj = new InvoiceResponse();
             if (response.StatusCode.ToString() == "OK")
             {
                 Console.WriteLine(response.Content);
-                obj = JsonConvert.DeserializeObject<InvoiceRespone>(response.Content);
+                obj = JsonConvert.DeserializeObject<InvoiceResponse>(response.Content);
             }
             return obj;
         }
 
-        public static InvoiceDetailRespone GetDetail(string inv_id)
+        public static InvoiceDetailResponse GetDetail(string inv_id)
         {
-            InvoiceDetailRespone obj = new InvoiceDetailRespone();
+            InvoiceDetailResponse obj = new InvoiceDetailResponse();
             var client = new RestClient($"{StaticVar.__rest_api}/api/v1/invoice/{inv_id}/detail");
             client.Timeout = -1;
             var request = new RestRequest(Method.GET);
@@ -48,15 +48,15 @@ namespace ParzivalLibrary
             IRestResponse response = client.Execute(request);
             if (response.StatusCode.ToString() == "OK")
             {
-                obj = JsonConvert.DeserializeObject<InvoiceDetailRespone>(response.Content);
+                obj = JsonConvert.DeserializeObject<InvoiceDetailResponse>(response.Content);
             }
             Console.WriteLine(response.Content);
             return obj;
         }
 
-        public static InvoiceRespone ChangeInvoiceNo(string inv_no, string new_inv)
+        public static InvoiceResponse ChangeInvoiceNo(string inv_no, string new_inv)
         {
-            InvoiceRespone obj = new InvoiceRespone();
+            InvoiceResponse obj = new InvoiceResponse();
             var client = new RestClient($"{StaticVar.__rest_api}/api/v1/invoice/{inv_no}/no");
             client.Timeout = -1;
             var request = new RestRequest(Method.PUT);
@@ -67,9 +67,107 @@ namespace ParzivalLibrary
             Console.WriteLine(response.Content);
             if (response.StatusCode.ToString() == "OK")
             {
-                obj = JsonConvert.DeserializeObject<InvoiceRespone>(response.Content);
+                obj = JsonConvert.DeserializeObject<InvoiceResponse>(response.Content);
             }
             return obj;
+        }
+
+        public static InvCartonReponse GetInvoiceCarton(string id)
+        {
+            InvCartonReponse obj = new InvCartonReponse();
+            var client = new RestClient($"{StaticVar.__rest_api}/api/v1/invoice/{id}/carton");
+            client.Timeout = -1;
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("Authorization", $"Bearer {StaticVar.__authen.token}");
+            IRestResponse response = client.Execute(request);
+            Console.WriteLine(response.Content);
+            if (response.StatusCode.ToString() == "OK")
+            {
+                obj = JsonConvert.DeserializeObject<InvCartonReponse>(response.Content);
+            }
+            return obj;
+        }
+
+        public static InvoicePalletResponse GetInvoicePallet(string id)
+        {
+            InvoicePalletResponse obj = new InvoicePalletResponse();
+            var client = new RestClient($"{StaticVar.__rest_api}/api/v1/invoice/{id}/pallet");
+            client.Timeout = -1;
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("Authorization", $"Bearer {StaticVar.__authen.token}");
+            IRestResponse response = client.Execute(request); Console.WriteLine(response.Content);
+            if (response.StatusCode.ToString() == "OK")
+            {
+                obj = JsonConvert.DeserializeObject<InvoicePalletResponse>(response.Content);
+            }
+            return obj;
+        }
+
+        public static bool CreatePallet(string id, InvoicePallet data)
+        {
+            var client = new RestClient($"{StaticVar.__rest_api}/api/v1/invoice/{id}/pallet");
+            client.Timeout = -1;
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("Authorization", $"Bearer {StaticVar.__authen.token}");
+            request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+            request.AddParameter("pallet_prefix", data.pallet_prefix);
+            request.AddParameter("pallet_seq", data.pallet_seq);
+            request.AddParameter("pallet_total", data.pallet_total);
+            request.AddParameter("pallet_limit", data.pallet_limit);
+            request.AddParameter("pallet_width", data.pallet_width);
+            request.AddParameter("pallet_length", data.pallet_length);
+            request.AddParameter("pallet_height", data.pallet_height);
+            request.AddParameter("is_status", data.is_status);
+            IRestResponse response = client.Execute(request);
+            bool is_status = false;
+            if (response.StatusCode.ToString() == "OK")
+            {
+                is_status = true;
+            }
+            Console.WriteLine(response.Content);
+            return is_status;
+        }
+
+        public static bool UpdatePallet(InvoicePallet data)
+        {
+            var client = new RestClient($"{StaticVar.__rest_api}/api/v1/invoice/{data.id}/pallet");
+            client.Timeout = -1;
+            var request = new RestRequest(Method.PUT);
+            request.AddHeader("Authorization", $"Bearer {StaticVar.__authen.token}");
+            request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+            request.AddParameter("pallet_prefix", data.pallet_prefix);
+            request.AddParameter("pallet_seq", data.pallet_seq);
+            request.AddParameter("pallet_total", data.pallet_total);
+            request.AddParameter("pallet_limit", data.pallet_limit);
+            request.AddParameter("pallet_width", data.pallet_width);
+            request.AddParameter("pallet_length", data.pallet_length);
+            request.AddParameter("pallet_height", data.pallet_height);
+            request.AddParameter("is_status", data.is_status);
+            IRestResponse response = client.Execute(request);
+            bool is_status = false;
+            if (response.StatusCode.ToString() == "OK")
+            {
+                is_status = true;
+            }
+            Console.WriteLine(response.Content);
+            return is_status;
+        }
+
+        public static bool DeletePallet(string id)
+        {
+            var client = new RestClient($"{StaticVar.__rest_api}/api/v1/invoice/{id}/pallet");
+            client.Timeout = -1;
+            var request = new RestRequest(Method.DELETE);
+            request.AddHeader("Authorization", $"Bearer {StaticVar.__authen.token}");
+            request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+            IRestResponse response = client.Execute(request);
+            bool is_status = false;
+            if (response.StatusCode.ToString() == "OK")
+            {
+                is_status = true;
+            }
+            Console.WriteLine(response.Content);
+            return is_status;
         }
     }
 }

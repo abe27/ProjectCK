@@ -30,14 +30,17 @@ namespace InvoiceApp
             gridControl.ShowRibbonPrintPreview();
         }
 
-        public InvoiceDetailRespone GetDataSource() => InvoiceService.GetDetail(this.__obj.id);
+        public InvoiceDetailResponse GetDataSource() => InvoiceService.GetDetail(this.__obj.id);
 
         void Reload()
         {
             gridControl.DataSource = null;
             splashScreenManager1.ShowWaitForm();
 
-            InvoiceDetailRespone dataSource = GetDataSource();
+            InvoiceDetailResponse dataSource = GetDataSource();
+            dataSource.data.data.ForEach(i => {
+                i.get_order_id.ctn = (i.get_order_id.balqty/i.get_order_id.bistdp);
+            });
             gridControl.DataSource = dataSource.data.data;
 
             // add variable
@@ -110,7 +113,7 @@ namespace InvoiceApp
             }
 
             // change new Invoice
-            InvoiceRespone x = InvoiceService.ChangeInvoiceNo(this.__obj.id, result.ToString());
+            InvoiceResponse x = InvoiceService.ChangeInvoiceNo(this.__obj.id, result.ToString());
             if (x.success)
             {
                 MetroFramework.MetroMessageBox.Show(this, "บันทึกข้อมูลเรียบร้อยแล้ว.", "ข้อความแจ้งเตือน", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -123,7 +126,8 @@ namespace InvoiceApp
 
         private void bbiSetPallet_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            frmSetPallet frm = new frmSetPallet(this.__obj);
+            frm.ShowDialog();
         }
 
         private void bbiSendGEDI_ItemClick(object sender, ItemClickEventArgs e)
@@ -134,6 +138,13 @@ namespace InvoiceApp
         private void bbiPrintJoblist_ItemClick(object sender, ItemClickEventArgs e)
         {
             frmJobListPreview frm = new frmJobListPreview(this.__obj.id);
+            frm.ShowDialog();
+        }
+
+        private void gridView_DoubleClick(object sender, EventArgs e)
+        {
+            InvoiceDetail __body = gridView.GetFocusedRow() as InvoiceDetail;
+            frmInvoiceCarton frm = new frmInvoiceCarton(__body);
             frm.ShowDialog();
         }
     }

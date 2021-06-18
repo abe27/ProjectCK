@@ -35,7 +35,7 @@ namespace ParzivalLibrary.Data
         public User get_register_id { get; set; }//"get_register_id": []
     }
 
-    public class InvObj : HttpResponeData
+    public class InvObj : HttpResponseData
     {
         public List<InvoiceData> data { get; set; }
     }
@@ -45,19 +45,19 @@ namespace ParzivalLibrary.Data
         public string invoice_no { get; set; }
     }
 
-    public class InvoiceRespone
+    public class InvoiceResponse
     {
         public bool success { get; set; }
         public InvObj data { get; set; }
         public InvMessage message { get; set; }
     }
 
-    public class InvDetail : HttpResponeData
+    public class InvDetail : HttpResponseData
     {
         public List<InvoiceDetail> data { get; set; }
     }
 
-    public class InvoiceDetailRespone
+    public class InvoiceDetailResponse
     {
         public bool success { get; set; }
         public InvDetail data { get; set; }

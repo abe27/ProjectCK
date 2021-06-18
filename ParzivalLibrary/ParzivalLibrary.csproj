@@ -52,11 +52,15 @@
     <Compile Include="Data\AuthData.cs" />
     <Compile Include="Data\BatchFileData.cs" />
     <Compile Include="Data\CustomerData.cs" />
+    <Compile Include="Data\InvoiceCartonData.cs" />
     <Compile Include="Data\InvoiceData.cs" />
+    <Compile Include="Data\InvoicePalletData.cs" />
     <Compile Include="Data\MasterData.cs" />
     <Compile Include="Data\OrderData.cs" />
     <Compile Include="Data\PartData.cs" />
+    <Compile Include="Data\ReceiveData.cs" />
     <Compile Include="Data\ReportData.cs" />
+    <Compile Include="Data\StockData.cs" />
     <Compile Include="InvoiceService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

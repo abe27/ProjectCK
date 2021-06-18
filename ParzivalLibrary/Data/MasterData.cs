@@ -8,10 +8,10 @@ namespace ParzivalLibrary.Data
 {
     public class StaticVar
     {
-        public static string __rest_api = "http://127.0.0.1:8000";
+        public static string __rest_api { get; set; }
         public static AuthData __authen { get; internal set; }
     }
-    public class HttpResponeData
+    public class HttpResponseData
     {
         public int current_page { get; set; }
         public string first_page_url { get; set; } //"first_page_url": "http://127.0.0.1:8000/api/v1/invoice/get?page=1",

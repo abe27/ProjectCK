@@ -26,12 +26,12 @@ namespace InvoiceApp
         {
             gridControl.ShowRibbonPrintPreview();
         }
-        public InvoiceRespone GetDataSource() => InvoiceService.Get(DateTime.Parse(bbiEtdDate.EditValue.ToString()), bbiOnWeek.Checked);
+        public InvoiceResponse GetDataSource() => InvoiceService.Get(DateTime.Parse(bbiEtdDate.EditValue.ToString()), bbiOnWeek.Checked);
 
         void Reload()
         {
             splashScreenManager1.ShowWaitForm();
-            InvoiceRespone dataSource = GetDataSource();
+            InvoiceResponse dataSource = GetDataSource();
             gridControl.DataSource = dataSource.data.data;
             bsiRecordsCount.Caption = "RECORDS : " + dataSource.data.data.Count;
             splashScreenManager1.CloseWaitForm();
@@ -40,7 +40,7 @@ namespace InvoiceApp
         private void bbiRefresh_ItemClick(object sender, ItemClickEventArgs e)
         {
             splashScreenManager1.ShowWaitForm();
-            InvoiceRespone dataSource = InvoiceService.Get(null, null);
+            InvoiceResponse dataSource = InvoiceService.Get(null, null);
             gridControl.DataSource = dataSource.data.data;
             bsiRecordsCount.Caption = "RECORDS : " + dataSource.data.data.Count;
             splashScreenManager1.CloseWaitForm();

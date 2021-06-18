@@ -10,6 +10,7 @@ namespace CloudApp
         public frmAuth()
         {
             InitializeComponent();
+            bbiSwitchTest.Checked = true;
         }
 
         bool IsValidEmail(string email)
@@ -64,6 +65,15 @@ namespace CloudApp
                     splashScreenManager1.CloseWaitForm();
                     MetroFramework.MetroMessageBox.Show(this, "ไม่พบข้อมูลผู้ใช้งาน\nNot found data.", "ข้อความผิดพลาด", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void bbiSwitchTest_CheckedChanged(object sender, EventArgs e)
+        {
+            StaticVar.__rest_api = "http://127.0.0.1:8000";
+            if (bbiSwitchTest.Checked)
+            {
+                StaticVar.__rest_api = "http://203.151.171.156";
             }
         }
     }

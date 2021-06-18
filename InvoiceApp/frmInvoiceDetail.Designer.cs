@@ -59,6 +59,7 @@ namespace InvoiceApp
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl4 = new DevExpress.XtraLayout.LayoutControl();
             this.bbiContainerType = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -412,6 +413,7 @@ namespace InvoiceApp
             // 
             // gridControl
             // 
+            this.gridControl.Cursor = System.Windows.Forms.Cursors.Hand;
             this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl.Location = new System.Drawing.Point(2, 23);
             this.gridControl.MainView = this.gridView;
@@ -435,13 +437,15 @@ namespace InvoiceApp
             this.gridColumn7,
             this.gridColumn8,
             this.gridColumn9,
-            this.gridColumn10});
+            this.gridColumn10,
+            this.gridColumn11});
             this.gridView.GridControl = this.gridControl;
             this.gridView.Name = "gridView";
             this.gridView.OptionsBehavior.Editable = false;
             this.gridView.OptionsBehavior.ReadOnly = true;
             this.gridView.OptionsView.ShowFooter = true;
             this.gridView.OptionsView.ShowGroupPanel = false;
+            this.gridView.DoubleClick += new System.EventHandler(this.gridView_DoubleClick);
             // 
             // gridColumn1
             // 
@@ -500,6 +504,8 @@ namespace InvoiceApp
             this.gridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn5.FieldName = "get_order_id.get_plan_id.balqty";
             this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "get_order_id.get_plan_id.balqty", "{0:n0}")});
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 4;
             this.gridColumn5.Width = 83;
@@ -524,7 +530,7 @@ namespace InvoiceApp
             this.gridColumn7.Caption = "PREPARE";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 6;
+            this.gridColumn7.VisibleIndex = 7;
             this.gridColumn7.Width = 83;
             // 
             // gridColumn8
@@ -537,7 +543,7 @@ namespace InvoiceApp
             this.gridColumn8.FieldName = "get_order_id.get_plan_id.reasoncd";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 7;
+            this.gridColumn8.VisibleIndex = 8;
             this.gridColumn8.Width = 50;
             // 
             // gridColumn9
@@ -546,7 +552,7 @@ namespace InvoiceApp
             this.gridColumn9.FieldName = "is_status";
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 8;
+            this.gridColumn9.VisibleIndex = 9;
             this.gridColumn9.Width = 57;
             // 
             // gridColumn10
@@ -559,12 +565,25 @@ namespace InvoiceApp
             this.gridColumn10.FieldName = "updated_at";
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 9;
+            this.gridColumn10.VisibleIndex = 10;
             this.gridColumn10.Width = 151;
+            // 
+            // gridColumn11
+            // 
+            this.gridColumn11.AppearanceCell.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.gridColumn11.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.gridColumn11.AppearanceCell.Options.UseFont = true;
+            this.gridColumn11.AppearanceCell.Options.UseForeColor = true;
+            this.gridColumn11.Caption = "CTN.";
+            this.gridColumn11.FieldName = "get_order_id.ctn";
+            this.gridColumn11.Name = "gridColumn11";
+            this.gridColumn11.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "get_order_id.ctn", "{0:n0}")});
+            this.gridColumn11.Visible = true;
+            this.gridColumn11.VisibleIndex = 6;
             // 
             // groupControl3
             // 
-            this.groupControl3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupControl3.CaptionImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("groupControl3.CaptionImageOptions.Image")));
             this.groupControl3.Controls.Add(this.layoutControl4);
             this.groupControl3.GroupStyle = DevExpress.Utils.GroupStyle.Card;
@@ -1951,5 +1970,6 @@ namespace InvoiceApp
         private DevExpress.XtraBars.BarButtonItem bbiSetPallet;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraBars.BarButtonItem bbiSendGEDI;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
     }
 }
