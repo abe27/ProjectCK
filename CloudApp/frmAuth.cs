@@ -45,7 +45,7 @@ namespace CloudApp
             }
             else {
                 splashScreenManager1.ShowWaitForm();
-                AuthData __login = new ApiService().GetToken(__txt_email, __txt_password);
+                AuthData __login = ApiService.GetToken(__txt_email, __txt_password);
                 if (__login.success)
                 {
                     // hide auth form
@@ -58,6 +58,7 @@ namespace CloudApp
                     frm.ShowDialog();
 
                     ////  after close main form.
+                    ApiService.LogOut();// ---> logout
                     this.Show();
                     this.ShowIcon = true;
                 }

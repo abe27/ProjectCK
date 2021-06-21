@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParzivalLibrary", "Parzival
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoiceApp", "InvoiceApp\InvoiceApp.csproj", "{00C62CE3-6014-4B63-8A5A-763377FCF4D1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderApp", "OrderApp\OrderApp.csproj", "{BFDE1276-36B0-4FB0-BCE9-7DB3953676EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{00C62CE3-6014-4B63-8A5A-763377FCF4D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00C62CE3-6014-4B63-8A5A-763377FCF4D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00C62CE3-6014-4B63-8A5A-763377FCF4D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFDE1276-36B0-4FB0-BCE9-7DB3953676EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFDE1276-36B0-4FB0-BCE9-7DB3953676EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFDE1276-36B0-4FB0-BCE9-7DB3953676EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFDE1276-36B0-4FB0-BCE9-7DB3953676EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -305,6 +305,7 @@ namespace CloudApp
             this.bbiReceiveResult.Id = 24;
             this.bbiReceiveResult.ImageOptions.Image = global::CloudApp.Properties.Resources.icons8_barcode_scanner_16;
             this.bbiReceiveResult.Name = "bbiReceiveResult";
+            this.bbiReceiveResult.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiReceiveResult_ItemClick);
             // 
             // bbiAddIcam
             // 
@@ -313,6 +314,7 @@ namespace CloudApp
             this.bbiAddIcam.Id = 25;
             this.bbiAddIcam.ImageOptions.Image = global::CloudApp.Properties.Resources.icons8_add_16;
             this.bbiAddIcam.Name = "bbiAddIcam";
+            this.bbiAddIcam.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiAddIcam_ItemClick);
             // 
             // bbiOrder
             // 
@@ -338,6 +340,7 @@ namespace CloudApp
             this.bbiOrderPlaning.Id = 27;
             this.bbiOrderPlaning.ImageOptions.Image = global::CloudApp.Properties.Resources.icons8_cloud_16;
             this.bbiOrderPlaning.Name = "bbiOrderPlaning";
+            this.bbiOrderPlaning.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiOrderPlaning_ItemClick);
             // 
             // bbiOrderEnties
             // 
@@ -345,6 +348,7 @@ namespace CloudApp
             this.bbiOrderEnties.Id = 28;
             this.bbiOrderEnties.ImageOptions.Image = global::CloudApp.Properties.Resources.icons8_list_16;
             this.bbiOrderEnties.Name = "bbiOrderEnties";
+            this.bbiOrderEnties.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiOrderEnties_ItemClick);
             // 
             // bbiCheckOrder
             // 
@@ -352,6 +356,7 @@ namespace CloudApp
             this.bbiCheckOrder.Id = 43;
             this.bbiCheckOrder.ImageOptions.Image = global::CloudApp.Properties.Resources.icons8_spell_check_16;
             this.bbiCheckOrder.Name = "bbiCheckOrder";
+            this.bbiCheckOrder.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiCheckOrder_ItemClick);
             // 
             // bbiInvoice
             // 

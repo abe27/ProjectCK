@@ -207,6 +207,10 @@
       <Project>{00C62CE3-6014-4B63-8A5A-763377FCF4D1}</Project>
       <Name>InvoiceApp</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OrderApp\OrderApp.csproj">
+      <Project>{BFDE1276-36B0-4FB0-BCE9-7DB3953676EE}</Project>
+      <Name>OrderApp</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ParzivalLibrary\ParzivalLibrary.csproj">
       <Project>{d20c2042-59bf-4507-afd4-ddaca584327a}</Project>
       <Name>ParzivalLibrary</Name>

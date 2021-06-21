@@ -66,9 +66,21 @@ namespace ParzivalLibrary.Data
         public int picshelfbasicqty { get; set; } //"picshelfbasicqty": 0,
         public int outerpcs { get; set; } //"outerpcs": 0,
         public int allocateqty { get; set; } //"allocateqty": 0,
+        public double ctn { get; set; } //"ctn": 0,
         public bool sync { get; set; } //"sync": true,
         public DateTime created_at { get; set; } //"created_at": "2021-06-12T07:47:57.000000Z",
         public DateTime updated_at { get; set; } //"updated_at": "2021-06-12T11:10:04.000000Z"
+    }
+
+    public class OrderPlanObj : HttpResponseData
+    {
+        public List<OrderPlan> data { get; set; }
+    }
+
+    public class OrderPlanResponse
+    {
+        public bool success { get; set; }
+        public OrderPlanObj data { get; set; }
     }
 
     public class OrderData

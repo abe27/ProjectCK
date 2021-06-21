@@ -62,6 +62,7 @@
     <Compile Include="Data\ReportData.cs" />
     <Compile Include="Data\StockData.cs" />
     <Compile Include="InvoiceService.cs" />
+    <Compile Include="OrderService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
