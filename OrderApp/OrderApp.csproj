@@ -82,6 +82,9 @@
     <Compile Include="WaitForm1.Designer.cs">
       <DependentUpon>WaitForm1.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmCheckOrder.resx">
+      <DependentUpon>frmCheckOrder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmOrderEnt.resx">
       <DependentUpon>frmOrderEnt.cs</DependentUpon>
     </EmbeddedResource>

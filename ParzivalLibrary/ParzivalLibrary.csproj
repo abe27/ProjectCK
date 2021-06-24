@@ -51,6 +51,7 @@
     <Compile Include="ApiService.cs" />
     <Compile Include="Data\AuthData.cs" />
     <Compile Include="Data\BatchFileData.cs" />
+    <Compile Include="Data\CheckOrderData.cs" />
     <Compile Include="Data\CustomerData.cs" />
     <Compile Include="Data\InvoiceCartonData.cs" />
     <Compile Include="Data\InvoiceData.cs" />

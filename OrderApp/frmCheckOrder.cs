@@ -1,5 +1,7 @@
 ﻿using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
+using ParzivalLibrary;
+using ParzivalLibrary.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,52 +20,70 @@ namespace OrderApp
         public frmCheckOrder()
         {
             InitializeComponent();
-            gridControl.DataSource = GetDataSource();
-            BindingList<Customer> dataSource = GetDataSource();
-            gridControl.DataSource = dataSource;
-            bsiRecordsCount.Caption = "RECORDS : " + dataSource.Count;
+            bbiEtd.EditValue = DateTime.Now;
+            //gridControl.DataSource = GetDataSource();
+            //BindingList<Customer> dataSource = GetDataSource();
+            //gridControl.DataSource = dataSource;
+            //bsiRecordsCount.Caption = "RECORDS : " + dataSource.Count;
         }
         void bbiPrintPreview_ItemClick(object sender, ItemClickEventArgs e)
         {
             gridControl.ShowRibbonPrintPreview();
         }
-        public BindingList<Customer> GetDataSource()
+
+        private void frmCheckOrder_Load(object sender, EventArgs e)
         {
-            BindingList<Customer> result = new BindingList<Customer>();
-            result.Add(new Customer()
-            {
-                ID = 1,
-                Name = "ACME",
-                Address = "2525 E El Segundo Blvd",
-                City = "El Segundo",
-                State = "CA",
-                ZipCode = "90245",
-                Phone = "(310) 536-0611"
-            });
-            result.Add(new Customer()
-            {
-                ID = 2,
-                Name = "Electronics Depot",
-                Address = "2455 Paces Ferry Road NW",
-                City = "Atlanta",
-                State = "GA",
-                ZipCode = "30339",
-                Phone = "(800) 595-3232"
-            });
-            return result;
+
         }
-        public class Customer
+
+        void GetCustomer(string etd)
         {
-            [Key, Display(AutoGenerateField = false)]
-            public int ID { get; set; }
-            [Required]
-            public string Name { get; set; }
-            public string Address { get; set; }
-            public string City { get; set; }
-            public string State { get; set; }
-            [Display(Name = "Zip Code")]
-            public string ZipCode { get; set; }
-            public string Phone { get; set; }
+            CheckOrderResponse list = OrderService.GetGroupCustomer(etd);
+            bbiCustomer.EditValue = "";
+            repCustomer.DataSource = null;
+            if (list.data != null)
+            {
+                repCustomer.DataSource = list.data.data;
+            }
+        }
+
+        void Reload()
+        {
+            splashScreenManager1.ShowWaitForm();
+            gridControl.DataSource = null;
+            bsiRecordsCount.Caption = "RECORDS : " + 0;
+            string etd = DateTime.Parse(bbiEtd.EditValue.ToString()).ToString("yyyyMMdd");
+            CheckOrderResponse list = OrderService.GetCheckOrder(bbiCustomer.EditValue,etd);
+            if (list.data != null)
+            {
+                int x = 1;
+                list.data.data.ForEach(i => {
+                    i.seq = x;
+                    x += 1;
+                });
+                gridControl.DataSource = list.data.data;
+                bsiRecordsCount.Caption = "RECORDS : " + list.data.data.Count;
+            }
+            splashScreenManager1.CloseWaitForm();
+        }
+
+        private void bbiEtd_EditValueChanged(object sender, EventArgs e)
+        {
+            string etd = DateTime.Parse(bbiEtd.EditValue.ToString()).ToString("yyyyMMdd");
+            GetCustomer(etd);
+            Reload();
+        }
+
+        private void bbiRefresh_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            string etd = DateTime.Parse(bbiEtd.EditValue.ToString()).ToString("yyyyMMdd");
+            GetCustomer(etd);
+            Reload();
+        }
+
+        private void bbiCustomer_EditValueChanged(object sender, EventArgs e)
+        {
+            Reload();
         }
     }
 }
