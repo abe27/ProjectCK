@@ -169,5 +169,59 @@ namespace ParzivalLibrary
             Console.WriteLine(response.Content);
             return is_status;
         }
+
+        public static InvoiceResponse UpdateInvoiceEtd(string inv_id, string order_id, DateTime etd)
+        {
+            InvoiceResponse obj = new InvoiceResponse();
+            var client = new RestClient($"{StaticVar.__rest_api}/api/v1/invoice/{order_id}/{inv_id}/etd");
+            client.Timeout = -1;
+            var request = new RestRequest(Method.PUT);
+            request.AddHeader("Authorization", $"Bearer {StaticVar.__authen.token}");
+            request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+            request.AddParameter("etd_date", etd.ToString("yyyy-MM-dd"));
+            IRestResponse response = client.Execute(request);
+            Console.WriteLine(response.Content);
+            if (response.StatusCode.ToString() == "OK")
+            {
+                obj = JsonConvert.DeserializeObject<InvoiceResponse>(response.Content);
+            }
+            return obj;
+        }
+
+        public static InvoiceResponse UpdateInvoiceShip(string inv_id, string order_id, string ship_id)
+        {
+            InvoiceResponse obj = new InvoiceResponse();
+            var client = new RestClient($"{StaticVar.__rest_api}/api/v1/invoice/{order_id}/{inv_id}/ship");
+            client.Timeout = -1;
+            var request = new RestRequest(Method.PUT);
+            request.AddHeader("Authorization", $"Bearer {StaticVar.__authen.token}");
+            request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+            request.AddParameter("ship_id", (ship_id).ToUpper());
+            IRestResponse response = client.Execute(request);
+            Console.WriteLine(response.Content);
+            if (response.StatusCode.ToString() == "OK")
+            {
+                obj = JsonConvert.DeserializeObject<InvoiceResponse>(response.Content);
+            }
+            return obj;
+        }
+
+        public static InvoiceResponse UpdateInvoiceContainer(string inv_no, string container_title)
+        {
+            InvoiceResponse obj = new InvoiceResponse();
+            var client = new RestClient($"{StaticVar.__rest_api}/api/v1/invoice/{inv_no}/container");
+            client.Timeout = -1;
+            var request = new RestRequest(Method.PUT);
+            request.AddHeader("Authorization", $"Bearer {StaticVar.__authen.token}");
+            request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+            request.AddParameter("container_id", (container_title).ToUpper());
+            IRestResponse response = client.Execute(request);
+            Console.WriteLine(response.Content);
+            if (response.StatusCode.ToString() == "OK")
+            {
+                obj = JsonConvert.DeserializeObject<InvoiceResponse>(response.Content);
+            }
+            return obj;
+        }
     }
 }

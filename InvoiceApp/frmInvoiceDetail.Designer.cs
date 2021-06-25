@@ -29,17 +29,24 @@ namespace InvoiceApp
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInvoiceDetail));
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiPrintPreview = new DevExpress.XtraBars.BarButtonItem();
             this.bsiRecordsCount = new DevExpress.XtraBars.BarStaticItem();
             this.bbiNew = new DevExpress.XtraBars.BarButtonItem();
             this.bbiEdit = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiDelete = new DevExpress.XtraBars.BarButtonItem();
+            this.ppEdit = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.bbiChangeInvoice = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiChangeEtd = new DevExpress.XtraBars.BarButtonItem();
+            this.bbichangeShipment = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiChangeContainer = new DevExpress.XtraBars.BarButtonItem();
             this.bbiRefresh = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiDelete = new DevExpress.XtraBars.BarButtonItem();
             this.bbiPrintJoblist = new DevExpress.XtraBars.BarButtonItem();
             this.bbiSetPallet = new DevExpress.XtraBars.BarButtonItem();
             this.bbiSendGEDI = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiAddItem = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -154,6 +161,7 @@ namespace InvoiceApp
             this.layoutControlItem24 = new DevExpress.XtraLayout.LayoutControlItem();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::InvoiceApp.WaitForm1), true, true);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ppEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -261,15 +269,20 @@ namespace InvoiceApp
             this.bbiRefresh,
             this.bbiPrintJoblist,
             this.bbiSetPallet,
-            this.bbiSendGEDI});
+            this.bbiSendGEDI,
+            this.bbiChangeInvoice,
+            this.bbiChangeEtd,
+            this.bbichangeShipment,
+            this.bbiChangeContainer,
+            this.bbiAddItem});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 23;
+            this.ribbonControl.MaxItemId = 28;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.OfficeUniversal;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl.Size = new System.Drawing.Size(1177, 89);
+            this.ribbonControl.Size = new System.Drawing.Size(1177, 91);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
@@ -291,22 +304,63 @@ namespace InvoiceApp
             // 
             this.bbiNew.Caption = "Save";
             this.bbiNew.Id = 16;
-            this.bbiNew.ImageOptions.ImageUri.Uri = "Save";
+            this.bbiNew.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiNew.ImageOptions.Image")));
             this.bbiNew.Name = "bbiNew";
+            this.bbiNew.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiNew_ItemClick);
             // 
             // bbiEdit
             // 
+            this.bbiEdit.ActAsDropDown = true;
+            this.bbiEdit.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
             this.bbiEdit.Caption = "Edit";
+            this.bbiEdit.DropDownControl = this.ppEdit;
             this.bbiEdit.Id = 17;
             this.bbiEdit.ImageOptions.ImageUri.Uri = "Edit";
             this.bbiEdit.Name = "bbiEdit";
             // 
-            // bbiDelete
+            // ppEdit
             // 
-            this.bbiDelete.Caption = "Hold";
-            this.bbiDelete.Id = 18;
-            this.bbiDelete.ImageOptions.ImageUri.Uri = "Delete";
-            this.bbiDelete.Name = "bbiDelete";
+            this.ppEdit.ItemLinks.Add(this.bbiChangeInvoice);
+            this.ppEdit.ItemLinks.Add(this.bbiChangeEtd, true);
+            this.ppEdit.ItemLinks.Add(this.bbichangeShipment);
+            this.ppEdit.ItemLinks.Add(this.bbiChangeContainer);
+            this.ppEdit.ItemLinks.Add(this.bbiRefresh, true);
+            this.ppEdit.Name = "ppEdit";
+            this.ppEdit.Ribbon = this.ribbonControl;
+            // 
+            // bbiChangeInvoice
+            // 
+            this.bbiChangeInvoice.Caption = "Change Invoice";
+            this.bbiChangeInvoice.Id = 23;
+            this.bbiChangeInvoice.ImageOptions.Image = global::InvoiceApp.Properties.Resources.template_16x16;
+            this.bbiChangeInvoice.ImageOptions.LargeImage = global::InvoiceApp.Properties.Resources.template_32x32;
+            this.bbiChangeInvoice.Name = "bbiChangeInvoice";
+            this.bbiChangeInvoice.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiChangeInvoice_ItemClick);
+            // 
+            // bbiChangeEtd
+            // 
+            this.bbiChangeEtd.Caption = "Change ETD.";
+            this.bbiChangeEtd.Id = 24;
+            this.bbiChangeEtd.ImageOptions.Image = global::InvoiceApp.Properties.Resources.today_16x16;
+            this.bbiChangeEtd.ImageOptions.LargeImage = global::InvoiceApp.Properties.Resources.today_32x32;
+            this.bbiChangeEtd.Name = "bbiChangeEtd";
+            this.bbiChangeEtd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiChangeEtd_ItemClick);
+            // 
+            // bbichangeShipment
+            // 
+            this.bbichangeShipment.Caption = "Change Shipment";
+            this.bbichangeShipment.Id = 25;
+            this.bbichangeShipment.ImageOptions.Image = global::InvoiceApp.Properties.Resources.icons8_cargo_ship_16;
+            this.bbichangeShipment.Name = "bbichangeShipment";
+            this.bbichangeShipment.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbichangeShipment_ItemClick);
+            // 
+            // bbiChangeContainer
+            // 
+            this.bbiChangeContainer.Caption = "Change Container";
+            this.bbiChangeContainer.Id = 26;
+            this.bbiChangeContainer.ImageOptions.Image = global::InvoiceApp.Properties.Resources.icons8_shipping_container_16;
+            this.bbiChangeContainer.Name = "bbiChangeContainer";
+            this.bbiChangeContainer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiChangeContainer_ItemClick);
             // 
             // bbiRefresh
             // 
@@ -315,6 +369,13 @@ namespace InvoiceApp
             this.bbiRefresh.ImageOptions.ImageUri.Uri = "Refresh";
             this.bbiRefresh.Name = "bbiRefresh";
             this.bbiRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiRefresh_ItemClick);
+            // 
+            // bbiDelete
+            // 
+            this.bbiDelete.Caption = "Hold";
+            this.bbiDelete.Id = 18;
+            this.bbiDelete.ImageOptions.ImageUri.Uri = "Delete";
+            this.bbiDelete.Name = "bbiDelete";
             // 
             // bbiPrintJoblist
             // 
@@ -341,6 +402,14 @@ namespace InvoiceApp
             this.bbiSendGEDI.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiSendGEDI.ImageOptions.LargeImage")));
             this.bbiSendGEDI.Name = "bbiSendGEDI";
             this.bbiSendGEDI.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSendGEDI_ItemClick);
+            // 
+            // bbiAddItem
+            // 
+            this.bbiAddItem.Caption = "Add Item";
+            this.bbiAddItem.Id = 27;
+            this.bbiAddItem.ImageOptions.Image = global::InvoiceApp.Properties.Resources.icons8_add_16;
+            this.bbiAddItem.Name = "bbiAddItem";
+            this.bbiAddItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiAddItem_ItemClick);
             // 
             // ribbonPage1
             // 
@@ -382,10 +451,10 @@ namespace InvoiceApp
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.ItemLinks.Add(this.bsiRecordsCount);
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 759);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 757);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1177, 24);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1177, 26);
             // 
             // layoutControl1
             // 
@@ -393,10 +462,10 @@ namespace InvoiceApp
             this.layoutControl1.Controls.Add(this.groupControl3);
             this.layoutControl1.Controls.Add(this.groupControl2);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl1.Location = new System.Drawing.Point(0, 89);
+            this.layoutControl1.Location = new System.Drawing.Point(0, 91);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(1177, 670);
+            this.layoutControl1.Size = new System.Drawing.Size(1177, 666);
             this.layoutControl1.TabIndex = 4;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -405,9 +474,9 @@ namespace InvoiceApp
             this.groupControl1.CaptionImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("groupControl1.CaptionImageOptions.Image")));
             this.groupControl1.Controls.Add(this.gridControl);
             this.groupControl1.GroupStyle = DevExpress.Utils.GroupStyle.Card;
-            this.groupControl1.Location = new System.Drawing.Point(12, 396);
+            this.groupControl1.Location = new System.Drawing.Point(12, 404);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1153, 262);
+            this.groupControl1.Size = new System.Drawing.Size(1153, 250);
             this.groupControl1.TabIndex = 27;
             this.groupControl1.Text = "Part Detail";
             // 
@@ -415,11 +484,11 @@ namespace InvoiceApp
             // 
             this.gridControl.Cursor = System.Windows.Forms.Cursors.Hand;
             this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl.Location = new System.Drawing.Point(2, 23);
+            this.gridControl.Location = new System.Drawing.Point(2, 27);
             this.gridControl.MainView = this.gridView;
             this.gridControl.MenuManager = this.ribbonControl;
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(1149, 237);
+            this.gridControl.Size = new System.Drawing.Size(1149, 221);
             this.gridControl.TabIndex = 5;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
@@ -445,6 +514,7 @@ namespace InvoiceApp
             this.gridView.OptionsBehavior.ReadOnly = true;
             this.gridView.OptionsView.ShowFooter = true;
             this.gridView.OptionsView.ShowGroupPanel = false;
+            this.gridView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.gridView_MouseUp);
             this.gridView.DoubleClick += new System.EventHandler(this.gridView_DoubleClick);
             // 
             // gridColumn1
@@ -587,9 +657,9 @@ namespace InvoiceApp
             this.groupControl3.CaptionImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("groupControl3.CaptionImageOptions.Image")));
             this.groupControl3.Controls.Add(this.layoutControl4);
             this.groupControl3.GroupStyle = DevExpress.Utils.GroupStyle.Card;
-            this.groupControl3.Location = new System.Drawing.Point(12, 217);
+            this.groupControl3.Location = new System.Drawing.Point(12, 221);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(1153, 175);
+            this.groupControl3.Size = new System.Drawing.Size(1153, 179);
             this.groupControl3.TabIndex = 26;
             this.groupControl3.Text = "Note Detail";
             // 
@@ -611,7 +681,7 @@ namespace InvoiceApp
             this.layoutControl4.Controls.Add(this.bbiNote2);
             this.layoutControl4.Controls.Add(this.bbiNote1);
             this.layoutControl4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl4.Location = new System.Drawing.Point(2, 23);
+            this.layoutControl4.Location = new System.Drawing.Point(2, 27);
             this.layoutControl4.Name = "layoutControl4";
             this.layoutControl4.Root = this.layoutControlGroup3;
             this.layoutControl4.Size = new System.Drawing.Size(1149, 150);
@@ -621,7 +691,7 @@ namespace InvoiceApp
             // bbiContainerType
             // 
             this.bbiContainerType.EditValue = "FCL";
-            this.bbiContainerType.Location = new System.Drawing.Point(476, 38);
+            this.bbiContainerType.Location = new System.Drawing.Point(474, 38);
             this.bbiContainerType.MenuManager = this.ribbonControl;
             this.bbiContainerType.Name = "bbiContainerType";
             this.bbiContainerType.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -630,22 +700,27 @@ namespace InvoiceApp
             this.bbiContainerType.Properties.Appearance.Options.UseForeColor = true;
             this.bbiContainerType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.bbiContainerType.Size = new System.Drawing.Size(173, 22);
+            this.bbiContainerType.Properties.Items.AddRange(new object[] {
+            "LCL",
+            "FCL",
+            "MIX LOAD"});
+            this.bbiContainerType.Size = new System.Drawing.Size(175, 22);
             this.bbiContainerType.StyleController = this.layoutControl4;
             this.bbiContainerType.TabIndex = 18;
+            this.bbiContainerType.EditValueChanged += new System.EventHandler(this.bbiContainerType_EditValueChanged);
             // 
             // label10
             // 
-            this.label10.Location = new System.Drawing.Point(197, 116);
+            this.label10.Location = new System.Drawing.Point(198, 116);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(940, 22);
+            this.label10.Size = new System.Drawing.Size(939, 22);
             this.label10.TabIndex = 17;
             // 
             // label9
             // 
-            this.label9.Location = new System.Drawing.Point(463, 90);
+            this.label9.Location = new System.Drawing.Point(461, 90);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(674, 22);
+            this.label9.Size = new System.Drawing.Size(676, 22);
             this.label9.TabIndex = 16;
             // 
             // label8
@@ -671,7 +746,7 @@ namespace InvoiceApp
             // 
             // bbiReSend
             // 
-            this.bbiReSend.Location = new System.Drawing.Point(118, 116);
+            this.bbiReSend.Location = new System.Drawing.Point(122, 116);
             this.bbiReSend.MenuManager = this.ribbonControl;
             this.bbiReSend.Name = "bbiReSend";
             this.bbiReSend.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -682,14 +757,14 @@ namespace InvoiceApp
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.bbiReSend.Properties.Items.AddRange(new object[] {
             "R"});
-            this.bbiReSend.Size = new System.Drawing.Size(75, 22);
+            this.bbiReSend.Size = new System.Drawing.Size(72, 22);
             this.bbiReSend.StyleController = this.layoutControl4;
             this.bbiReSend.TabIndex = 12;
             // 
             // bbiResgistTime
             // 
             this.bbiResgistTime.EditValue = new System.DateTime(2020, 9, 20, 0, 0, 0, 0);
-            this.bbiResgistTime.Location = new System.Drawing.Point(324, 90);
+            this.bbiResgistTime.Location = new System.Drawing.Point(321, 90);
             this.bbiResgistTime.MenuManager = this.ribbonControl;
             this.bbiResgistTime.Name = "bbiResgistTime";
             this.bbiResgistTime.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -698,14 +773,14 @@ namespace InvoiceApp
             this.bbiResgistTime.Properties.Appearance.Options.UseForeColor = true;
             this.bbiResgistTime.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.bbiResgistTime.Size = new System.Drawing.Size(135, 22);
+            this.bbiResgistTime.Size = new System.Drawing.Size(136, 22);
             this.bbiResgistTime.StyleController = this.layoutControl4;
             this.bbiResgistTime.TabIndex = 11;
             // 
             // bbiRegisterDate
             // 
             this.bbiRegisterDate.EditValue = null;
-            this.bbiRegisterDate.Location = new System.Drawing.Point(99, 90);
+            this.bbiRegisterDate.Location = new System.Drawing.Point(97, 90);
             this.bbiRegisterDate.MenuManager = this.ribbonControl;
             this.bbiRegisterDate.Name = "bbiRegisterDate";
             this.bbiRegisterDate.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -716,65 +791,66 @@ namespace InvoiceApp
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.bbiRegisterDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.bbiRegisterDate.Size = new System.Drawing.Size(136, 22);
+            this.bbiRegisterDate.Size = new System.Drawing.Size(137, 22);
             this.bbiRegisterDate.StyleController = this.layoutControl4;
             this.bbiRegisterDate.TabIndex = 10;
             // 
             // bbiRegisterOperator
             // 
-            this.bbiRegisterOperator.Location = new System.Drawing.Point(128, 64);
+            this.bbiRegisterOperator.Location = new System.Drawing.Point(127, 64);
             this.bbiRegisterOperator.MenuManager = this.ribbonControl;
             this.bbiRegisterOperator.Name = "bbiRegisterOperator";
             this.bbiRegisterOperator.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.bbiRegisterOperator.Properties.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.bbiRegisterOperator.Properties.Appearance.Options.UseFont = true;
             this.bbiRegisterOperator.Properties.Appearance.Options.UseForeColor = true;
-            this.bbiRegisterOperator.Size = new System.Drawing.Size(249, 22);
+            this.bbiRegisterOperator.Size = new System.Drawing.Size(250, 22);
             this.bbiRegisterOperator.StyleController = this.layoutControl4;
             this.bbiRegisterOperator.TabIndex = 9;
             // 
             // bbiTapTylFlag
             // 
-            this.bbiTapTylFlag.Location = new System.Drawing.Point(260, 38);
+            this.bbiTapTylFlag.Location = new System.Drawing.Point(257, 38);
             this.bbiTapTylFlag.MenuManager = this.ribbonControl;
             this.bbiTapTylFlag.Name = "bbiTapTylFlag";
             this.bbiTapTylFlag.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.bbiTapTylFlag.Properties.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.bbiTapTylFlag.Properties.Appearance.Options.UseFont = true;
             this.bbiTapTylFlag.Properties.Appearance.Options.UseForeColor = true;
-            this.bbiTapTylFlag.Size = new System.Drawing.Size(117, 22);
+            this.bbiTapTylFlag.Size = new System.Drawing.Size(120, 22);
             this.bbiTapTylFlag.StyleController = this.layoutControl4;
             this.bbiTapTylFlag.TabIndex = 8;
             // 
             // bbiCartonTotal
             // 
-            this.bbiCartonTotal.Location = new System.Drawing.Point(98, 38);
+            this.bbiCartonTotal.Location = new System.Drawing.Point(97, 38);
             this.bbiCartonTotal.MenuManager = this.ribbonControl;
             this.bbiCartonTotal.Name = "bbiCartonTotal";
             this.bbiCartonTotal.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.bbiCartonTotal.Properties.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.bbiCartonTotal.Properties.Appearance.Options.UseFont = true;
             this.bbiCartonTotal.Properties.Appearance.Options.UseForeColor = true;
-            this.bbiCartonTotal.Size = new System.Drawing.Size(81, 22);
+            this.bbiCartonTotal.Size = new System.Drawing.Size(82, 22);
             this.bbiCartonTotal.StyleController = this.layoutControl4;
             this.bbiCartonTotal.TabIndex = 7;
             // 
             // bbiNote3
             // 
-            this.bbiNote3.Location = new System.Drawing.Point(644, 12);
+            this.bbiNote3.Location = new System.Drawing.Point(643, 12);
             this.bbiNote3.MenuManager = this.ribbonControl;
             this.bbiNote3.Name = "bbiNote3";
             this.bbiNote3.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.bbiNote3.Properties.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.bbiNote3.Properties.Appearance.Options.UseFont = true;
             this.bbiNote3.Properties.Appearance.Options.UseForeColor = true;
-            this.bbiNote3.Size = new System.Drawing.Size(266, 22);
+            this.bbiNote3.Size = new System.Drawing.Size(267, 22);
             this.bbiNote3.StyleController = this.layoutControl4;
             this.bbiNote3.TabIndex = 6;
+            this.bbiNote3.EditValueChanged += new System.EventHandler(this.bbiNote3_EditValueChanged);
             // 
             // bbiNote2
             // 
-            this.bbiNote2.Location = new System.Drawing.Point(335, 12);
+            this.bbiNote2.Location = new System.Drawing.Point(334, 12);
             this.bbiNote2.MenuManager = this.ribbonControl;
             this.bbiNote2.Name = "bbiNote2";
             this.bbiNote2.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -784,6 +860,7 @@ namespace InvoiceApp
             this.bbiNote2.Size = new System.Drawing.Size(263, 22);
             this.bbiNote2.StyleController = this.layoutControl4;
             this.bbiNote2.TabIndex = 5;
+            this.bbiNote2.EditValueChanged += new System.EventHandler(this.bbiNote2_EditValueChanged);
             // 
             // bbiNote1
             // 
@@ -794,9 +871,10 @@ namespace InvoiceApp
             this.bbiNote1.Properties.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.bbiNote1.Properties.Appearance.Options.UseFont = true;
             this.bbiNote1.Properties.Appearance.Options.UseForeColor = true;
-            this.bbiNote1.Size = new System.Drawing.Size(235, 22);
+            this.bbiNote1.Size = new System.Drawing.Size(234, 22);
             this.bbiNote1.StyleController = this.layoutControl4;
             this.bbiNote1.TabIndex = 4;
+            this.bbiNote1.EditValueChanged += new System.EventHandler(this.bbiNote1_EditValueChanged);
             // 
             // layoutControlGroup3
             // 
@@ -829,7 +907,7 @@ namespace InvoiceApp
             this.layoutControlItem25.Control = this.bbiNote1;
             this.layoutControlItem25.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem25.Name = "layoutControlItem25";
-            this.layoutControlItem25.Size = new System.Drawing.Size(281, 26);
+            this.layoutControlItem25.Size = new System.Drawing.Size(280, 26);
             this.layoutControlItem25.Text = "NOTE1:";
             this.layoutControlItem25.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
             this.layoutControlItem25.TextSize = new System.Drawing.Size(37, 13);
@@ -840,7 +918,7 @@ namespace InvoiceApp
             this.layoutControlItem26.AppearanceItemCaption.ForeColor = System.Drawing.Color.Black;
             this.layoutControlItem26.AppearanceItemCaption.Options.UseForeColor = true;
             this.layoutControlItem26.Control = this.bbiNote2;
-            this.layoutControlItem26.Location = new System.Drawing.Point(281, 0);
+            this.layoutControlItem26.Location = new System.Drawing.Point(280, 0);
             this.layoutControlItem26.Name = "layoutControlItem26";
             this.layoutControlItem26.Size = new System.Drawing.Size(309, 26);
             this.layoutControlItem26.Text = "NOTE2:";
@@ -853,9 +931,9 @@ namespace InvoiceApp
             this.layoutControlItem27.AppearanceItemCaption.ForeColor = System.Drawing.Color.Black;
             this.layoutControlItem27.AppearanceItemCaption.Options.UseForeColor = true;
             this.layoutControlItem27.Control = this.bbiNote3;
-            this.layoutControlItem27.Location = new System.Drawing.Point(590, 0);
+            this.layoutControlItem27.Location = new System.Drawing.Point(589, 0);
             this.layoutControlItem27.Name = "layoutControlItem27";
-            this.layoutControlItem27.Size = new System.Drawing.Size(312, 26);
+            this.layoutControlItem27.Size = new System.Drawing.Size(313, 26);
             this.layoutControlItem27.Text = "NOTE3:";
             this.layoutControlItem27.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
             this.layoutControlItem27.TextSize = new System.Drawing.Size(37, 13);
@@ -871,7 +949,7 @@ namespace InvoiceApp
             this.layoutControlItem28.Size = new System.Drawing.Size(171, 26);
             this.layoutControlItem28.Text = "CARTON TOTAL:";
             this.layoutControlItem28.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
-            this.layoutControlItem28.TextSize = new System.Drawing.Size(81, 13);
+            this.layoutControlItem28.TextSize = new System.Drawing.Size(80, 13);
             this.layoutControlItem28.TextToControlDistance = 5;
             // 
             // layoutControlItem29
@@ -884,7 +962,7 @@ namespace InvoiceApp
             this.layoutControlItem29.Size = new System.Drawing.Size(198, 26);
             this.layoutControlItem29.Text = "TAP/TYL FLAG:";
             this.layoutControlItem29.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
-            this.layoutControlItem29.TextSize = new System.Drawing.Size(72, 13);
+            this.layoutControlItem29.TextSize = new System.Drawing.Size(69, 13);
             this.layoutControlItem29.TextToControlDistance = 5;
             // 
             // layoutControlItem30
@@ -897,7 +975,7 @@ namespace InvoiceApp
             this.layoutControlItem30.Size = new System.Drawing.Size(369, 26);
             this.layoutControlItem30.Text = "REGISTER OPERATOR:";
             this.layoutControlItem30.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
-            this.layoutControlItem30.TextSize = new System.Drawing.Size(111, 13);
+            this.layoutControlItem30.TextSize = new System.Drawing.Size(110, 13);
             this.layoutControlItem30.TextToControlDistance = 5;
             // 
             // layoutControlItem31
@@ -907,10 +985,10 @@ namespace InvoiceApp
             this.layoutControlItem31.Control = this.bbiRegisterDate;
             this.layoutControlItem31.Location = new System.Drawing.Point(0, 78);
             this.layoutControlItem31.Name = "layoutControlItem31";
-            this.layoutControlItem31.Size = new System.Drawing.Size(227, 26);
+            this.layoutControlItem31.Size = new System.Drawing.Size(226, 26);
             this.layoutControlItem31.Text = "REGISTER DATE:";
             this.layoutControlItem31.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
-            this.layoutControlItem31.TextSize = new System.Drawing.Size(82, 13);
+            this.layoutControlItem31.TextSize = new System.Drawing.Size(80, 13);
             this.layoutControlItem31.TextToControlDistance = 5;
             // 
             // layoutControlItem32
@@ -918,12 +996,12 @@ namespace InvoiceApp
             this.layoutControlItem32.AppearanceItemCaption.ForeColor = System.Drawing.Color.Black;
             this.layoutControlItem32.AppearanceItemCaption.Options.UseForeColor = true;
             this.layoutControlItem32.Control = this.bbiResgistTime;
-            this.layoutControlItem32.Location = new System.Drawing.Point(227, 78);
+            this.layoutControlItem32.Location = new System.Drawing.Point(226, 78);
             this.layoutControlItem32.Name = "layoutControlItem32";
-            this.layoutControlItem32.Size = new System.Drawing.Size(224, 26);
+            this.layoutControlItem32.Size = new System.Drawing.Size(223, 26);
             this.layoutControlItem32.Text = "REGISTER TIME:";
             this.layoutControlItem32.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
-            this.layoutControlItem32.TextSize = new System.Drawing.Size(80, 13);
+            this.layoutControlItem32.TextSize = new System.Drawing.Size(78, 13);
             this.layoutControlItem32.TextToControlDistance = 5;
             // 
             // layoutControlItem34
@@ -956,18 +1034,18 @@ namespace InvoiceApp
             // layoutControlItem37
             // 
             this.layoutControlItem37.Control = this.label9;
-            this.layoutControlItem37.Location = new System.Drawing.Point(451, 78);
+            this.layoutControlItem37.Location = new System.Drawing.Point(449, 78);
             this.layoutControlItem37.Name = "layoutControlItem37";
-            this.layoutControlItem37.Size = new System.Drawing.Size(678, 26);
+            this.layoutControlItem37.Size = new System.Drawing.Size(680, 26);
             this.layoutControlItem37.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem37.TextVisible = false;
             // 
             // layoutControlItem38
             // 
             this.layoutControlItem38.Control = this.label10;
-            this.layoutControlItem38.Location = new System.Drawing.Point(185, 104);
+            this.layoutControlItem38.Location = new System.Drawing.Point(186, 104);
             this.layoutControlItem38.Name = "layoutControlItem38";
-            this.layoutControlItem38.Size = new System.Drawing.Size(944, 26);
+            this.layoutControlItem38.Size = new System.Drawing.Size(943, 26);
             this.layoutControlItem38.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem38.TextVisible = false;
             // 
@@ -978,10 +1056,10 @@ namespace InvoiceApp
             this.layoutControlItem33.Control = this.bbiReSend;
             this.layoutControlItem33.Location = new System.Drawing.Point(0, 104);
             this.layoutControlItem33.Name = "layoutControlItem33";
-            this.layoutControlItem33.Size = new System.Drawing.Size(185, 26);
+            this.layoutControlItem33.Size = new System.Drawing.Size(186, 26);
             this.layoutControlItem33.Text = "FLAG SEND/RESEND:";
             this.layoutControlItem33.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
-            this.layoutControlItem33.TextSize = new System.Drawing.Size(101, 13);
+            this.layoutControlItem33.TextSize = new System.Drawing.Size(105, 13);
             this.layoutControlItem33.TextToControlDistance = 5;
             // 
             // layoutControlItem41
@@ -992,7 +1070,7 @@ namespace InvoiceApp
             this.layoutControlItem41.Size = new System.Drawing.Size(272, 52);
             this.layoutControlItem41.Text = "CONTAINER TYPE:";
             this.layoutControlItem41.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
-            this.layoutControlItem41.TextSize = new System.Drawing.Size(90, 13);
+            this.layoutControlItem41.TextSize = new System.Drawing.Size(88, 13);
             this.layoutControlItem41.TextToControlDistance = 5;
             // 
             // groupControl2
@@ -1002,7 +1080,7 @@ namespace InvoiceApp
             this.groupControl2.GroupStyle = DevExpress.Utils.GroupStyle.Card;
             this.groupControl2.Location = new System.Drawing.Point(12, 12);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(1153, 201);
+            this.groupControl2.Size = new System.Drawing.Size(1153, 205);
             this.groupControl2.TabIndex = 6;
             this.groupControl2.Text = "Invoice Infomation";
             // 
@@ -1036,7 +1114,7 @@ namespace InvoiceApp
             this.layoutControl2.Controls.Add(this.bbiInvoiceNo);
             this.layoutControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl2.ForeColor = System.Drawing.Color.Black;
-            this.layoutControl2.Location = new System.Drawing.Point(2, 23);
+            this.layoutControl2.Location = new System.Drawing.Point(2, 27);
             this.layoutControl2.Name = "layoutControl2";
             this.layoutControl2.Root = this.layoutControlGroup1;
             this.layoutControl2.Size = new System.Drawing.Size(1149, 176);
@@ -1045,7 +1123,7 @@ namespace InvoiceApp
             // 
             // bbiRefNo
             // 
-            this.bbiRefNo.Location = new System.Drawing.Point(638, 142);
+            this.bbiRefNo.Location = new System.Drawing.Point(637, 142);
             this.bbiRefNo.MenuManager = this.ribbonControl;
             this.bbiRefNo.Name = "bbiRefNo";
             this.bbiRefNo.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
@@ -1058,34 +1136,34 @@ namespace InvoiceApp
             // 
             // label11
             // 
-            this.label11.Location = new System.Drawing.Point(839, 142);
+            this.label11.Location = new System.Drawing.Point(838, 142);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(298, 22);
+            this.label11.Size = new System.Drawing.Size(299, 22);
             this.label11.TabIndex = 28;
             // 
             // bbiNetWeight
             // 
-            this.bbiNetWeight.Location = new System.Drawing.Point(87, 142);
+            this.bbiNetWeight.Location = new System.Drawing.Point(86, 142);
             this.bbiNetWeight.MenuManager = this.ribbonControl;
             this.bbiNetWeight.Name = "bbiNetWeight";
             this.bbiNetWeight.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.bbiNetWeight.Properties.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.bbiNetWeight.Properties.Appearance.Options.UseFont = true;
             this.bbiNetWeight.Properties.Appearance.Options.UseForeColor = true;
-            this.bbiNetWeight.Size = new System.Drawing.Size(212, 22);
+            this.bbiNetWeight.Size = new System.Drawing.Size(213, 22);
             this.bbiNetWeight.StyleController = this.layoutControl2;
             this.bbiNetWeight.TabIndex = 27;
             // 
             // bbiGrossWeight
             // 
-            this.bbiGrossWeight.Location = new System.Drawing.Point(389, 142);
+            this.bbiGrossWeight.Location = new System.Drawing.Point(391, 142);
             this.bbiGrossWeight.MenuManager = this.ribbonControl;
             this.bbiGrossWeight.Name = "bbiGrossWeight";
             this.bbiGrossWeight.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.bbiGrossWeight.Properties.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.bbiGrossWeight.Properties.Appearance.Options.UseFont = true;
             this.bbiGrossWeight.Properties.Appearance.Options.UseForeColor = true;
-            this.bbiGrossWeight.Size = new System.Drawing.Size(198, 22);
+            this.bbiGrossWeight.Size = new System.Drawing.Size(195, 22);
             this.bbiGrossWeight.StyleController = this.layoutControl2;
             this.bbiGrossWeight.TabIndex = 26;
             // 
@@ -1121,15 +1199,15 @@ namespace InvoiceApp
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(566, 38);
+            this.label2.Location = new System.Drawing.Point(567, 38);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(571, 22);
+            this.label2.Size = new System.Drawing.Size(570, 22);
             this.label2.TabIndex = 21;
             // 
             // smbEdit
             // 
             this.smbEdit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("smbEdit.ImageOptions.Image")));
-            this.smbEdit.Location = new System.Drawing.Point(193, 12);
+            this.smbEdit.Location = new System.Drawing.Point(194, 12);
             this.smbEdit.Name = "smbEdit";
             this.smbEdit.Size = new System.Drawing.Size(106, 22);
             this.smbEdit.StyleController = this.layoutControl2;
@@ -1139,40 +1217,40 @@ namespace InvoiceApp
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(507, 12);
+            this.label1.Location = new System.Drawing.Point(508, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(630, 22);
+            this.label1.Size = new System.Drawing.Size(629, 22);
             this.label1.TabIndex = 19;
             // 
             // bbiShipTo
             // 
-            this.bbiShipTo.Location = new System.Drawing.Point(293, 116);
+            this.bbiShipTo.Location = new System.Drawing.Point(292, 116);
             this.bbiShipTo.MenuManager = this.ribbonControl;
             this.bbiShipTo.Name = "bbiShipTo";
             this.bbiShipTo.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.bbiShipTo.Properties.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.bbiShipTo.Properties.Appearance.Options.UseFont = true;
             this.bbiShipTo.Properties.Appearance.Options.UseForeColor = true;
-            this.bbiShipTo.Size = new System.Drawing.Size(152, 22);
+            this.bbiShipTo.Size = new System.Drawing.Size(153, 22);
             this.bbiShipTo.StyleController = this.layoutControl2;
             this.bbiShipTo.TabIndex = 18;
             // 
             // bbiTitle
             // 
-            this.bbiTitle.Location = new System.Drawing.Point(828, 116);
+            this.bbiTitle.Location = new System.Drawing.Point(823, 116);
             this.bbiTitle.MenuManager = this.ribbonControl;
             this.bbiTitle.Name = "bbiTitle";
             this.bbiTitle.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.bbiTitle.Properties.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.bbiTitle.Properties.Appearance.Options.UseFont = true;
             this.bbiTitle.Properties.Appearance.Options.UseForeColor = true;
-            this.bbiTitle.Size = new System.Drawing.Size(281, 22);
+            this.bbiTitle.Size = new System.Drawing.Size(286, 22);
             this.bbiTitle.StyleController = this.layoutControl2;
             this.bbiTitle.TabIndex = 17;
             // 
             // bbiVia
             // 
-            this.bbiVia.Location = new System.Drawing.Point(475, 116);
+            this.bbiVia.Location = new System.Drawing.Point(474, 116);
             this.bbiVia.MenuManager = this.ribbonControl;
             this.bbiVia.Name = "bbiVia";
             this.bbiVia.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -1185,27 +1263,27 @@ namespace InvoiceApp
             // 
             // bbiShipFrom
             // 
-            this.bbiShipFrom.Location = new System.Drawing.Point(76, 116);
+            this.bbiShipFrom.Location = new System.Drawing.Point(78, 116);
             this.bbiShipFrom.MenuManager = this.ribbonControl;
             this.bbiShipFrom.Name = "bbiShipFrom";
             this.bbiShipFrom.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.bbiShipFrom.Properties.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.bbiShipFrom.Properties.Appearance.Options.UseFont = true;
             this.bbiShipFrom.Properties.Appearance.Options.UseForeColor = true;
-            this.bbiShipFrom.Size = new System.Drawing.Size(164, 22);
+            this.bbiShipFrom.Size = new System.Drawing.Size(162, 22);
             this.bbiShipFrom.StyleController = this.layoutControl2;
             this.bbiShipFrom.TabIndex = 15;
             // 
             // bbiZoneCode
             // 
-            this.bbiZoneCode.Location = new System.Drawing.Point(515, 90);
+            this.bbiZoneCode.Location = new System.Drawing.Point(517, 90);
             this.bbiZoneCode.MenuManager = this.ribbonControl;
             this.bbiZoneCode.Name = "bbiZoneCode";
             this.bbiZoneCode.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.bbiZoneCode.Properties.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.bbiZoneCode.Properties.Appearance.Options.UseFont = true;
             this.bbiZoneCode.Properties.Appearance.Options.UseForeColor = true;
-            this.bbiZoneCode.Size = new System.Drawing.Size(166, 22);
+            this.bbiZoneCode.Size = new System.Drawing.Size(164, 22);
             this.bbiZoneCode.StyleController = this.layoutControl2;
             this.bbiZoneCode.TabIndex = 14;
             // 
@@ -1218,7 +1296,7 @@ namespace InvoiceApp
             this.bbiPaymentTerm.Properties.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.bbiPaymentTerm.Properties.Appearance.Options.UseFont = true;
             this.bbiPaymentTerm.Properties.Appearance.Options.UseForeColor = true;
-            this.bbiPaymentTerm.Size = new System.Drawing.Size(182, 22);
+            this.bbiPaymentTerm.Size = new System.Drawing.Size(181, 22);
             this.bbiPaymentTerm.StyleController = this.layoutControl2;
             this.bbiPaymentTerm.TabIndex = 13;
             // 
@@ -1231,13 +1309,13 @@ namespace InvoiceApp
             this.bbiVessel.Properties.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.bbiVessel.Properties.Appearance.Options.UseFont = true;
             this.bbiVessel.Properties.Appearance.Options.UseForeColor = true;
-            this.bbiVessel.Size = new System.Drawing.Size(117, 22);
+            this.bbiVessel.Size = new System.Drawing.Size(116, 22);
             this.bbiVessel.StyleController = this.layoutControl2;
             this.bbiVessel.TabIndex = 12;
             // 
             // bbiCommercial
             // 
-            this.bbiCommercial.Location = new System.Drawing.Point(349, 64);
+            this.bbiCommercial.Location = new System.Drawing.Point(354, 64);
             this.bbiCommercial.MenuManager = this.ribbonControl;
             this.bbiCommercial.Name = "bbiCommercial";
             this.bbiCommercial.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -1249,13 +1327,13 @@ namespace InvoiceApp
             this.bbiCommercial.Properties.Items.AddRange(new object[] {
             "C",
             "N"});
-            this.bbiCommercial.Size = new System.Drawing.Size(95, 22);
+            this.bbiCommercial.Size = new System.Drawing.Size(90, 22);
             this.bbiCommercial.StyleController = this.layoutControl2;
             this.bbiCommercial.TabIndex = 11;
             // 
             // bbiPC
             // 
-            this.bbiPC.Location = new System.Drawing.Point(171, 64);
+            this.bbiPC.Location = new System.Drawing.Point(170, 64);
             this.bbiPC.MenuManager = this.ribbonControl;
             this.bbiPC.Name = "bbiPC";
             this.bbiPC.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -1267,13 +1345,13 @@ namespace InvoiceApp
             this.bbiPC.Properties.Items.AddRange(new object[] {
             "P",
             "C"});
-            this.bbiPC.Size = new System.Drawing.Size(64, 22);
+            this.bbiPC.Size = new System.Drawing.Size(65, 22);
             this.bbiPC.StyleController = this.layoutControl2;
             this.bbiPC.TabIndex = 10;
             // 
             // bbiShipMent
             // 
-            this.bbiShipMent.Location = new System.Drawing.Point(71, 64);
+            this.bbiShipMent.Location = new System.Drawing.Point(72, 64);
             this.bbiShipMent.MenuManager = this.ribbonControl;
             this.bbiShipMent.Name = "bbiShipMent";
             this.bbiShipMent.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -1286,13 +1364,14 @@ namespace InvoiceApp
             "A",
             "B",
             "T"});
-            this.bbiShipMent.Size = new System.Drawing.Size(70, 22);
+            this.bbiShipMent.Size = new System.Drawing.Size(69, 22);
             this.bbiShipMent.StyleController = this.layoutControl2;
             this.bbiShipMent.TabIndex = 9;
+            this.bbiShipMent.SelectedIndexChanged += new System.EventHandler(this.bbiShipMent_SelectedIndexChanged);
             // 
             // bbiCountry
             // 
-            this.bbiCountry.Location = new System.Drawing.Point(438, 38);
+            this.bbiCountry.Location = new System.Drawing.Point(439, 38);
             this.bbiCountry.MenuManager = this.ribbonControl;
             this.bbiCountry.Name = "bbiCountry";
             this.bbiCountry.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -1305,20 +1384,20 @@ namespace InvoiceApp
             // 
             // bbiBillToCode
             // 
-            this.bbiBillToCode.Location = new System.Drawing.Point(270, 38);
+            this.bbiBillToCode.Location = new System.Drawing.Point(272, 38);
             this.bbiBillToCode.MenuManager = this.ribbonControl;
             this.bbiBillToCode.Name = "bbiBillToCode";
             this.bbiBillToCode.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.bbiBillToCode.Properties.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.bbiBillToCode.Properties.Appearance.Options.UseFont = true;
             this.bbiBillToCode.Properties.Appearance.Options.UseForeColor = true;
-            this.bbiBillToCode.Size = new System.Drawing.Size(107, 22);
+            this.bbiBillToCode.Size = new System.Drawing.Size(106, 22);
             this.bbiBillToCode.StyleController = this.layoutControl2;
             this.bbiBillToCode.TabIndex = 7;
             // 
             // bbiShipToCode
             // 
-            this.bbiShipToCode.Location = new System.Drawing.Point(92, 38);
+            this.bbiShipToCode.Location = new System.Drawing.Point(93, 38);
             this.bbiShipToCode.MenuManager = this.ribbonControl;
             this.bbiShipToCode.Name = "bbiShipToCode";
             this.bbiShipToCode.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -1332,7 +1411,7 @@ namespace InvoiceApp
             // bbiInvoiceDate
             // 
             this.bbiInvoiceDate.EditValue = null;
-            this.bbiInvoiceDate.Location = new System.Drawing.Point(383, 12);
+            this.bbiInvoiceDate.Location = new System.Drawing.Point(384, 12);
             this.bbiInvoiceDate.MenuManager = this.ribbonControl;
             this.bbiInvoiceDate.Name = "bbiInvoiceDate";
             this.bbiInvoiceDate.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -1343,20 +1422,21 @@ namespace InvoiceApp
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.bbiInvoiceDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.bbiInvoiceDate.Properties.EditValueChanged += new System.EventHandler(this.bbiInvoiceDate_Properties_EditValueChanged);
             this.bbiInvoiceDate.Size = new System.Drawing.Size(120, 22);
             this.bbiInvoiceDate.StyleController = this.layoutControl2;
             this.bbiInvoiceDate.TabIndex = 5;
             // 
             // bbiInvoiceNo
             // 
-            this.bbiInvoiceNo.Location = new System.Drawing.Point(78, 12);
+            this.bbiInvoiceNo.Location = new System.Drawing.Point(80, 12);
             this.bbiInvoiceNo.MenuManager = this.ribbonControl;
             this.bbiInvoiceNo.Name = "bbiInvoiceNo";
             this.bbiInvoiceNo.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.bbiInvoiceNo.Properties.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.bbiInvoiceNo.Properties.Appearance.Options.UseFont = true;
             this.bbiInvoiceNo.Properties.Appearance.Options.UseForeColor = true;
-            this.bbiInvoiceNo.Size = new System.Drawing.Size(111, 22);
+            this.bbiInvoiceNo.Size = new System.Drawing.Size(110, 22);
             this.bbiInvoiceNo.StyleController = this.layoutControl2;
             this.bbiInvoiceNo.TabIndex = 4;
             // 
@@ -1402,10 +1482,10 @@ namespace InvoiceApp
             this.layoutControlItem3.Control = this.bbiInvoiceNo;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(181, 26);
+            this.layoutControlItem3.Size = new System.Drawing.Size(182, 26);
             this.layoutControlItem3.Text = "INVOICENO:";
             this.layoutControlItem3.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(61, 13);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(63, 13);
             this.layoutControlItem3.TextToControlDistance = 5;
             // 
             // layoutControlItem4
@@ -1413,7 +1493,7 @@ namespace InvoiceApp
             this.layoutControlItem4.AppearanceItemCaption.ForeColor = System.Drawing.Color.Black;
             this.layoutControlItem4.AppearanceItemCaption.Options.UseForeColor = true;
             this.layoutControlItem4.Control = this.bbiInvoiceDate;
-            this.layoutControlItem4.Location = new System.Drawing.Point(291, 0);
+            this.layoutControlItem4.Location = new System.Drawing.Point(292, 0);
             this.layoutControlItem4.Name = "layoutControlItem4";
             this.layoutControlItem4.Size = new System.Drawing.Size(204, 26);
             this.layoutControlItem4.Text = "INVOICE DATE:";
@@ -1428,10 +1508,10 @@ namespace InvoiceApp
             this.layoutControlItem5.Control = this.bbiShipToCode;
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 26);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(181, 26);
+            this.layoutControlItem5.Size = new System.Drawing.Size(182, 26);
             this.layoutControlItem5.Text = "SHIP TO CODE:";
             this.layoutControlItem5.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
-            this.layoutControlItem5.TextSize = new System.Drawing.Size(75, 13);
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(76, 13);
             this.layoutControlItem5.TextToControlDistance = 5;
             // 
             // layoutControlItem6
@@ -1439,12 +1519,12 @@ namespace InvoiceApp
             this.layoutControlItem6.AppearanceItemCaption.ForeColor = System.Drawing.Color.Black;
             this.layoutControlItem6.AppearanceItemCaption.Options.UseForeColor = true;
             this.layoutControlItem6.Control = this.bbiBillToCode;
-            this.layoutControlItem6.Location = new System.Drawing.Point(181, 26);
+            this.layoutControlItem6.Location = new System.Drawing.Point(182, 26);
             this.layoutControlItem6.Name = "layoutControlItem6";
             this.layoutControlItem6.Size = new System.Drawing.Size(188, 26);
             this.layoutControlItem6.Text = "BILL TO CODE:";
             this.layoutControlItem6.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(72, 13);
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(73, 13);
             this.layoutControlItem6.TextToControlDistance = 5;
             // 
             // layoutControlItem7
@@ -1452,7 +1532,7 @@ namespace InvoiceApp
             this.layoutControlItem7.AppearanceItemCaption.ForeColor = System.Drawing.Color.Black;
             this.layoutControlItem7.AppearanceItemCaption.Options.UseForeColor = true;
             this.layoutControlItem7.Control = this.bbiCountry;
-            this.layoutControlItem7.Location = new System.Drawing.Point(369, 26);
+            this.layoutControlItem7.Location = new System.Drawing.Point(370, 26);
             this.layoutControlItem7.Name = "layoutControlItem7";
             this.layoutControlItem7.Size = new System.Drawing.Size(185, 26);
             this.layoutControlItem7.Text = "COUNTRY:";
@@ -1470,7 +1550,7 @@ namespace InvoiceApp
             this.layoutControlItem8.Size = new System.Drawing.Size(133, 26);
             this.layoutControlItem8.Text = "SHIPMENT:";
             this.layoutControlItem8.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
-            this.layoutControlItem8.TextSize = new System.Drawing.Size(54, 13);
+            this.layoutControlItem8.TextSize = new System.Drawing.Size(55, 13);
             this.layoutControlItem8.TextToControlDistance = 5;
             // 
             // layoutControlItem9
@@ -1483,7 +1563,7 @@ namespace InvoiceApp
             this.layoutControlItem9.Size = new System.Drawing.Size(94, 26);
             this.layoutControlItem9.Text = "P/C:";
             this.layoutControlItem9.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
-            this.layoutControlItem9.TextSize = new System.Drawing.Size(21, 13);
+            this.layoutControlItem9.TextSize = new System.Drawing.Size(20, 13);
             this.layoutControlItem9.TextToControlDistance = 5;
             // 
             // layoutControlItem10
@@ -1496,7 +1576,7 @@ namespace InvoiceApp
             this.layoutControlItem10.Size = new System.Drawing.Size(209, 26);
             this.layoutControlItem10.Text = "COMMERCIAL VALUE:";
             this.layoutControlItem10.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
-            this.layoutControlItem10.TextSize = new System.Drawing.Size(105, 13);
+            this.layoutControlItem10.TextSize = new System.Drawing.Size(110, 13);
             this.layoutControlItem10.TextToControlDistance = 5;
             // 
             // layoutControlItem11
@@ -1506,7 +1586,7 @@ namespace InvoiceApp
             this.layoutControlItem11.Control = this.bbiVessel;
             this.layoutControlItem11.Location = new System.Drawing.Point(0, 78);
             this.layoutControlItem11.Name = "layoutControlItem11";
-            this.layoutControlItem11.Size = new System.Drawing.Size(165, 26);
+            this.layoutControlItem11.Size = new System.Drawing.Size(164, 26);
             this.layoutControlItem11.Text = "VESSEL:";
             this.layoutControlItem11.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
             this.layoutControlItem11.TextSize = new System.Drawing.Size(39, 13);
@@ -1517,12 +1597,12 @@ namespace InvoiceApp
             this.layoutControlItem12.AppearanceItemCaption.ForeColor = System.Drawing.Color.Black;
             this.layoutControlItem12.AppearanceItemCaption.Options.UseForeColor = true;
             this.layoutControlItem12.Control = this.bbiPaymentTerm;
-            this.layoutControlItem12.Location = new System.Drawing.Point(165, 78);
+            this.layoutControlItem12.Location = new System.Drawing.Point(164, 78);
             this.layoutControlItem12.Name = "layoutControlItem12";
             this.layoutControlItem12.Size = new System.Drawing.Size(271, 26);
             this.layoutControlItem12.Text = "PAYMENT TERM:";
             this.layoutControlItem12.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
-            this.layoutControlItem12.TextSize = new System.Drawing.Size(80, 13);
+            this.layoutControlItem12.TextSize = new System.Drawing.Size(81, 13);
             this.layoutControlItem12.TextToControlDistance = 5;
             // 
             // layoutControlItem13
@@ -1530,27 +1610,27 @@ namespace InvoiceApp
             this.layoutControlItem13.AppearanceItemCaption.ForeColor = System.Drawing.Color.Black;
             this.layoutControlItem13.AppearanceItemCaption.Options.UseForeColor = true;
             this.layoutControlItem13.Control = this.bbiZoneCode;
-            this.layoutControlItem13.Location = new System.Drawing.Point(436, 78);
+            this.layoutControlItem13.Location = new System.Drawing.Point(435, 78);
             this.layoutControlItem13.Name = "layoutControlItem13";
-            this.layoutControlItem13.Size = new System.Drawing.Size(237, 26);
+            this.layoutControlItem13.Size = new System.Drawing.Size(238, 26);
             this.layoutControlItem13.Text = "ZONE CODE:";
             this.layoutControlItem13.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
-            this.layoutControlItem13.TextSize = new System.Drawing.Size(62, 13);
+            this.layoutControlItem13.TextSize = new System.Drawing.Size(65, 13);
             this.layoutControlItem13.TextToControlDistance = 5;
             // 
             // layoutControlItem18
             // 
             this.layoutControlItem18.Control = this.label1;
-            this.layoutControlItem18.Location = new System.Drawing.Point(495, 0);
+            this.layoutControlItem18.Location = new System.Drawing.Point(496, 0);
             this.layoutControlItem18.Name = "layoutControlItem18";
-            this.layoutControlItem18.Size = new System.Drawing.Size(634, 26);
+            this.layoutControlItem18.Size = new System.Drawing.Size(633, 26);
             this.layoutControlItem18.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem18.TextVisible = false;
             // 
             // layoutControlItem19
             // 
             this.layoutControlItem19.Control = this.smbEdit;
-            this.layoutControlItem19.Location = new System.Drawing.Point(181, 0);
+            this.layoutControlItem19.Location = new System.Drawing.Point(182, 0);
             this.layoutControlItem19.Name = "layoutControlItem19";
             this.layoutControlItem19.Size = new System.Drawing.Size(110, 26);
             this.layoutControlItem19.TextSize = new System.Drawing.Size(0, 0);
@@ -1559,9 +1639,9 @@ namespace InvoiceApp
             // layoutControlItem20
             // 
             this.layoutControlItem20.Control = this.label2;
-            this.layoutControlItem20.Location = new System.Drawing.Point(554, 26);
+            this.layoutControlItem20.Location = new System.Drawing.Point(555, 26);
             this.layoutControlItem20.Name = "layoutControlItem20";
-            this.layoutControlItem20.Size = new System.Drawing.Size(575, 26);
+            this.layoutControlItem20.Size = new System.Drawing.Size(574, 26);
             this.layoutControlItem20.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem20.TextVisible = false;
             // 
@@ -1593,7 +1673,7 @@ namespace InvoiceApp
             this.layoutControlItem14.Size = new System.Drawing.Size(232, 26);
             this.layoutControlItem14.Text = "SHIP FROM:";
             this.layoutControlItem14.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
-            this.layoutControlItem14.TextSize = new System.Drawing.Size(59, 13);
+            this.layoutControlItem14.TextSize = new System.Drawing.Size(61, 13);
             this.layoutControlItem14.TextToControlDistance = 5;
             // 
             // layoutControlItem23
@@ -1615,7 +1695,7 @@ namespace InvoiceApp
             this.layoutControlItem17.Size = new System.Drawing.Size(205, 26);
             this.layoutControlItem17.Text = "SHIP TO:";
             this.layoutControlItem17.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
-            this.layoutControlItem17.TextSize = new System.Drawing.Size(44, 13);
+            this.layoutControlItem17.TextSize = new System.Drawing.Size(43, 13);
             this.layoutControlItem17.TextToControlDistance = 5;
             // 
             // layoutControlItem40
@@ -1634,10 +1714,10 @@ namespace InvoiceApp
             this.layoutControlItem15.Control = this.bbiVia;
             this.layoutControlItem15.Location = new System.Drawing.Point(437, 104);
             this.layoutControlItem15.Name = "layoutControlItem15";
-            this.layoutControlItem15.Size = new System.Drawing.Size(343, 26);
+            this.layoutControlItem15.Size = new System.Drawing.Size(342, 26);
             this.layoutControlItem15.Text = "VIA:";
             this.layoutControlItem15.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
-            this.layoutControlItem15.TextSize = new System.Drawing.Size(21, 13);
+            this.layoutControlItem15.TextSize = new System.Drawing.Size(20, 13);
             this.layoutControlItem15.TextToControlDistance = 5;
             // 
             // layoutControlItem16
@@ -1645,12 +1725,12 @@ namespace InvoiceApp
             this.layoutControlItem16.AppearanceItemCaption.ForeColor = System.Drawing.Color.Black;
             this.layoutControlItem16.AppearanceItemCaption.Options.UseForeColor = true;
             this.layoutControlItem16.Control = this.bbiTitle;
-            this.layoutControlItem16.Location = new System.Drawing.Point(780, 104);
+            this.layoutControlItem16.Location = new System.Drawing.Point(779, 104);
             this.layoutControlItem16.Name = "layoutControlItem16";
-            this.layoutControlItem16.Size = new System.Drawing.Size(321, 26);
+            this.layoutControlItem16.Size = new System.Drawing.Size(322, 26);
             this.layoutControlItem16.Text = "TITLE:";
             this.layoutControlItem16.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
-            this.layoutControlItem16.TextSize = new System.Drawing.Size(31, 13);
+            this.layoutControlItem16.TextSize = new System.Drawing.Size(27, 13);
             this.layoutControlItem16.TextToControlDistance = 5;
             // 
             // layoutControlItem43
@@ -1661,7 +1741,7 @@ namespace InvoiceApp
             this.layoutControlItem43.Size = new System.Drawing.Size(291, 26);
             this.layoutControlItem43.Text = "NET. WEIGHT:";
             this.layoutControlItem43.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
-            this.layoutControlItem43.TextSize = new System.Drawing.Size(70, 13);
+            this.layoutControlItem43.TextSize = new System.Drawing.Size(69, 13);
             this.layoutControlItem43.TextToControlDistance = 5;
             // 
             // layoutControlItem42
@@ -1669,25 +1749,25 @@ namespace InvoiceApp
             this.layoutControlItem42.Control = this.bbiGrossWeight;
             this.layoutControlItem42.Location = new System.Drawing.Point(291, 130);
             this.layoutControlItem42.Name = "layoutControlItem42";
-            this.layoutControlItem42.Size = new System.Drawing.Size(288, 26);
+            this.layoutControlItem42.Size = new System.Drawing.Size(287, 26);
             this.layoutControlItem42.Text = "GROSS WEIGHT:";
             this.layoutControlItem42.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
-            this.layoutControlItem42.TextSize = new System.Drawing.Size(81, 13);
+            this.layoutControlItem42.TextSize = new System.Drawing.Size(83, 13);
             this.layoutControlItem42.TextToControlDistance = 5;
             // 
             // layoutControlItem44
             // 
             this.layoutControlItem44.Control = this.label11;
-            this.layoutControlItem44.Location = new System.Drawing.Point(827, 130);
+            this.layoutControlItem44.Location = new System.Drawing.Point(826, 130);
             this.layoutControlItem44.Name = "layoutControlItem44";
-            this.layoutControlItem44.Size = new System.Drawing.Size(302, 26);
+            this.layoutControlItem44.Size = new System.Drawing.Size(303, 26);
             this.layoutControlItem44.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem44.TextVisible = false;
             // 
             // layoutControlItem45
             // 
             this.layoutControlItem45.Control = this.bbiRefNo;
-            this.layoutControlItem45.Location = new System.Drawing.Point(579, 130);
+            this.layoutControlItem45.Location = new System.Drawing.Point(578, 130);
             this.layoutControlItem45.Name = "layoutControlItem45";
             this.layoutControlItem45.Size = new System.Drawing.Size(248, 26);
             this.layoutControlItem45.Text = "REFNO.:";
@@ -1704,7 +1784,7 @@ namespace InvoiceApp
             this.layoutControlItem1,
             this.layoutControlItem24});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(1177, 670);
+            this.Root.Size = new System.Drawing.Size(1177, 666);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem2
@@ -1712,25 +1792,25 @@ namespace InvoiceApp
             this.layoutControlItem2.Control = this.groupControl2;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(1157, 205);
+            this.layoutControlItem2.Size = new System.Drawing.Size(1157, 209);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.groupControl1;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 384);
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 392);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1157, 266);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1157, 254);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
             // layoutControlItem24
             // 
             this.layoutControlItem24.Control = this.groupControl3;
-            this.layoutControlItem24.Location = new System.Drawing.Point(0, 205);
+            this.layoutControlItem24.Location = new System.Drawing.Point(0, 209);
             this.layoutControlItem24.Name = "layoutControlItem24";
-            this.layoutControlItem24.Size = new System.Drawing.Size(1157, 179);
+            this.layoutControlItem24.Size = new System.Drawing.Size(1157, 183);
             this.layoutControlItem24.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem24.TextVisible = false;
             // 
@@ -1750,7 +1830,9 @@ namespace InvoiceApp
             this.Ribbon = this.ribbonControl;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.StatusBar = this.ribbonStatusBar;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmInvoiceDetail_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ppEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
@@ -1971,5 +2053,11 @@ namespace InvoiceApp
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraBars.BarButtonItem bbiSendGEDI;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
+        private DevExpress.XtraBars.PopupMenu ppEdit;
+        private DevExpress.XtraBars.BarButtonItem bbiChangeInvoice;
+        private DevExpress.XtraBars.BarButtonItem bbiChangeEtd;
+        private DevExpress.XtraBars.BarButtonItem bbichangeShipment;
+        private DevExpress.XtraBars.BarButtonItem bbiChangeContainer;
+        private DevExpress.XtraBars.BarButtonItem bbiAddItem;
     }
 }

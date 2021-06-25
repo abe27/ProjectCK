@@ -2,6 +2,7 @@
 using DevExpress.XtraEditors;
 using InvoiceApp;
 using OrderApp;
+using ReceiveApp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -114,7 +115,8 @@ namespace CloudApp
 
         private void bbiReceiveResult_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            frmReceive frm = new frmReceive();
+            frm.ShowDialog();
         }
 
         private void bbiAddIcam_ItemClick(object sender, ItemClickEventArgs e)
