@@ -10,6 +10,7 @@ namespace ParzivalLibrary.Data
     {
         public string id { get; set; } //"id": "7b1b6286-c285-4445-b670-347150251972",
         public BatchFileData get_gedi_id { get; set; } //"gedi_id": "7aadb181-0d55-4bc8-89e3-a8185807d93d",
+        public CheckOrderData get_check_found {get;set;}
         public int seq { get; set; } //"seq": 17,
         public string vendor { get; set; } //"vendor": "AW",
         public double cd { get; set; } //"cd": "10",

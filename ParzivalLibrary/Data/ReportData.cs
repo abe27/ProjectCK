@@ -19,6 +19,7 @@ namespace ParzivalLibrary.Data
             public string shelve { get; set; }
             public string plno { get; set; }
             public int total { get; set; }
+            public string is_found { get; set; }
         }
     }
 }

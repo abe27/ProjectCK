@@ -43,6 +43,11 @@ namespace InvoiceApp.Reports
             data.ForEach(j => {
                 xqty += j.get_order_id.balqty;
                 xctn += (j.get_order_id.balqty/j.get_order_id.bistdp);
+                string f = "";
+                if (j.get_order_id.get_plan_id.get_check_found != null)
+                {
+                    f = "F";
+                }
                 list.Add(new JobListData()
                 {
                     id = list.Count + 1,
@@ -50,7 +55,8 @@ namespace InvoiceApp.Reports
                     orderno = j.get_order_id.get_plan_id.pono,
                     qty = j.get_order_id.get_plan_id.balqty,
                     ctn = (j.get_order_id.balqty/j.get_order_id.bistdp),
-                    lotno = j.get_order_id.lotno
+                    lotno = j.get_order_id.lotno,
+                    is_found = f
                 });
             });
             prBalQty.Value = xqty;
