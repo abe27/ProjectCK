@@ -77,5 +77,30 @@ namespace ReceiveApp
         {
             Reload();
         }
+
+        private void gridView_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            try
+            {
+                switch (e.Column.FieldName.ToString())
+                {
+                    case "plan_diff":
+                        switch (e.DisplayText.ToString())
+                        {
+                            case "0":
+                                e.DisplayText = "";
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
     }
 }

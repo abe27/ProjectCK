@@ -52,6 +52,7 @@ namespace ReceiveApp
 
                     i.receive_plan = pln;
                     i.receive_rec = rec_ctn;
+                    i.receive_diff = pln - rec_ctn;
                     x++;
                 });
                 gridControl.DataSource = list.data.data;
@@ -111,6 +112,36 @@ namespace ReceiveApp
             ReceiveData obj = gridView.GetFocusedRow() as ReceiveData;
             frmReceiveDetail frm = new frmReceiveDetail(obj);
             frm.ShowDialog();
+        }
+
+        private void gridView_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            try
+            {
+                switch (e.Column.FieldName.ToString())
+                {
+                    case "receive_diff":
+                        switch (e.DisplayText.ToString())
+                        {
+                            case "0":
+                                e.DisplayText = "";
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void gridControl_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

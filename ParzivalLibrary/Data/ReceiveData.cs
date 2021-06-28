@@ -18,6 +18,7 @@ namespace ParzivalLibrary.Data
         public string receive_status { get; set; } //table->enum('receive_status', [0, 1, 2])->nullable()->default(0);
         public decimal receive_plan { get; set; } //table->string ('receive_no')->unique();
         public decimal receive_rec { get; set; } //table->enum('receive_status', [0, 1, 2])->nullable()->default(0);
+        public decimal receive_diff { get; set; } //table->enum('receive_status', [0, 1, 2])->nullable()->default(0);
         public bool sync { get; set; } //table->boolean('sync')->nullable()->default(false);
         public bool is_status { get; set; } //$table->boolean('is_status')->nullable()->default(true);
         public DateTime created_at { get; set; } //"created_at": "2021-06-15T03:51:59.000000Z",
