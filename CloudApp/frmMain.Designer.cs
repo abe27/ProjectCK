@@ -30,8 +30,15 @@ namespace CloudApp
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.Series series3 = new DevExpress.XtraCharts.Series();
             DevExpress.XtraCharts.PieSeriesView pieSeriesView1 = new DevExpress.XtraCharts.PieSeriesView();
+            DevExpress.XtraCharts.Series series4 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.PieSeriesView pieSeriesView2 = new DevExpress.XtraCharts.PieSeriesView();
+            DevExpress.XtraCharts.XYDiagram xyDiagram2 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.FullStackedBarSeriesView fullStackedBarSeriesView1 = new DevExpress.XtraCharts.FullStackedBarSeriesView();
+            DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.applicationMenu1 = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
             this.bbiPrintPreview = new DevExpress.XtraBars.BarButtonItem();
@@ -59,6 +66,9 @@ namespace CloudApp
             this.bbiQaIssueType = new DevExpress.XtraBars.BarButtonItem();
             this.skinPaletteDropDownButtonItem1 = new DevExpress.XtraBars.SkinPaletteDropDownButtonItem();
             this.bbiGedi = new DevExpress.XtraBars.BarButtonItem();
+            this.ppGedi = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.bbiDownload = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiUpload = new DevExpress.XtraBars.BarButtonItem();
             this.bbiSection = new DevExpress.XtraBars.BarButtonItem();
             this.bbiStock = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
@@ -115,13 +125,18 @@ namespace CloudApp
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::CloudApp.WaitForm1), true, true);
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.chartControl1 = new DevExpress.XtraCharts.ChartControl();
+            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.chartControl3 = new DevExpress.XtraCharts.ChartControl();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.chartControl2 = new DevExpress.XtraCharts.ChartControl();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ppReceive)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ppOrder)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ppGedi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ppMaster)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ppBatch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ppMember)).BeginInit();
@@ -129,11 +144,22 @@ namespace CloudApp
             ((System.ComponentModel.ISupportInitialize)(this.ppCustomer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(pieSeriesView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(pieSeriesView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartControl3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(fullStackedBarSeriesView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartControl2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl
@@ -193,9 +219,11 @@ namespace CloudApp
             this.bbiCustomer,
             this.bbiAddressCustomer,
             this.bbiPart,
-            this.bbiCustomerList});
+            this.bbiCustomerList,
+            this.bbiDownload,
+            this.bbiUpload});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 66;
+            this.ribbonControl.MaxItemId = 68;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.PageHeaderItemLinks.Add(this.skinDropDownButtonItem1);
             this.ribbonControl.PageHeaderItemLinks.Add(this.skinPaletteDropDownButtonItem1);
@@ -379,6 +407,7 @@ namespace CloudApp
             this.bbiLoading.Id = 32;
             this.bbiLoading.ImageOptions.Image = global::CloudApp.Properties.Resources.icons8_shipping_container_16;
             this.bbiLoading.Name = "bbiLoading";
+            this.bbiLoading.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiLoading_ItemClick);
             // 
             // bbiGediGroup
             // 
@@ -401,10 +430,38 @@ namespace CloudApp
             // 
             // bbiGedi
             // 
+            this.bbiGedi.ActAsDropDown = true;
+            this.bbiGedi.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
             this.bbiGedi.Caption = "ข้อมูล GEDI";
+            this.bbiGedi.DropDownControl = this.ppGedi;
             this.bbiGedi.Id = 36;
             this.bbiGedi.ImageOptions.Image = global::CloudApp.Properties.Resources.icons8_cloud_database_16;
             this.bbiGedi.Name = "bbiGedi";
+            // 
+            // ppGedi
+            // 
+            this.ppGedi.ItemLinks.Add(this.bbiDownload);
+            this.ppGedi.ItemLinks.Add(this.bbiUpload);
+            this.ppGedi.Name = "ppGedi";
+            this.ppGedi.Ribbon = this.ribbonControl;
+            // 
+            // bbiDownload
+            // 
+            this.bbiDownload.Caption = "Dowload GEDI";
+            this.bbiDownload.Id = 66;
+            this.bbiDownload.ImageOptions.Image = global::CloudApp.Properties.Resources.next_16x16;
+            this.bbiDownload.ImageOptions.LargeImage = global::CloudApp.Properties.Resources.next_32x32;
+            this.bbiDownload.Name = "bbiDownload";
+            this.bbiDownload.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiDownload_ItemClick);
+            // 
+            // bbiUpload
+            // 
+            this.bbiUpload.Caption = "Upload GEDI";
+            this.bbiUpload.Id = 67;
+            this.bbiUpload.ImageOptions.Image = global::CloudApp.Properties.Resources.publish_16x16;
+            this.bbiUpload.ImageOptions.LargeImage = global::CloudApp.Properties.Resources.publish_32x32;
+            this.bbiUpload.Name = "bbiUpload";
+            this.bbiUpload.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiUpload_ItemClick);
             // 
             // bbiSection
             // 
@@ -822,6 +879,8 @@ namespace CloudApp
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.chartControl2);
+            this.layoutControl1.Controls.Add(this.chartControl3);
             this.layoutControl1.Controls.Add(this.chartControl1);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 92);
@@ -831,37 +890,88 @@ namespace CloudApp
             this.layoutControl1.TabIndex = 4;
             this.layoutControl1.Text = "layoutControl1";
             // 
+            // chartControl1
+            // 
+            this.chartControl1.Legend.Name = "Default Legend";
+            this.chartControl1.Location = new System.Drawing.Point(12, 12);
+            this.chartControl1.Name = "chartControl1";
+            series3.Name = "Order AW";
+            series3.View = pieSeriesView1;
+            series4.Name = "Order INJ";
+            series4.View = pieSeriesView2;
+            this.chartControl1.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
+        series3,
+        series4};
+            this.chartControl1.Size = new System.Drawing.Size(1000, 221);
+            this.chartControl1.TabIndex = 4;
+            // 
             // Root
             // 
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
             this.Root.GroupBordersVisible = false;
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem1});
+            this.layoutControlItem1,
+            this.layoutControlItem3,
+            this.layoutControlItem2});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(1024, 584);
             this.Root.TextVisible = false;
-            // 
-            // chartControl1
-            // 
-            this.chartControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chartControl1.Legend.Name = "Default Legend";
-            this.chartControl1.Location = new System.Drawing.Point(12, 12);
-            this.chartControl1.Name = "chartControl1";
-            series1.Name = "Order";
-            series1.View = pieSeriesView1;
-            this.chartControl1.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series1};
-            this.chartControl1.Size = new System.Drawing.Size(1000, 560);
-            this.chartControl1.TabIndex = 4;
             // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.chartControl1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1004, 564);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1004, 225);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
+            // 
+            // chartControl3
+            // 
+            xyDiagram2.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram2.AxisY.VisibleInPanesSerializable = "-1";
+            this.chartControl3.Diagram = xyDiagram2;
+            this.chartControl3.Legend.Name = "Default Legend";
+            this.chartControl3.Location = new System.Drawing.Point(12, 237);
+            this.chartControl3.Name = "chartControl3";
+            series2.Name = "Rec.";
+            series2.View = fullStackedBarSeriesView1;
+            this.chartControl3.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
+        series2};
+            this.chartControl3.Size = new System.Drawing.Size(1000, 138);
+            this.chartControl3.TabIndex = 6;
+            // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.Control = this.chartControl3;
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 225);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Size = new System.Drawing.Size(1004, 142);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem3.TextVisible = false;
+            // 
+            // chartControl2
+            // 
+            xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
+            this.chartControl2.Diagram = xyDiagram1;
+            this.chartControl2.Legend.Name = "Default Legend";
+            this.chartControl2.Location = new System.Drawing.Point(12, 379);
+            this.chartControl2.Name = "chartControl2";
+            series1.Name = "Loading";
+            this.chartControl2.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
+        series1};
+            this.chartControl2.Size = new System.Drawing.Size(1000, 193);
+            this.chartControl2.TabIndex = 7;
+            // 
+            // layoutControlItem2
+            // 
+            this.layoutControlItem2.Control = this.chartControl2;
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 367);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Size = new System.Drawing.Size(1004, 197);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem2.TextVisible = false;
             // 
             // frmMain
             // 
@@ -883,6 +993,7 @@ namespace CloudApp
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ppReceive)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ppOrder)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ppGedi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ppMaster)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ppBatch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ppMember)).EndInit();
@@ -890,11 +1001,22 @@ namespace CloudApp
             ((System.ComponentModel.ISupportInitialize)(this.ppCustomer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(pieSeriesView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(pieSeriesView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(fullStackedBarSeriesView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartControl3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartControl2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -987,5 +1109,12 @@ namespace CloudApp
         private DevExpress.XtraLayout.LayoutControlGroup Root;
         private DevExpress.XtraCharts.ChartControl chartControl1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private DevExpress.XtraBars.PopupMenu ppGedi;
+        private DevExpress.XtraBars.BarButtonItem bbiDownload;
+        private DevExpress.XtraBars.BarButtonItem bbiUpload;
+        private DevExpress.XtraCharts.ChartControl chartControl2;
+        private DevExpress.XtraCharts.ChartControl chartControl3;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
     }
 }

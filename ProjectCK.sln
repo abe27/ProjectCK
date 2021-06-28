@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderApp", "OrderApp\OrderA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReceiveApp", "ReceiveApp\ReceiveApp.csproj", "{9FA9E8F3-9DE2-4964-9FA8-B420A40EC010}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContainerApp", "ContainerApp\ContainerApp.csproj", "{5137BEEF-19A7-424E-8E11-E06ABF474AF9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{9FA9E8F3-9DE2-4964-9FA8-B420A40EC010}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FA9E8F3-9DE2-4964-9FA8-B420A40EC010}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FA9E8F3-9DE2-4964-9FA8-B420A40EC010}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5137BEEF-19A7-424E-8E11-E06ABF474AF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5137BEEF-19A7-424E-8E11-E06ABF474AF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5137BEEF-19A7-424E-8E11-E06ABF474AF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5137BEEF-19A7-424E-8E11-E06ABF474AF9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -85,5 +85,20 @@ namespace CloudApp
         {
 
         }
+
+        private void bbiLoading_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private void bbiDownload_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private void bbiUpload_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
     }
 }
