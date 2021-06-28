@@ -17,6 +17,13 @@ namespace ParzivalLibrary.Data
         public DateTime? created_at { get; set; }
         public DateTime? updated_at { get; set; }
     }
+    public class UserListData
+    {
+        public bool success { get; set; }
+        public List<Profile> profile { get; set; }
+        public string token { get; set; }
+    }
+
     public class AuthData
     {
         public bool success { get; set; }

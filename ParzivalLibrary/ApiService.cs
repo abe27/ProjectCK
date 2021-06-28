@@ -11,6 +11,20 @@ namespace ParzivalLibrary
 {
     public class ApiService
     {
+        public static UserListData GetUser()
+        {
+            var client = new RestClient($"{StaticVar.__rest_api}/api/v1/user");
+            client.Timeout = -1;
+            var request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
+            UserListData obj = new UserListData();
+            if (response.StatusCode.ToString() == "OK")
+            {
+                obj = JsonConvert.DeserializeObject<UserListData>(response.Content);
+            }
+            return obj;
+        }
+
         public static AuthData GetToken(string __username, string __passwd)
         {
             var client = new RestClient($"{StaticVar.__rest_api}/api/v1/login");
@@ -57,6 +71,8 @@ namespace ParzivalLibrary
             Console.WriteLine(response.Content);
             if (response.StatusCode.ToString() == "OK")
             {
+                //// clear token StaticVar.__authen
+                StaticVar.__authen = new AuthData();
                 __logout_status = true;
             }
             return __logout_status;

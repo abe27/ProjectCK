@@ -35,11 +35,12 @@ namespace CloudApp
             this.txtremember = new MetroFramework.Controls.MetroRadioButton();
             this.bbiLogin = new MetroFramework.Controls.MetroButton();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.txtpassword = new MetroFramework.Controls.MetroTextBox();
+            this.bbiPass = new MetroFramework.Controls.MetroTextBox();
             this.txtusername = new MetroFramework.Controls.MetroTextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::CloudApp.WaitForm1), true, true);
             this.bbiSwitchTest = new MetroFramework.Controls.MetroToggle();
+            this.bbiUserName = new MetroFramework.Controls.MetroComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -104,47 +105,46 @@ namespace CloudApp
             this.pictureBox2.TabIndex = 6;
             this.pictureBox2.TabStop = false;
             // 
-            // txtpassword
+            // bbiPass
             // 
             // 
             // 
             // 
-            this.txtpassword.CustomButton.Image = null;
-            this.txtpassword.CustomButton.Location = new System.Drawing.Point(244, 2);
-            this.txtpassword.CustomButton.Name = "";
-            this.txtpassword.CustomButton.Size = new System.Drawing.Size(23, 23);
-            this.txtpassword.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtpassword.CustomButton.TabIndex = 1;
-            this.txtpassword.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtpassword.CustomButton.UseSelectable = true;
-            this.txtpassword.CustomButton.Visible = false;
-            this.txtpassword.DisplayIcon = true;
-            this.txtpassword.FontSize = MetroFramework.MetroTextBoxSize.Medium;
-            this.txtpassword.Icon = global::CloudApp.Properties.Resources.icons8_lock_16;
-            this.txtpassword.Lines = new string[] {
-        "1q2w3e4r5t6y"};
-            this.txtpassword.Location = new System.Drawing.Point(280, 228);
-            this.txtpassword.MaxLength = 32767;
-            this.txtpassword.Name = "txtpassword";
-            this.txtpassword.PasswordChar = '●';
-            this.txtpassword.PromptText = "PASSWORD";
-            this.txtpassword.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtpassword.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtpassword.SelectedText = "";
-            this.txtpassword.SelectionLength = 0;
-            this.txtpassword.SelectionStart = 0;
-            this.txtpassword.ShortcutsEnabled = true;
-            this.txtpassword.ShowClearButton = true;
-            this.txtpassword.Size = new System.Drawing.Size(270, 28);
-            this.txtpassword.TabIndex = 3;
-            this.txtpassword.Text = "1q2w3e4r5t6y";
-            this.txtpassword.UseSelectable = true;
-            this.txtpassword.UseStyleColors = true;
-            this.txtpassword.UseSystemPasswordChar = true;
-            this.txtpassword.WaterMark = "PASSWORD";
-            this.txtpassword.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtpassword.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.txtpassword.WithError = true;
+            this.bbiPass.CustomButton.Image = null;
+            this.bbiPass.CustomButton.Location = new System.Drawing.Point(244, 2);
+            this.bbiPass.CustomButton.Name = "";
+            this.bbiPass.CustomButton.Size = new System.Drawing.Size(23, 23);
+            this.bbiPass.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.bbiPass.CustomButton.TabIndex = 1;
+            this.bbiPass.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.bbiPass.CustomButton.UseSelectable = true;
+            this.bbiPass.CustomButton.Visible = false;
+            this.bbiPass.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.bbiPass.Icon = global::CloudApp.Properties.Resources.icons8_lock_16;
+            this.bbiPass.Lines = new string[] {
+        "ADSads123"};
+            this.bbiPass.Location = new System.Drawing.Point(280, 228);
+            this.bbiPass.MaxLength = 32767;
+            this.bbiPass.Name = "bbiPass";
+            this.bbiPass.PasswordChar = '●';
+            this.bbiPass.PromptText = "PASSWORD";
+            this.bbiPass.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.bbiPass.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.bbiPass.SelectedText = "";
+            this.bbiPass.SelectionLength = 0;
+            this.bbiPass.SelectionStart = 0;
+            this.bbiPass.ShortcutsEnabled = true;
+            this.bbiPass.ShowClearButton = true;
+            this.bbiPass.Size = new System.Drawing.Size(270, 28);
+            this.bbiPass.TabIndex = 3;
+            this.bbiPass.Text = "ADSads123";
+            this.bbiPass.UseSelectable = true;
+            this.bbiPass.UseStyleColors = true;
+            this.bbiPass.UseSystemPasswordChar = true;
+            this.bbiPass.WaterMark = "PASSWORD";
+            this.bbiPass.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.bbiPass.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.bbiPass.WithError = true;
             // 
             // txtusername
             // 
@@ -156,9 +156,9 @@ namespace CloudApp
             // 
             // 
             this.txtusername.CustomButton.Image = null;
-            this.txtusername.CustomButton.Location = new System.Drawing.Point(244, 2);
+            this.txtusername.CustomButton.Location = new System.Drawing.Point(-3, 2);
             this.txtusername.CustomButton.Name = "";
-            this.txtusername.CustomButton.Size = new System.Drawing.Size(23, 23);
+            this.txtusername.CustomButton.Size = new System.Drawing.Size(0, 0);
             this.txtusername.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtusername.CustomButton.TabIndex = 1;
             this.txtusername.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -169,7 +169,7 @@ namespace CloudApp
             this.txtusername.Icon = global::CloudApp.Properties.Resources.icons8_user_16;
             this.txtusername.Lines = new string[] {
         "krumii.it@gmail.com"};
-            this.txtusername.Location = new System.Drawing.Point(280, 190);
+            this.txtusername.Location = new System.Drawing.Point(22, 302);
             this.txtusername.MaxLength = 32767;
             this.txtusername.Name = "txtusername";
             this.txtusername.PasswordChar = '\0';
@@ -181,11 +181,12 @@ namespace CloudApp
             this.txtusername.SelectionStart = 0;
             this.txtusername.ShortcutsEnabled = true;
             this.txtusername.ShowClearButton = true;
-            this.txtusername.Size = new System.Drawing.Size(270, 28);
+            this.txtusername.Size = new System.Drawing.Size(0, 0);
             this.txtusername.TabIndex = 2;
             this.txtusername.Text = "krumii.it@gmail.com";
             this.txtusername.UseSelectable = true;
             this.txtusername.UseStyleColors = true;
+            this.txtusername.Visible = false;
             this.txtusername.WaterMark = "E-MAIL";
             this.txtusername.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtusername.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -217,16 +218,30 @@ namespace CloudApp
             this.bbiSwitchTest.UseSelectable = true;
             this.bbiSwitchTest.CheckedChanged += new System.EventHandler(this.bbiSwitchTest_CheckedChanged);
             // 
+            // bbiUserName
+            // 
+            this.bbiUserName.DisplayFocus = true;
+            this.bbiUserName.DisplayMember = "name";
+            this.bbiUserName.FormattingEnabled = true;
+            this.bbiUserName.ItemHeight = 23;
+            this.bbiUserName.Location = new System.Drawing.Point(280, 190);
+            this.bbiUserName.Name = "bbiUserName";
+            this.bbiUserName.Size = new System.Drawing.Size(270, 29);
+            this.bbiUserName.TabIndex = 8;
+            this.bbiUserName.UseSelectable = true;
+            this.bbiUserName.ValueMember = "name";
+            // 
             // frmAuth
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(563, 351);
+            this.Controls.Add(this.bbiUserName);
             this.Controls.Add(this.bbiSwitchTest);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.bbiLogin);
             this.Controls.Add(this.txtremember);
-            this.Controls.Add(this.txtpassword);
+            this.Controls.Add(this.bbiPass);
             this.Controls.Add(this.txtusername);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.labelControl1);
@@ -249,11 +264,12 @@ namespace CloudApp
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private MetroFramework.Controls.MetroTextBox txtusername;
-        private MetroFramework.Controls.MetroTextBox txtpassword;
+        private MetroFramework.Controls.MetroTextBox bbiPass;
         private MetroFramework.Controls.MetroRadioButton txtremember;
         private MetroFramework.Controls.MetroButton bbiLogin;
         private System.Windows.Forms.PictureBox pictureBox2;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
         private MetroFramework.Controls.MetroToggle bbiSwitchTest;
+        private MetroFramework.Controls.MetroComboBox bbiUserName;
     }
 }

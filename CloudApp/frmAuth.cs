@@ -28,8 +28,9 @@ namespace CloudApp
 
         private void bbiLogin_Click(object sender, EventArgs e)
         {
-            string __txt_email = txtusername.Text;
-            string __txt_password = txtpassword.Text;
+            //string __txt_email = txtusername.Text;
+            string __txt_email = bbiUserName.Text;
+            string __txt_password = bbiPass.Text;
 
             if (__txt_email == "")
             {
@@ -69,13 +70,30 @@ namespace CloudApp
             }
         }
 
+        void LoadUser()
+        {
+            bbiUserName.Items.Clear();
+            UserListData __user = ApiService.GetUser();
+            if (__user.success)
+            {
+                __user.profile.ForEach(i => {
+                    bbiUserName.Items.Add(i.email);
+                });
+            }
+        }
+
         private void bbiSwitchTest_CheckedChanged(object sender, EventArgs e)
         {
+            splashScreenManager1.ShowWaitForm();
             StaticVar.__rest_api = "http://127.0.0.1:8000";
             if (bbiSwitchTest.Checked)
             {
                 StaticVar.__rest_api = "http://203.151.171.156";
             }
+
+            // load user list
+            LoadUser();
+            splashScreenManager1.CloseWaitForm();
         }
     }
 }
