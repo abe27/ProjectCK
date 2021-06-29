@@ -65,5 +65,44 @@ namespace ContainerApp
             public string ZipCode { get; set; }
             public string Phone { get; set; }
         }
+
+        private void bbiNew_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            frmAddNewContainer frm = new frmAddNewContainer();
+            DialogResult r = XtraDialog.Show(frm, "Add Container", MessageBoxButtons.OKCancel);
+            if (r == DialogResult.OK)
+            {
+                object[] x = frm.Get();
+                if (x[0] is null)
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "กรุณาระบุข้อมูล\nContainer No ด้วย", "ข้อความแจ้งเตือน!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    bbiNew_ItemClick(sender, e);
+                }
+                else if (x[1] is null)
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "กรุณาระบุข้อมูล\nSeal No ด้วย", "ข้อความแจ้งเตือน!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    bbiNew_ItemClick(sender, e);
+                }
+                else if (x[2] is null)
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "กรุณาระบุข้อมูล\nSize ด้วย", "ข้อความแจ้งเตือน!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    bbiNew_ItemClick(sender, e);
+                }
+                else if (x[3] is null)
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "กรุณาระบุข้อมูล\nวันปล่อยตู้ด้วย", "ข้อความแจ้งเตือน!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    bbiNew_ItemClick(sender, e);
+                }
+                else if (x[4] is null)
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "กรุณาระบุข้อมูล\nวันที่ปล่อยตู้ด้วย", "ข้อความแจ้งเตือน!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    bbiNew_ItemClick(sender, e);
+                }
+                else
+                { 
+                    // post data
+                }
+            }
+        }
     }
 }

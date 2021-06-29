@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="ApiService.cs" />
     <Compile Include="CartonService.cs" />
+    <Compile Include="ContainerService.cs" />
     <Compile Include="Data\AuthData.cs" />
     <Compile Include="Data\BatchFileData.cs" />
     <Compile Include="Data\CheckOrderData.cs" />

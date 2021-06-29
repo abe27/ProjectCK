@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraBars;
+﻿using ContainerApp;
+using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using InvoiceApp;
 using OrderApp;
@@ -88,7 +89,8 @@ namespace CloudApp
 
         private void bbiLoading_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            frmContainer frm = new frmContainer();
+            frm.ShowDialog();
         }
 
         private void bbiDownload_ItemClick(object sender, ItemClickEventArgs e)
