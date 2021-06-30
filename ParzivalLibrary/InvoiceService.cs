@@ -11,19 +11,25 @@ namespace ParzivalLibrary
 {
     public class InvoiceService
     {
-        public static InvoiceResponse Get(DateTime? etd, bool? check_on_week)
+        public static InvoiceResponse Get(string factory,DateTime? etd, bool? check_on_week)
         {
-            string __link = $"{StaticVar.__rest_api}/api/v1/invoice/"+ etd?.ToString("yyyyMMdd") + "/get";
-            if (check_on_week is null)
+            string __link = $"{StaticVar.__rest_api}/api/v1/invoice/{factory}/{etd?.ToString("yyyyMMdd")}/get";
+            if (factory is null)
             {
-                __link = $"{StaticVar.__rest_api}/api/v1/invoice/get";
-            }
-            else {
-                if ((bool)check_on_week)
+                __link = $"{StaticVar.__rest_api}/api/v1/invoice/{etd?.ToString("yyyyMMdd")}/get";
+                if (check_on_week is null)
                 {
-                    __link = $"{StaticVar.__rest_api}/api/v1/invoice/between/" + etd?.ToString("yyyyMMdd") + "/";
+                    __link = $"{StaticVar.__rest_api}/api/v1/invoice/get";
+                }
+                else
+                {
+                    if ((bool)check_on_week)
+                    {
+                        __link = $"{StaticVar.__rest_api}/api/v1/invoice/between/{etd?.ToString("yyyyMMdd")}/";
+                    }
                 }
             }
+            
             var client = new RestClient(__link);
             client.Timeout = -1;
             var request = new RestRequest(Method.GET);

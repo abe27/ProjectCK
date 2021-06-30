@@ -1,5 +1,7 @@
 ﻿using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
+using ParzivalLibrary;
+using ParzivalLibrary.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,52 +20,26 @@ namespace ContainerApp
         public frmContainer()
         {
             InitializeComponent();
-            gridControl.DataSource = GetDataSource();
-            BindingList<Customer> dataSource = GetDataSource();
-            gridControl.DataSource = dataSource;
-            bsiRecordsCount.Caption = "RECORDS : " + dataSource.Count;
+            bbiEtd.EditValue = DateTime.Now;
         }
         void bbiPrintPreview_ItemClick(object sender, ItemClickEventArgs e)
         {
             gridControl.ShowRibbonPrintPreview();
         }
-        public BindingList<Customer> GetDataSource()
+
+        void Reload()
         {
-            BindingList<Customer> result = new BindingList<Customer>();
-            result.Add(new Customer()
-            {
-                ID = 1,
-                Name = "ACME",
-                Address = "2525 E El Segundo Blvd",
-                City = "El Segundo",
-                State = "CA",
-                ZipCode = "90245",
-                Phone = "(310) 536-0611"
+            splashScreenManager1.ShowWaitForm();
+            ContainerResponse list = ContainerService.Get(DateTime.Parse(bbiEtd.EditValue.ToString()));
+            int x = 1;
+            list.data.data.ForEach(i => {
+                i.container_seq = x;
+                i.pl_count = i.get_detail.Count;
+                x++;
             });
-            result.Add(new Customer()
-            {
-                ID = 2,
-                Name = "Electronics Depot",
-                Address = "2455 Paces Ferry Road NW",
-                City = "Atlanta",
-                State = "GA",
-                ZipCode = "30339",
-                Phone = "(800) 595-3232"
-            });
-            return result;
-        }
-        public class Customer
-        {
-            [Key, Display(AutoGenerateField = false)]
-            public int ID { get; set; }
-            [Required]
-            public string Name { get; set; }
-            public string Address { get; set; }
-            public string City { get; set; }
-            public string State { get; set; }
-            [Display(Name = "Zip Code")]
-            public string ZipCode { get; set; }
-            public string Phone { get; set; }
+            gridControl.DataSource = list.data.data;
+            bsiRecordsCount.Caption = "RECORDS : " + list.data.data.Count;
+            splashScreenManager1.CloseWaitForm();
         }
 
         private void bbiNew_ItemClick(object sender, ItemClickEventArgs e)
@@ -99,10 +75,37 @@ namespace ContainerApp
                     bbiNew_ItemClick(sender, e);
                 }
                 else
-                { 
+                {
                     // post data
+                    ContainerData __body = new ContainerData();
+                    __body.container_no = (x[0]).ToString().ToUpper();
+                    __body.seal_no = (x[1]).ToString().ToUpper();
+                    __body.sizes = (x[2]).ToString().ToUpper();
+                    __body.release_days = (x[3]).ToString();
+                    __body.release_date = DateTime.Parse((x[4]).ToString());
+                    bool res = ContainerService.Create(__body);
+                    if (res is false)
+                    {
+                        MetroFramework.MetroMessageBox.Show(this, "เกิดข้อผิดพลาด\nไม่สามารถบันทึกข้อมูลได้!", "ข้อความแจ้งเตือน!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    MetroFramework.MetroMessageBox.Show(this, "บันทึกข้อมูลเสร็จแล้ว", "ข้อความแจ้งเตือน!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Reload();
                 }
             }
+        }
+
+        private void bbiEtd_EditValueChanged(object sender, EventArgs e)
+        {
+            Reload();
+        }
+
+        private void gridView_DoubleClick(object sender, EventArgs e)
+        {
+            ContainerData obj = gridView.GetFocusedRow() as ContainerData;
+            frmContainerDetail frm = new frmContainerDetail(obj);
+            frm.ShowDialog();
+            Reload();
         }
     }
 }

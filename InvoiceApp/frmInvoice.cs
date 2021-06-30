@@ -26,7 +26,7 @@ namespace InvoiceApp
         {
             gridControl.ShowRibbonPrintPreview();
         }
-        public InvoiceResponse GetDataSource() => InvoiceService.Get(DateTime.Parse(bbiEtdDate.EditValue.ToString()), bbiOnWeek.Checked);
+        public InvoiceResponse GetDataSource() => InvoiceService.Get(null, DateTime.Parse(bbiEtdDate.EditValue.ToString()), bbiOnWeek.Checked);
 
         void Reload()
         {
@@ -40,7 +40,7 @@ namespace InvoiceApp
         private void bbiRefresh_ItemClick(object sender, ItemClickEventArgs e)
         {
             splashScreenManager1.ShowWaitForm();
-            InvoiceResponse dataSource = InvoiceService.Get(null, null);
+            InvoiceResponse dataSource = InvoiceService.Get(null, null, null);
             gridControl.DataSource = dataSource.data.data;
             bsiRecordsCount.Caption = "RECORDS : " + dataSource.data.data.Count;
             splashScreenManager1.CloseWaitForm();

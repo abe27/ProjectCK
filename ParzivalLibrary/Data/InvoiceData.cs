@@ -9,6 +9,7 @@ namespace ParzivalLibrary.Data
     public class InvoiceData
     {
         public string id { get; set; }//"id": "91dae58f-6648-4cd2-8820-662ae2b3eefe",
+        public int seq { get; set; }
         public string invoice_no { get; set; }//"invoice_no": "TWTT10001B",
         public string system_no { get; set; }//"system_no": "ATT-20210615-0001",
         public string vessel { get; set; }//"vessel": "",
@@ -33,6 +34,8 @@ namespace ParzivalLibrary.Data
         public OrderData get_order_id { get; set; }//"get_order_id": [],
         public ContainerType get_container_type_id { get; set; }//"get_container_type_id": ,
         public User get_register_id { get; set; }//"get_register_id": []
+        public List<InvoicePallet> get_pallet_list { get; set; }
+        public int pl_count { get; set; }
     }
 
     public class InvObj : HttpResponseData
@@ -40,16 +43,11 @@ namespace ParzivalLibrary.Data
         public List<InvoiceData> data { get; set; }
     }
 
-    public class InvMessage
-    {
-        public string invoice_no { get; set; }
-    }
-
     public class InvoiceResponse
     {
         public bool success { get; set; }
         public InvObj data { get; set; }
-        public InvMessage message { get; set; }
+        public object message { get; set; }
     }
 
     public class InvDetail : HttpResponseData

@@ -10,6 +10,7 @@ namespace ParzivalLibrary.Data
     {
         public static string __rest_api { get; set; }
         public static AuthData __authen { get; internal set; }
+        public static string __fatory { get; set; }
     }
     public class HttpResponseData
     {

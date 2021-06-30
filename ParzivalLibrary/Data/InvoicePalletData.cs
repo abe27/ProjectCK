@@ -9,13 +9,14 @@ namespace ParzivalLibrary.Data
     public class InvoicePallet
     {
         public string id { get; set; }
+        public int seq { get; set; }
         public InvoiceData get_invoice_id { get; set; }
         public string pallet_prefix { get; set; }
         public double pallet_running { get; set; }
         public double pallet_seq { get; set; }
-
         public double pallet_total { get; set; }
         public double pallet_limit { get; set; }
+        public double pallet_diff { get; set; }
         public double pallet_width { get; set; }
         public double pallet_length { get; set; }
         public double pallet_height { get; set; }

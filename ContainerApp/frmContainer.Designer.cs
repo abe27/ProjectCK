@@ -36,16 +36,31 @@ namespace ContainerApp
             this.bbiEdit = new DevExpress.XtraBars.BarButtonItem();
             this.bbiDelete = new DevExpress.XtraBars.BarButtonItem();
             this.bbiRefresh = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiEtd = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::ContainerApp.WaitForm1), true, true);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -65,12 +80,15 @@ namespace ContainerApp
             this.bbiNew,
             this.bbiEdit,
             this.bbiDelete,
-            this.bbiRefresh});
+            this.bbiRefresh,
+            this.bbiEtd});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 20;
+            this.ribbonControl.MaxItemId = 21;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
+            this.ribbonControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemDateEdit1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.OfficeUniversal;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonControl.Size = new System.Drawing.Size(1022, 89);
@@ -120,10 +138,29 @@ namespace ContainerApp
             this.bbiRefresh.ImageOptions.ImageUri.Uri = "Refresh";
             this.bbiRefresh.Name = "bbiRefresh";
             // 
+            // bbiEtd
+            // 
+            this.bbiEtd.Caption = "Release Date:";
+            this.bbiEtd.Edit = this.repositoryItemDateEdit1;
+            this.bbiEtd.EditWidth = 100;
+            this.bbiEtd.Id = 20;
+            this.bbiEtd.Name = "bbiEtd";
+            this.bbiEtd.EditValueChanged += new System.EventHandler(this.bbiEtd_EditValueChanged);
+            // 
+            // repositoryItemDateEdit1
+            // 
+            this.repositoryItemDateEdit1.AutoHeight = false;
+            this.repositoryItemDateEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateEdit1.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup1,
+            this.ribbonPageGroup3,
             this.ribbonPageGroup2});
             this.ribbonPage1.MergeOrder = 0;
             this.ribbonPage1.Name = "ribbonPage1";
@@ -136,9 +173,15 @@ namespace ContainerApp
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiNew);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiEdit);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiDelete);
-            this.ribbonPageGroup1.ItemLinks.Add(this.bbiRefresh);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "Tasks";
+            // 
+            // ribbonPageGroup3
+            // 
+            this.ribbonPageGroup3.ItemLinks.Add(this.bbiEtd);
+            this.ribbonPageGroup3.ItemLinks.Add(this.bbiRefresh);
+            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
+            this.ribbonPageGroup3.Text = "ribbonPageGroup3";
             // 
             // ribbonPageGroup2
             // 
@@ -169,6 +212,7 @@ namespace ContainerApp
             // 
             // gridControl
             // 
+            this.gridControl.Cursor = System.Windows.Forms.Cursors.Hand;
             this.gridControl.Location = new System.Drawing.Point(12, 12);
             this.gridControl.MainView = this.gridView;
             this.gridControl.MenuManager = this.ribbonControl;
@@ -181,12 +225,131 @@ namespace ContainerApp
             // gridView
             // 
             this.gridView.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.gridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
+            this.gridColumn2,
+            this.gridColumn3,
+            this.gridColumn4,
+            this.gridColumn5,
+            this.gridColumn6,
+            this.gridColumn7,
+            this.gridColumn8,
+            this.gridColumn9});
             this.gridView.GridControl = this.gridControl;
             this.gridView.Name = "gridView";
             this.gridView.OptionsBehavior.Editable = false;
             this.gridView.OptionsBehavior.ReadOnly = true;
             this.gridView.OptionsView.ShowFooter = true;
             this.gridView.OptionsView.ShowGroupPanel = false;
+            this.gridView.DoubleClick += new System.EventHandler(this.gridView_DoubleClick);
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "#";
+            this.gridColumn1.FieldName = "container_seq";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
+            this.gridColumn1.Width = 38;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.AppearanceCell.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.gridColumn2.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gridColumn2.AppearanceCell.Options.UseFont = true;
+            this.gridColumn2.AppearanceCell.Options.UseForeColor = true;
+            this.gridColumn2.Caption = "CONTAINERNO.";
+            this.gridColumn2.FieldName = "container_no";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 1;
+            this.gridColumn2.Width = 132;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "SEALNO.";
+            this.gridColumn3.FieldName = "seal_no";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 2;
+            this.gridColumn3.Width = 132;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.AppearanceCell.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.gridColumn4.AppearanceCell.Options.UseFont = true;
+            this.gridColumn4.Caption = "SIZE";
+            this.gridColumn4.FieldName = "sizes";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 3;
+            this.gridColumn4.Width = 132;
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.AppearanceCell.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.gridColumn5.AppearanceCell.ForeColor = System.Drawing.Color.Green;
+            this.gridColumn5.AppearanceCell.Options.UseFont = true;
+            this.gridColumn5.AppearanceCell.Options.UseForeColor = true;
+            this.gridColumn5.Caption = "RELEASE DAY";
+            this.gridColumn5.FieldName = "release_days";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 4;
+            this.gridColumn5.Width = 132;
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.AppearanceCell.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.gridColumn6.AppearanceCell.ForeColor = System.Drawing.Color.Red;
+            this.gridColumn6.AppearanceCell.Options.UseFont = true;
+            this.gridColumn6.AppearanceCell.Options.UseForeColor = true;
+            this.gridColumn6.Caption = "RELEASE DATE";
+            this.gridColumn6.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.gridColumn6.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.gridColumn6.FieldName = "release_date";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 5;
+            this.gridColumn6.Width = 132;
+            // 
+            // gridColumn7
+            // 
+            this.gridColumn7.AppearanceCell.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.gridColumn7.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.gridColumn7.AppearanceCell.Options.UseFont = true;
+            this.gridColumn7.AppearanceCell.Options.UseForeColor = true;
+            this.gridColumn7.Caption = "STATUS";
+            this.gridColumn7.FieldName = "loaded";
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.Visible = true;
+            this.gridColumn7.VisibleIndex = 7;
+            this.gridColumn7.Width = 55;
+            // 
+            // gridColumn8
+            // 
+            this.gridColumn8.Caption = "LASTUPDATE";
+            this.gridColumn8.DisplayFormat.FormatString = "dd/MM/yyyy HH:mm:ss";
+            this.gridColumn8.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.gridColumn8.FieldName = "updated_at";
+            this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.Visible = true;
+            this.gridColumn8.VisibleIndex = 8;
+            this.gridColumn8.Width = 222;
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.AppearanceCell.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.gridColumn9.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.gridColumn9.AppearanceCell.Options.UseFont = true;
+            this.gridColumn9.AppearanceCell.Options.UseForeColor = true;
+            this.gridColumn9.Caption = "PL COUNT";
+            this.gridColumn9.DisplayFormat.FormatString = "{0:n0}";
+            this.gridColumn9.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridColumn9.FieldName = "pl_count";
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 6;
             // 
             // Root
             // 
@@ -207,6 +370,10 @@ namespace ContainerApp
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
+            // splashScreenManager1
+            // 
+            this.splashScreenManager1.ClosingDelay = 500;
+            // 
             // frmContainer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -220,6 +387,8 @@ namespace ContainerApp
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.StatusBar = this.ribbonStatusBar;
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
@@ -248,5 +417,18 @@ namespace ContainerApp
         private DevExpress.XtraGrid.Views.Grid.GridView gridView;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
+        private DevExpress.XtraBars.BarEditItem bbiEtd;
+        private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
     }
 }
