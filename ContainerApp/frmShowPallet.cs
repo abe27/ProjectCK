@@ -102,7 +102,9 @@ namespace ContainerApp
         {
             splashScreenManager1.ShowWaitForm();
             gridContainerPlControl.DataSource = null;
-            gridContainerPlControl.DataSource = this.__obj.get_detail;
+
+            ContainerResponse __list = ContainerService.Get(this.__obj.release_date);
+            gridContainerPlControl.DataSource = __list.data.data;
             splashScreenManager1.CloseWaitForm();
         }
 
