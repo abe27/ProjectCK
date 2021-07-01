@@ -1,6 +1,7 @@
 ﻿using ContainerApp;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
+using GediApp;
 using InvoiceApp;
 using OrderApp;
 using ReceiveApp;
@@ -95,12 +96,14 @@ namespace CloudApp
 
         private void bbiDownload_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            frmDownloadGedi frm = new frmDownloadGedi();
+            frm.ShowDialog();
         }
 
         private void bbiUpload_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            frmUploadGedi frm = new frmUploadGedi();
+            frm.ShowDialog();
         }
     }
 }

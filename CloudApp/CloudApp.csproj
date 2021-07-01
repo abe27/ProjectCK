@@ -236,6 +236,10 @@
       <Project>{5137BEEF-19A7-424E-8E11-E06ABF474AF9}</Project>
       <Name>ContainerApp</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GediApp\GediApp.csproj">
+      <Project>{45C5B343-D108-4C1D-A204-6274FE8B1690}</Project>
+      <Name>GediApp</Name>
+    </ProjectReference>
     <ProjectReference Include="..\InvoiceApp\InvoiceApp.csproj">
       <Project>{00C62CE3-6014-4B63-8A5A-763377FCF4D1}</Project>
       <Name>InvoiceApp</Name>
