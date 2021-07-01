@@ -29,6 +29,7 @@ namespace GediApp
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiPrintPreview = new DevExpress.XtraBars.BarButtonItem();
             this.bsiRecordsCount = new DevExpress.XtraBars.BarStaticItem();
@@ -39,6 +40,7 @@ namespace GediApp
             this.bbiEtd = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.bbiDownload = new DevExpress.XtraBars.BarCheckItem();
+            this.bbiReDownload = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -56,6 +58,7 @@ namespace GediApp
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::GediApp.WaitForm1), true, true);
+            this.ppGediMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
@@ -65,6 +68,7 @@ namespace GediApp
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ppGediMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl
@@ -80,9 +84,10 @@ namespace GediApp
             this.bbiDelete,
             this.bbiRefresh,
             this.bbiEtd,
-            this.bbiDownload});
+            this.bbiDownload,
+            this.bbiReDownload});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 22;
+            this.ribbonControl.MaxItemId = 23;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -165,6 +170,14 @@ namespace GediApp
             this.bbiDownload.Name = "bbiDownload";
             this.bbiDownload.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiDownload_CheckedChanged);
             // 
+            // bbiReDownload
+            // 
+            this.bbiReDownload.Caption = "Re-Download";
+            this.bbiReDownload.Id = 22;
+            this.bbiReDownload.ImageOptions.SvgImage = global::GediApp.Properties.Resources.next;
+            this.bbiReDownload.Name = "bbiReDownload";
+            this.bbiReDownload.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiReDownload_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -222,6 +235,7 @@ namespace GediApp
             // 
             // gridControl
             // 
+            this.gridControl.Cursor = System.Windows.Forms.Cursors.Hand;
             this.gridControl.Location = new System.Drawing.Point(12, 12);
             this.gridControl.MainView = this.gridView;
             this.gridControl.MenuManager = this.ribbonControl;
@@ -247,6 +261,7 @@ namespace GediApp
             this.gridView.OptionsBehavior.ReadOnly = true;
             this.gridView.OptionsView.ShowFooter = true;
             this.gridView.OptionsView.ShowGroupPanel = false;
+            this.gridView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.gridView_MouseUp);
             // 
             // gridColumn1
             // 
@@ -341,6 +356,13 @@ namespace GediApp
             // 
             this.splashScreenManager1.ClosingDelay = 500;
             // 
+            // ppGediMenu
+            // 
+            this.ppGediMenu.ItemLinks.Add(this.bbiReDownload);
+            this.ppGediMenu.ItemLinks.Add(this.bbiRefresh, true);
+            this.ppGediMenu.Name = "ppGediMenu";
+            this.ppGediMenu.Ribbon = this.ribbonControl;
+            // 
             // frmDownloadGedi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -363,6 +385,7 @@ namespace GediApp
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ppGediMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -396,5 +419,7 @@ namespace GediApp
         private DevExpress.XtraBars.BarCheckItem bbiDownload;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
+        private DevExpress.XtraBars.BarButtonItem bbiReDownload;
+        private DevExpress.XtraBars.PopupMenu ppGediMenu;
     }
 }

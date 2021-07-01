@@ -63,5 +63,45 @@ namespace GediApp
         {
             Reload();
         }
+
+        private void bbiReDownload_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            splashScreenManager1.ShowWaitForm();
+            BatchFileData obj = gridView.GetFocusedRow() as BatchFileData;
+            bool x = GediService.Update(obj.id, "0", "1");
+            if (x is false)
+            {
+                splashScreenManager1.CloseWaitForm();
+                MetroFramework.MetroMessageBox.Show(this, "เกิดข้อผิดพลาดกรุณาติดต่อผู้ดูแลระบบด้วย!", "ข้อความแจ้งเตือน", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try
+            {
+                splashScreenManager1.CloseWaitForm();
+            }
+            catch (Exception)
+            {
+            }
+
+            MetroFramework.MetroMessageBox.Show(this, "บันทึกข้อมูลเสร็จแล้ว!", "ข้อความแจ้งเตือน", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Reload();
+        }
+
+        private void gridView_MouseUp(object sender, MouseEventArgs e)
+        {
+            bbiReDownload.Caption = $"Re-Download";
+            bbiReDownload.Enabled = false;
+            if (e.Button.ToString() == "Right")
+            {
+                BatchFileData obj = gridView.GetFocusedRow() as BatchFileData;
+                if (obj != null)
+                {
+                    bbiReDownload.Enabled = true;
+                    bbiReDownload.Caption = $"Re-Download {obj.batch_file.ToString().Substring(0, 20)}....";
+                    ppGediMenu.ShowPopup(new Point(MousePosition.X, MousePosition.Y));
+                }
+            }
+        }
     }
 }

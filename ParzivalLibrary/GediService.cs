@@ -27,5 +27,24 @@ namespace ParzivalLibrary
             }
             return obj;
         }
+
+        public static bool Update(string id, string is_download, string is_status)
+        {
+            var client = new RestClient($"{StaticVar.__rest_api}/api/v1/gedi/download/{id}/update");
+            client.Timeout = -1;
+            var request = new RestRequest(Method.PUT);
+            request.AddHeader("Authorization", $"Bearer {StaticVar.__authen.token}"); 
+            request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+            request.AddParameter("is_download", is_download);
+            request.AddParameter("is_status", is_status);
+            IRestResponse response = client.Execute(request);
+            Console.WriteLine(response.Content);
+            bool x = false;
+            if (response.StatusCode.ToString() == "OK")
+            {
+                x = true;
+            }
+            return x;
+        }
     }
 }
