@@ -103,7 +103,13 @@ namespace ContainerApp
             splashScreenManager1.ShowWaitForm();
             gridContainerPlControl.DataSource = null;
 
-            ContainerResponse __list = ContainerService.Get(this.__obj.release_date);
+            ContainerDetailResponse __list = ContainerService.GetDetail(this.__obj.id);
+            int x = 1;
+            __list.data.data.ForEach(i => {
+                i.seq = x;
+                i.get_pallet_id.pallet_no = $"1{i.get_pallet_id.pallet_prefix}{int.Parse(i.get_pallet_id.pallet_seq.ToString()).ToString("D3")}";
+                x++;
+            });
             gridContainerPlControl.DataSource = __list.data.data;
             splashScreenManager1.CloseWaitForm();
         }
@@ -122,6 +128,11 @@ namespace ContainerApp
             if (x)
             {
                 splashScreenManager1.CloseWaitForm();
+                // delete after remove
+                gridPalletView.BeginUpdate();
+                gridPalletView.DeleteSelectedRows();
+                gridPalletView.EndUpdate();
+
                 ReloadContainer();
                 return;
             }
@@ -130,7 +141,29 @@ namespace ContainerApp
 
         private void bbiDelPl_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            ContianerDetailData obj = gridContainerPlView.GetFocusedRow() as ContianerDetailData;
+            DialogResult r = MetroFramework.MetroMessageBox.Show(this, $"คุณต้องการที่จะลบข้อมูล {obj.get_pallet_id.pallet_no} ใช่หรือไม่?", "ยืนยันคำสั่ง", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (r == DialogResult.Yes)
+            {
+                splashScreenManager1.ShowWaitForm();
+                bool x = ContainerService.DeleteDetail(obj.id);
+                if (x)
+                {
+                    splashScreenManager1.CloseWaitForm();
+                    ReloadContainer();
+                    return;
+                }
+            }
 
+            try
+            {
+                splashScreenManager1.CloseWaitForm();
+            }
+            catch (Exception)
+            {
+            }
+
+            MetroFramework.MetroMessageBox.Show(this, "เกิดข้อผิดพลาดระหว่างการบันทึกข้อมูล", "ข้อความแจ้งเตือน", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void gridContainerPlView_MouseUp(object sender, MouseEventArgs e)
@@ -138,12 +171,20 @@ namespace ContainerApp
             if (e.Button.ToString() == "Right")
             {
                 ContianerDetailData obj = gridContainerPlView.GetFocusedRow() as ContianerDetailData;
+                bbiDelPl.Enabled = false;
                 if (obj != null)
                 {
-                    //bbiDelPl.Caption = $"Delete {obj.get_pallet_id}";
+                    bbiDelPl.Enabled = true;
+                    bbiDelPl.Caption = $"Delete {obj.get_pallet_id.pallet_no}";
                     ppContainerMenu.ShowPopup(new Point(MousePosition.X, MousePosition.Y));
                 }
             }
+        }
+
+        private void bbiReport_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            frmContainerView frm = new frmContainerView(this.__obj);
+            frm.ShowDialog();
         }
     }
 }

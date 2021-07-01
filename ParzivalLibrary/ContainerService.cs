@@ -26,6 +26,23 @@ namespace ParzivalLibrary
             }
             return x;
         }
+
+        public static ContainerDetailResponse GetDetail(string id)
+        {
+            var client = new RestClient($"{StaticVar.__rest_api}/api/v1/container/{id}/show");
+            client.Timeout = -1;
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("Authorization", $"Bearer {StaticVar.__authen.token}");
+            IRestResponse response = client.Execute(request);
+            Console.WriteLine(response.Content);
+            ContainerDetailResponse x = new ContainerDetailResponse();
+            if (response.StatusCode.ToString() == "OK")
+            {
+                x = JsonConvert.DeserializeObject<ContainerDetailResponse>(response.Content);
+            }
+            return x;
+        }
+
         public static bool Create(ContainerData __body)
         {
             var client = new RestClient($"{StaticVar.__rest_api}/api/v1/container/store");
@@ -83,6 +100,23 @@ namespace ParzivalLibrary
             request.AddParameter("pallet_id", __body.pallet_id);
             request.AddParameter("loaded", __body.loaded);
             request.AddParameter("sync", __body.sync);
+            IRestResponse response = client.Execute(request);
+            Console.WriteLine(response.Content);
+            bool x = false;
+            if (response.StatusCode.ToString() == "OK")
+            {
+                x = true;
+            }
+            return x;
+        }
+
+        public static bool DeleteDetail(string id)
+        {
+            var client = new RestClient($"{StaticVar.__rest_api}/api/v1/container/{id}/delete");
+            client.Timeout = -1;
+            var request = new RestRequest(Method.DELETE);
+            request.AddHeader("Authorization", $"Bearer {StaticVar.__authen.token}");
+            request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
             IRestResponse response = client.Execute(request);
             Console.WriteLine(response.Content);
             bool x = false;

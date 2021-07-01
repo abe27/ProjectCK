@@ -159,7 +159,10 @@ namespace ContainerApp
             // gridColumn1
             // 
             this.gridColumn1.Caption = "#";
+            this.gridColumn1.FieldName = "seq";
             this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "seq", "{0}")});
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
             this.gridColumn1.Width = 31;
@@ -171,6 +174,8 @@ namespace ContainerApp
             this.gridColumn2.AppearanceCell.Options.UseFont = true;
             this.gridColumn2.AppearanceCell.Options.UseForeColor = true;
             this.gridColumn2.Caption = "CUSTNAME";
+            this.gridColumn2.FieldName = "get_pallet_id.get_invoice_id.get_order_id.get_customer_id.get_customer_id.cust_na" +
+    "me";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
@@ -179,6 +184,9 @@ namespace ContainerApp
             // gridColumn3
             // 
             this.gridColumn3.Caption = "ETD.";
+            this.gridColumn3.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.gridColumn3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.gridColumn3.FieldName = "get_pallet_id.get_invoice_id.get_order_id.etd_date";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
@@ -191,6 +199,7 @@ namespace ContainerApp
             this.gridColumn4.AppearanceCell.Options.UseFont = true;
             this.gridColumn4.AppearanceCell.Options.UseForeColor = true;
             this.gridColumn4.Caption = "INVOICENO.";
+            this.gridColumn4.FieldName = "get_pallet_id.get_invoice_id.invoice_no";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 3;
@@ -203,6 +212,7 @@ namespace ContainerApp
             this.gridColumn5.AppearanceCell.Options.UseFont = true;
             this.gridColumn5.AppearanceCell.Options.UseForeColor = true;
             this.gridColumn5.Caption = "PALLET/BOX NO.";
+            this.gridColumn5.FieldName = "get_pallet_id.pallet_no";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 4;
@@ -215,6 +225,7 @@ namespace ContainerApp
             this.gridColumn6.AppearanceCell.Options.UseFont = true;
             this.gridColumn6.AppearanceCell.Options.UseForeColor = true;
             this.gridColumn6.Caption = "PALLET OUT";
+            this.gridColumn6.FieldName = "get_pallet_id.pallet_out";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 5;
@@ -223,6 +234,7 @@ namespace ContainerApp
             // gridColumn7
             // 
             this.gridColumn7.Caption = "STATUS";
+            this.gridColumn7.FieldName = "loaded";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 6;
@@ -231,6 +243,9 @@ namespace ContainerApp
             // gridColumn8
             // 
             this.gridColumn8.Caption = "LASTUPDATE";
+            this.gridColumn8.DisplayFormat.FormatString = "dd/MM/yyyy HH:mm:ss";
+            this.gridColumn8.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.gridColumn8.FieldName = "updated_at";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 7;
@@ -336,6 +351,7 @@ namespace ContainerApp
             this.bbiPrintReport.Id = 13;
             this.bbiPrintReport.ImageOptions.SvgImage = global::ContainerApp.Properties.Resources.print;
             this.bbiPrintReport.Name = "bbiPrintReport";
+            this.bbiPrintReport.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiPrintReport_ItemClick);
             // 
             // mainRibbonPage
             // 

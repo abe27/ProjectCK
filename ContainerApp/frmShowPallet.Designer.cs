@@ -80,6 +80,8 @@ namespace ContainerApp
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::ContainerApp.WaitForm1), true, true);
             this.ppAddToContainer = new DevExpress.XtraBars.PopupMenu(this.components);
             this.ppContainerMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.bbiReport = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
@@ -173,6 +175,7 @@ namespace ContainerApp
             this.gridColumn13.AppearanceCell.Options.UseFont = true;
             this.gridColumn13.AppearanceCell.Options.UseForeColor = true;
             this.gridColumn13.Caption = "INVOICENO.";
+            this.gridColumn13.FieldName = "get_pallet_id.get_invoice_id.invoice_no";
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.Visible = true;
             this.gridColumn13.VisibleIndex = 1;
@@ -185,6 +188,7 @@ namespace ContainerApp
             this.gridColumn14.AppearanceCell.Options.UseFont = true;
             this.gridColumn14.AppearanceCell.Options.UseForeColor = true;
             this.gridColumn14.Caption = "PALLETNO.";
+            this.gridColumn14.FieldName = "get_pallet_id.pallet_no";
             this.gridColumn14.Name = "gridColumn14";
             this.gridColumn14.Visible = true;
             this.gridColumn14.VisibleIndex = 2;
@@ -195,6 +199,7 @@ namespace ContainerApp
             this.gridColumn15.Caption = "LASTUPDATE";
             this.gridColumn15.DisplayFormat.FormatString = "dd/MM/yyyy HH:mm:ss";
             this.gridColumn15.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.gridColumn15.FieldName = "updated_at";
             this.gridColumn15.Name = "gridColumn15";
             this.gridColumn15.Visible = true;
             this.gridColumn15.VisibleIndex = 3;
@@ -216,9 +221,10 @@ namespace ContainerApp
             this.bbiRefresh,
             this.bbiFactory,
             this.bbiSetToContainer,
-            this.bbiDelPl});
+            this.bbiDelPl,
+            this.bbiReport});
             this.mainRibbonControl.Location = new System.Drawing.Point(0, 0);
-            this.mainRibbonControl.MaxItemId = 15;
+            this.mainRibbonControl.MaxItemId = 16;
             this.mainRibbonControl.Name = "mainRibbonControl";
             this.mainRibbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.mainRibbonPage});
@@ -336,7 +342,8 @@ namespace ContainerApp
             this.mainRibbonPage.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.mainRibbonPageGroup,
             this.ribbonPageGroup2,
-            this.ribbonPageGroup1});
+            this.ribbonPageGroup1,
+            this.ribbonPageGroup3});
             this.mainRibbonPage.MergeOrder = 0;
             this.mainRibbonPage.Name = "mainRibbonPage";
             this.mainRibbonPage.Text = "Home";
@@ -621,8 +628,23 @@ namespace ContainerApp
             // ppContainerMenu
             // 
             this.ppContainerMenu.ItemLinks.Add(this.bbiDelPl);
+            this.ppContainerMenu.ItemLinks.Add(this.bbiRefresh, true);
             this.ppContainerMenu.Name = "ppContainerMenu";
             this.ppContainerMenu.Ribbon = this.mainRibbonControl;
+            // 
+            // ribbonPageGroup3
+            // 
+            this.ribbonPageGroup3.ItemLinks.Add(this.bbiReport);
+            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
+            this.ribbonPageGroup3.Text = "ribbonPageGroup3";
+            // 
+            // bbiReport
+            // 
+            this.bbiReport.Caption = "Print Report";
+            this.bbiReport.Id = 15;
+            this.bbiReport.ImageOptions.SvgImage = global::ContainerApp.Properties.Resources.print1;
+            this.bbiReport.Name = "bbiReport";
+            this.bbiReport.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiReport_ItemClick);
             // 
             // frmShowPallet
             // 
@@ -716,5 +738,7 @@ namespace ContainerApp
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
         private DevExpress.XtraBars.BarButtonItem bbiDelPl;
         private DevExpress.XtraBars.PopupMenu ppContainerMenu;
+        private DevExpress.XtraBars.BarButtonItem bbiReport;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
     }
 }

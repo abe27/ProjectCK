@@ -103,9 +103,37 @@ namespace ContainerApp
         private void gridView_DoubleClick(object sender, EventArgs e)
         {
             ContainerData obj = gridView.GetFocusedRow() as ContainerData;
-            frmContainerDetail frm = new frmContainerDetail(obj);
-            frm.ShowDialog();
-            Reload();
+            if (obj != null)
+            {
+                frmContainerDetail frm = new frmContainerDetail(obj);
+                frm.ShowDialog();
+                Reload();
+            }
+        }
+
+        private void bbiPrintReport_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ContainerData obj = gridView.GetFocusedRow() as ContainerData;
+            if (obj != null)
+            {
+                frmContainerView frm = new frmContainerView(obj);
+                frm.ShowDialog();
+            }
+        }
+
+        private void gridView_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button.ToString() == "Right")
+            {
+                ContainerData obj = gridView.GetFocusedRow() as ContainerData;
+                bbiPrintReport.Enabled = false;
+                if (obj != null)
+                {
+                    bbiPrintReport.Enabled = true;
+                    bbiPrintReport.Caption = $"Print {obj.container_no} Report";
+                    ppPrintMenu.ShowPopup(new Point(MousePosition.X, MousePosition.Y));
+                }
+            }
         }
     }
 }

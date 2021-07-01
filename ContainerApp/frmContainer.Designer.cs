@@ -29,6 +29,7 @@ namespace ContainerApp
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiPrintPreview = new DevExpress.XtraBars.BarButtonItem();
             this.bsiRecordsCount = new DevExpress.XtraBars.BarStaticItem();
@@ -38,6 +39,7 @@ namespace ContainerApp
             this.bbiRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.bbiEtd = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
+            this.bbiPrintReport = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -58,6 +60,7 @@ namespace ContainerApp
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::ContainerApp.WaitForm1), true, true);
+            this.ppPrintMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
@@ -67,6 +70,7 @@ namespace ContainerApp
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ppPrintMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl
@@ -81,9 +85,10 @@ namespace ContainerApp
             this.bbiEdit,
             this.bbiDelete,
             this.bbiRefresh,
-            this.bbiEtd});
+            this.bbiEtd,
+            this.bbiPrintReport});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 21;
+            this.ribbonControl.MaxItemId = 22;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -155,6 +160,14 @@ namespace ContainerApp
             this.repositoryItemDateEdit1.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
+            // 
+            // bbiPrintReport
+            // 
+            this.bbiPrintReport.Caption = "Print Report";
+            this.bbiPrintReport.Id = 21;
+            this.bbiPrintReport.ImageOptions.SvgImage = global::ContainerApp.Properties.Resources.print2;
+            this.bbiPrintReport.Name = "bbiPrintReport";
+            this.bbiPrintReport.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiPrintReport_ItemClick);
             // 
             // ribbonPage1
             // 
@@ -241,6 +254,7 @@ namespace ContainerApp
             this.gridView.OptionsBehavior.ReadOnly = true;
             this.gridView.OptionsView.ShowFooter = true;
             this.gridView.OptionsView.ShowGroupPanel = false;
+            this.gridView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.gridView_MouseUp);
             this.gridView.DoubleClick += new System.EventHandler(this.gridView_DoubleClick);
             // 
             // gridColumn1
@@ -374,6 +388,13 @@ namespace ContainerApp
             // 
             this.splashScreenManager1.ClosingDelay = 500;
             // 
+            // ppPrintMenu
+            // 
+            this.ppPrintMenu.ItemLinks.Add(this.bbiPrintReport);
+            this.ppPrintMenu.ItemLinks.Add(this.bbiRefresh, true);
+            this.ppPrintMenu.Name = "ppPrintMenu";
+            this.ppPrintMenu.Ribbon = this.ribbonControl;
+            // 
             // frmContainer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -395,6 +416,7 @@ namespace ContainerApp
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ppPrintMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -430,5 +452,7 @@ namespace ContainerApp
         private DevExpress.XtraBars.BarEditItem bbiEtd;
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
+        private DevExpress.XtraBars.BarButtonItem bbiPrintReport;
+        private DevExpress.XtraBars.PopupMenu ppPrintMenu;
     }
 }
