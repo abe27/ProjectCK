@@ -13,7 +13,7 @@ namespace ParzivalLibrary
     {
         public static BatchFileResponse Get(string is_status, DateTime dateTime)
         {
-            var client = new RestClient($"{StaticVar.__rest_api}/api/v1/gedi/download/{is_status}/{dateTime.ToString("yyyyMMdd")}/get");
+            var client = new RestClient($"{StaticVar.__rest_api}/api/v1/batch/download/{is_status}/{dateTime.ToString("yyyyMMdd")}/get");
             client.Timeout = -1;
             var request = new RestRequest(Method.GET);
             request.AddHeader("Authorization", $"Bearer {StaticVar.__authen.token}");
@@ -30,7 +30,7 @@ namespace ParzivalLibrary
 
         public static bool Update(string id, string is_download, string is_status)
         {
-            var client = new RestClient($"{StaticVar.__rest_api}/api/v1/gedi/download/{id}/update");
+            var client = new RestClient($"{StaticVar.__rest_api}/api/v1/batch/download/{id}/update");
             client.Timeout = -1;
             var request = new RestRequest(Method.PUT);
             request.AddHeader("Authorization", $"Bearer {StaticVar.__authen.token}"); 
