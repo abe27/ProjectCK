@@ -29,6 +29,7 @@ namespace CloudApp
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
             DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
             DevExpress.XtraCharts.XYDiagram xyDiagram2 = new DevExpress.XtraCharts.XYDiagram();
@@ -39,7 +40,7 @@ namespace CloudApp
             DevExpress.XtraCharts.Series series4 = new DevExpress.XtraCharts.Series();
             DevExpress.XtraCharts.PieSeriesView pieSeriesView2 = new DevExpress.XtraCharts.PieSeriesView();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.applicationMenu1 = new DevExpress.XtraBars.Ribbon.ApplicationMenu();
+            this.applicationMenu1 = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
             this.bbiPrintPreview = new DevExpress.XtraBars.BarButtonItem();
             this.bsiRecordsCount = new DevExpress.XtraBars.BarStaticItem();
             this.bbiNew = new DevExpress.XtraBars.BarButtonItem();
@@ -49,11 +50,11 @@ namespace CloudApp
             this.skinDropDownButtonItem1 = new DevExpress.XtraBars.SkinDropDownButtonItem();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.ppReceive = new DevExpress.XtraBars.PopupMenu();
+            this.ppReceive = new DevExpress.XtraBars.PopupMenu(this.components);
             this.bbiReceiveResult = new DevExpress.XtraBars.BarButtonItem();
             this.bbiAddIcam = new DevExpress.XtraBars.BarButtonItem();
             this.bbiOrder = new DevExpress.XtraBars.BarButtonItem();
-            this.ppOrder = new DevExpress.XtraBars.PopupMenu();
+            this.ppOrder = new DevExpress.XtraBars.PopupMenu(this.components);
             this.bbiOrderPlaning = new DevExpress.XtraBars.BarButtonItem();
             this.bbiOrderEnties = new DevExpress.XtraBars.BarButtonItem();
             this.bbiCheckOrder = new DevExpress.XtraBars.BarButtonItem();
@@ -65,7 +66,7 @@ namespace CloudApp
             this.bbiQaIssueType = new DevExpress.XtraBars.BarButtonItem();
             this.skinPaletteDropDownButtonItem1 = new DevExpress.XtraBars.SkinPaletteDropDownButtonItem();
             this.bbiGedi = new DevExpress.XtraBars.BarButtonItem();
-            this.ppGedi = new DevExpress.XtraBars.PopupMenu();
+            this.ppGedi = new DevExpress.XtraBars.PopupMenu(this.components);
             this.bbiDownload = new DevExpress.XtraBars.BarButtonItem();
             this.bbiUpload = new DevExpress.XtraBars.BarButtonItem();
             this.bbiSection = new DevExpress.XtraBars.BarButtonItem();
@@ -74,7 +75,7 @@ namespace CloudApp
             this.bbiFollowUp = new DevExpress.XtraBars.BarButtonItem();
             this.bbiContainerRequest = new DevExpress.XtraBars.BarButtonItem();
             this.bbiMasterData = new DevExpress.XtraBars.BarButtonItem();
-            this.ppMaster = new DevExpress.XtraBars.PopupMenu();
+            this.ppMaster = new DevExpress.XtraBars.PopupMenu(this.components);
             this.bbiDepartment = new DevExpress.XtraBars.BarButtonItem();
             this.bbiZone = new DevExpress.XtraBars.BarButtonItem();
             this.bbiShelve = new DevExpress.XtraBars.BarButtonItem();
@@ -84,9 +85,9 @@ namespace CloudApp
             this.bbiShipment = new DevExpress.XtraBars.BarButtonItem();
             this.bbiReviseType = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
-            this.ppBatch = new DevExpress.XtraBars.PopupMenu();
+            this.ppBatch = new DevExpress.XtraBars.PopupMenu(this.components);
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
-            this.ppMember = new DevExpress.XtraBars.PopupMenu();
+            this.ppMember = new DevExpress.XtraBars.PopupMenu(this.components);
             this.bbiUser = new DevExpress.XtraBars.BarButtonItem();
             this.bbiTerritory = new DevExpress.XtraBars.BarButtonItem();
             this.bbiQa = new DevExpress.XtraBars.BarButtonItem();
@@ -98,9 +99,9 @@ namespace CloudApp
             this.bbiCustomer = new DevExpress.XtraBars.BarButtonItem();
             this.bbiAddressCustomer = new DevExpress.XtraBars.BarButtonItem();
             this.bbiPart = new DevExpress.XtraBars.BarButtonItem();
-            this.ppPart = new DevExpress.XtraBars.PopupMenu();
+            this.ppPart = new DevExpress.XtraBars.PopupMenu(this.components);
             this.bbiCustomerList = new DevExpress.XtraBars.BarButtonItem();
-            this.ppCustomer = new DevExpress.XtraBars.PopupMenu();
+            this.ppCustomer = new DevExpress.XtraBars.PopupMenu(this.components);
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
