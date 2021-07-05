@@ -235,7 +235,7 @@ namespace CloudApp
             this.ribbonPage5});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.OfficeUniversal;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl.Size = new System.Drawing.Size(1024, 92);
+            this.ribbonControl.Size = new System.Drawing.Size(1024, 94);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
@@ -868,10 +868,10 @@ namespace CloudApp
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.ItemLinks.Add(this.bsiRecordsCount);
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 676);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 674);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1024, 24);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1024, 26);
             // 
             // splashScreenManager1
             // 
@@ -883,10 +883,10 @@ namespace CloudApp
             this.layoutControl1.Controls.Add(this.chartControl3);
             this.layoutControl1.Controls.Add(this.chartControl1);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl1.Location = new System.Drawing.Point(0, 92);
+            this.layoutControl1.Location = new System.Drawing.Point(0, 94);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(1024, 584);
+            this.layoutControl1.Size = new System.Drawing.Size(1024, 580);
             this.layoutControl1.TabIndex = 4;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -896,12 +896,12 @@ namespace CloudApp
             xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
             this.chartControl2.Diagram = xyDiagram1;
             this.chartControl2.Legend.Name = "Default Legend";
-            this.chartControl2.Location = new System.Drawing.Point(12, 379);
+            this.chartControl2.Location = new System.Drawing.Point(12, 376);
             this.chartControl2.Name = "chartControl2";
             series1.Name = "Loading";
             this.chartControl2.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series1};
-            this.chartControl2.Size = new System.Drawing.Size(1000, 193);
+            this.chartControl2.Size = new System.Drawing.Size(1000, 192);
             this.chartControl2.TabIndex = 7;
             // 
             // chartControl3
@@ -910,13 +910,13 @@ namespace CloudApp
             xyDiagram2.AxisY.VisibleInPanesSerializable = "-1";
             this.chartControl3.Diagram = xyDiagram2;
             this.chartControl3.Legend.Name = "Default Legend";
-            this.chartControl3.Location = new System.Drawing.Point(12, 237);
+            this.chartControl3.Location = new System.Drawing.Point(12, 235);
             this.chartControl3.Name = "chartControl3";
             series2.Name = "Rec.";
             series2.View = fullStackedBarSeriesView1;
             this.chartControl3.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series2};
-            this.chartControl3.Size = new System.Drawing.Size(1000, 138);
+            this.chartControl3.Size = new System.Drawing.Size(1000, 137);
             this.chartControl3.TabIndex = 6;
             // 
             // chartControl1
@@ -931,7 +931,7 @@ namespace CloudApp
             this.chartControl1.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series3,
         series4};
-            this.chartControl1.Size = new System.Drawing.Size(1000, 221);
+            this.chartControl1.Size = new System.Drawing.Size(1000, 219);
             this.chartControl1.TabIndex = 4;
             // 
             // Root
@@ -943,7 +943,7 @@ namespace CloudApp
             this.layoutControlItem3,
             this.layoutControlItem2});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(1024, 584);
+            this.Root.Size = new System.Drawing.Size(1024, 580);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem1
@@ -951,25 +951,25 @@ namespace CloudApp
             this.layoutControlItem1.Control = this.chartControl1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1004, 225);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1004, 223);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.chartControl3;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 225);
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 223);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(1004, 142);
+            this.layoutControlItem3.Size = new System.Drawing.Size(1004, 141);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.chartControl2;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 367);
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 364);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(1004, 197);
+            this.layoutControlItem2.Size = new System.Drawing.Size(1004, 196);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
