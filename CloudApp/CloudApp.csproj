@@ -13,7 +13,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>true</IsWebBootstrapper>
-    <PublishUrl>ftp://192.168.101.187/files/xpw/</PublishUrl>
+    <PublishUrl>ftp://192.168.101.187/files/</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -23,7 +23,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>https://192.168.101.187/files/xpw/</InstallUrl>
+    <InstallUrl>https://192.168.101.187/files/</InstallUrl>
     <SupportUrl>https://github.com/abe27/ProjectCK</SupportUrl>
     <ErrorReportUrl>https://github.com/abe27/ProjectCK/issues</ErrorReportUrl>
     <TargetCulture>th-TH</TargetCulture>
@@ -146,12 +146,6 @@
     <Compile Include="WaitForm1.Designer.cs">
       <DependentUpon>WaitForm1.cs</DependentUpon>
     </Compile>
-    <Compile Include="WaitForm2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WaitForm2.Designer.cs">
-      <DependentUpon>WaitForm2.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="frmAuth.resx">
       <DependentUpon>frmAuth.cs</DependentUpon>
     </EmbeddedResource>
@@ -171,9 +165,6 @@
     </Compile>
     <EmbeddedResource Include="WaitForm1.resx">
       <DependentUpon>WaitForm1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WaitForm2.resx">
-      <DependentUpon>WaitForm2.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="CloudApp_TemporaryKey.pfx" />
     <None Include="packages.config" />

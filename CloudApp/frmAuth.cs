@@ -45,14 +45,14 @@ namespace CloudApp
                 MetroFramework.MetroMessageBox.Show(this, "กรุณาระบุรหัสผ่านด้วย\nPlease enter your password.", "ข้อความผิดพลาด", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else {
-                splashScreenManager1.ShowWaitForm();
+                splLoading.ShowWaitForm();
                 AuthData __login = ApiService.GetToken(__txt_email, __txt_password);
                 if (__login.success)
                 {
                     // hide auth form
                     this.Hide();
                     this.ShowIcon = false;
-                    splashScreenManager1.CloseWaitForm();
+                    splLoading.CloseWaitForm();
                     MetroFramework.MetroMessageBox.Show(this, "ยินดีต้อนรับเข้าสู่ 'โปรแกรมระบบจัดการคลังสินค้า'", "ข้อความแจ้งเตือน", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     // call main form
                     frmMain frm = new frmMain();
@@ -64,7 +64,7 @@ namespace CloudApp
                     this.ShowIcon = true;
                 }
                 else {
-                    splashScreenManager1.CloseWaitForm();
+                    splLoading.CloseWaitForm();
                     MetroFramework.MetroMessageBox.Show(this, "ไม่พบข้อมูลผู้ใช้งาน\nNot found data.", "ข้อความผิดพลาด", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -84,7 +84,7 @@ namespace CloudApp
 
         private void bbiSwitchTest_CheckedChanged(object sender, EventArgs e)
         {
-            splashScreenManager1.ShowWaitForm();
+            splLoading.ShowWaitForm();
             StaticVar.__rest_api = "http://127.0.0.1:8000";
             if (bbiSwitchTest.Checked)
             {
@@ -93,7 +93,7 @@ namespace CloudApp
 
             // load user list
             LoadUser();
-            splashScreenManager1.CloseWaitForm();
+            splLoading.CloseWaitForm();
         }
     }
 }

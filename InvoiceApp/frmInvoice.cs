@@ -30,20 +30,20 @@ namespace InvoiceApp
 
         void Reload()
         {
-            splashScreenManager1.ShowWaitForm();
+            splLoading.ShowWaitForm();
             InvoiceResponse dataSource = GetDataSource();
             gridControl.DataSource = dataSource.data.data;
             bsiRecordsCount.Caption = "RECORDS : " + dataSource.data.data.Count;
-            splashScreenManager1.CloseWaitForm();
+            splLoading.CloseWaitForm();
         }
 
         private void bbiRefresh_ItemClick(object sender, ItemClickEventArgs e)
         {
-            splashScreenManager1.ShowWaitForm();
+            splLoading.ShowWaitForm();
             InvoiceResponse dataSource = InvoiceService.Get(null, null, null);
             gridControl.DataSource = dataSource.data.data;
             bsiRecordsCount.Caption = "RECORDS : " + dataSource.data.data.Count;
-            splashScreenManager1.CloseWaitForm();
+            splLoading.CloseWaitForm();
         }
 
         private void gridView_DoubleClick(object sender, EventArgs e)
@@ -67,6 +67,20 @@ namespace InvoiceApp
         private void bbiSearch_ItemClick(object sender, ItemClickEventArgs e)
         {
             Reload();
+        }
+
+        private void gridView_MouseUp(object sender, MouseEventArgs e)
+        {
+            bbiDelete.Caption = $"Delete";
+            bbiDelete.Enabled = false;
+
+            InvoiceData obj = gridView.GetFocusedRow() as InvoiceData;
+            if (e.Button.ToString() == "Right")
+            {
+                bbiDelete.Enabled = true;
+                bbiDelete.Caption = $"Delete {obj.invoice_no}";
+                ppInvoice.ShowPopup(new Point(MousePosition.X, MousePosition.Y));
+            }
         }
     }
 }

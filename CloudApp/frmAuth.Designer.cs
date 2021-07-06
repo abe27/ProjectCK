@@ -38,9 +38,9 @@ namespace CloudApp
             this.bbiPass = new MetroFramework.Controls.MetroTextBox();
             this.txtusername = new MetroFramework.Controls.MetroTextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::CloudApp.WaitForm1), true, true);
             this.bbiSwitchTest = new MetroFramework.Controls.MetroToggle();
             this.bbiUserName = new MetroFramework.Controls.MetroComboBox();
+            this.splLoading = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::CloudApp.WaitForm1), true, true);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -203,10 +203,6 @@ namespace CloudApp
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // splashScreenManager1
-            // 
-            this.splashScreenManager1.ClosingDelay = 500;
-            // 
             // bbiSwitchTest
             // 
             this.bbiSwitchTest.AutoSize = true;
@@ -230,6 +226,10 @@ namespace CloudApp
             this.bbiUserName.TabIndex = 8;
             this.bbiUserName.UseSelectable = true;
             this.bbiUserName.ValueMember = "name";
+            // 
+            // splLoading
+            // 
+            this.splLoading.ClosingDelay = 500;
             // 
             // frmAuth
             // 
@@ -271,5 +271,6 @@ namespace CloudApp
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
         private MetroFramework.Controls.MetroToggle bbiSwitchTest;
         private MetroFramework.Controls.MetroComboBox bbiUserName;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splLoading;
     }
 }

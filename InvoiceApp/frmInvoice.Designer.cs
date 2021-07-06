@@ -29,6 +29,7 @@ namespace InvoiceApp
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInvoice));
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiPrintPreview = new DevExpress.XtraBars.BarButtonItem();
@@ -62,7 +63,9 @@ namespace InvoiceApp
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::InvoiceApp.WaitForm1), true, true, true);
+            this.splLoading = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::InvoiceApp.WaitForm1), true, true, true);
+            this.ppInvoice = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
@@ -72,6 +75,7 @@ namespace InvoiceApp
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ppInvoice)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl
@@ -88,9 +92,10 @@ namespace InvoiceApp
             this.bbiRefresh,
             this.bbiEtdDate,
             this.bbiOnWeek,
-            this.bbiSearch});
+            this.bbiSearch,
+            this.barButtonItem1});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 23;
+            this.ribbonControl.MaxItemId = 24;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -136,7 +141,9 @@ namespace InvoiceApp
             this.bbiDelete.Caption = "Delete";
             this.bbiDelete.Id = 18;
             this.bbiDelete.ImageOptions.ImageUri.Uri = "Delete";
+            this.bbiDelete.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D));
             this.bbiDelete.Name = "bbiDelete";
+            this.bbiDelete.ShowItemShortcut = DevExpress.Utils.DefaultBoolean.True;
             // 
             // bbiRefresh
             // 
@@ -145,6 +152,7 @@ namespace InvoiceApp
             this.bbiRefresh.ImageOptions.ImageUri.Uri = "Refresh";
             this.bbiRefresh.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F5);
             this.bbiRefresh.Name = "bbiRefresh";
+            this.bbiRefresh.ShowItemShortcut = DevExpress.Utils.DefaultBoolean.True;
             this.bbiRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiRefresh_ItemClick);
             // 
             // bbiEtdDate
@@ -272,6 +280,7 @@ namespace InvoiceApp
             this.gridView.OptionsBehavior.ReadOnly = true;
             this.gridView.OptionsView.ShowFooter = true;
             this.gridView.OptionsView.ShowGroupPanel = false;
+            this.gridView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.gridView_MouseUp);
             this.gridView.DoubleClick += new System.EventHandler(this.gridView_DoubleClick);
             // 
             // gridColumn1
@@ -417,9 +426,22 @@ namespace InvoiceApp
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
-            // splashScreenManager1
+            // splLoading
             // 
-            this.splashScreenManager1.ClosingDelay = 500;
+            this.splLoading.ClosingDelay = 500;
+            // 
+            // ppInvoice
+            // 
+            this.ppInvoice.ItemLinks.Add(this.bbiDelete);
+            this.ppInvoice.ItemLinks.Add(this.bbiRefresh, true);
+            this.ppInvoice.Name = "ppInvoice";
+            this.ppInvoice.Ribbon = this.ribbonControl;
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "barButtonItem1";
+            this.barButtonItem1.Id = 23;
+            this.barButtonItem1.Name = "barButtonItem1";
             // 
             // frmInvoice
             // 
@@ -443,6 +465,7 @@ namespace InvoiceApp
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ppInvoice)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -478,9 +501,11 @@ namespace InvoiceApp
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraBars.BarCheckItem bbiOnWeek;
-        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splLoading;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
         private DevExpress.XtraBars.BarButtonItem bbiSearch;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
+        private DevExpress.XtraBars.PopupMenu ppInvoice;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
     }
 }
